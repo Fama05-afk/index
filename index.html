@@ -405,12 +405,297 @@ body {
 <script>
 // ─── DATA ─────────────────────────────────────────────────────────────────
 
+const SVGS = {
+
+  while: `<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
+  <!-- Background -->
+  <rect width="520" height="200" rx="14" fill="#EFF6FF"/>
+  <!-- Title -->
+  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Comment fonctionne while True ?</text>
+
+  <!-- START box -->
+  <rect x="20" y="44" width="90" height="36" rx="18" fill="#1E3A8A"/>
+  <text x="65" y="67" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="white">DÉMARRAGE</text>
+
+  <!-- Arrow right -->
+  <line x1="110" y1="62" x2="138" y2="62" stroke="#1E3A8A" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Demander saisie box -->
+  <rect x="140" y="44" width="110" height="36" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="1.5"/>
+  <text x="195" y="64" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" fill="#1E3A8A">Demander saisie</text>
+
+  <!-- Arrow right -->
+  <line x1="250" y1="62" x2="278" y2="62" stroke="#1E3A8A" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Losange décision -->
+  <polygon points="310,42 358,62 310,82 262,62" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="310" y="59" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" font-weight="600" fill="#92400E">exit ou</text>
+  <text x="310" y="72" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" font-weight="600" fill="#92400E">vide ?</text>
+
+  <!-- OUI → break -->
+  <line x1="358" y1="62" x2="400" y2="62" stroke="#F59E0B" stroke-width="2" marker-end="url(#arr2)"/>
+  <text x="377" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#92400E" font-weight="600">OUI</text>
+  <rect x="400" y="44" width="100" height="36" rx="8" fill="#FEF9C3" stroke="#F59E0B" stroke-width="2"/>
+  <text x="450" y="60" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#92400E">break</text>
+  <text x="450" y="74" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#92400E">→ on sort !</text>
+
+  <!-- NON → traiter -->
+  <line x1="310" y1="82" x2="310" y2="110" stroke="#059669" stroke-width="2" marker-end="url(#arr3)"/>
+  <text x="322" y="100" font-family="Poppins,sans-serif" font-size="10" fill="#059669" font-weight="600">NON</text>
+  <rect x="220" y="110" width="180" height="34" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <text x="310" y="132" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" fill="#065F46">Traiter les fichiers</text>
+
+  <!-- Flèche retour -->
+  <line x1="220" y1="127" x2="80" y2="127" stroke="#6366F1" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="80" y1="127" x2="80" y2="62" stroke="#6366F1" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr4)"/>
+  <text x="150" y="148" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6366F1" font-style="italic">↺ on recommence depuis le début !</text>
+
+  <!-- Légende -->
+  <rect x="390" y="110" width="120" height="70" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="400" y="126" font-family="Poppins,sans-serif" font-size="10" font-weight="600" fill="#374151">Légende</text>
+  <rect x="400" y="133" width="12" height="8" rx="2" fill="#1E3A8A"/>
+  <text x="416" y="141" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">Action</text>
+  <polygon points="406,150 414,155 406,160 398,155" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="416" y="158" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">Décision</text>
+  <line x1="398" y1="170" x2="410" y2="170" stroke="#6366F1" stroke-width="2" stroke-dasharray="3,2"/>
+  <text x="416" y="173" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">Retour</text>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1E3A8A"/></marker>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#F59E0B"/></marker>
+    <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#059669"/></marker>
+    <marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#6366F1"/></marker>
+  </defs>
+</svg>`,
+
+  split: `<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
+  <rect width="520" height="210" rx="14" fill="#F0FDF4"/>
+  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#065F46">split() — couper une chaîne en morceaux</text>
+
+  <!-- Chaîne originale -->
+  <rect x="30" y="40" width="460" height="38" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="260" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="13" font-weight="600" fill="#1E3A8A">"toto.txt</text>
+  <text x="295" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="13" font-weight="600" fill="#DC2626">  </text>
+  <text x="380" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="13" font-weight="600" fill="#1E3A8A">titi.txt</text>
+  <text x="480" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="13" font-weight="600" fill="#1E3A8A">"</text>
+  <text x="260" y="70" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">Une seule chaîne de texte (tout collé)</text>
+
+  <!-- Espaces marqués en rouge -->
+  <rect x="239" y="44" width="14" height="26" rx="3" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="246" y="61" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#DC2626">espace</text>
+
+  <!-- Scissors + label -->
+  <text x="260" y="102" text-anchor="middle" font-size="22">✂️</text>
+  <text x="260" y="118" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#059669">.split()  coupe aux espaces !</text>
+
+  <!-- Flèche vers le bas -->
+  <line x1="260" y1="122" x2="260" y2="134" stroke="#059669" stroke-width="2" marker-end="url(#gs)"/>
+
+  <!-- Résultat : liste -->
+  <rect x="30" y="138" width="460" height="56" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="2"/>
+  <text x="260" y="158" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#065F46" font-weight="600">Résultat → une liste avec 2 éléments séparés :</text>
+
+  <!-- Élément 0 -->
+  <rect x="70" y="165" width="90" height="22" rx="6" fill="white" stroke="#1E3A8A" stroke-width="1.5"/>
+  <text x="115" y="180" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#1E3A8A">"toto.txt"</text>
+  <text x="115" y="195" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">index [0]</text>
+
+  <!-- Élément 1 -->
+  <rect x="360" y="165" width="90" height="22" rx="6" fill="white" stroke="#1E3A8A" stroke-width="1.5"/>
+  <text x="405" y="180" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#1E3A8A">"titi.txt"</text>
+  <text x="405" y="195" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">index [1]</text>
+
+  <text x="240" y="180" text-anchor="middle" font-family="Poppins,sans-serif" font-size="18" fill="#059669">,</text>
+
+  <defs><marker id="gs" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#059669"/></marker></defs>
+</svg>`,
+
+  open: `<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
+  <rect width="520" height="210" rx="14" fill="#FFF7ED"/>
+  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#92400E">Lire un fichier en 3 étapes</text>
+
+  <!-- Étape 1 : Ouvrir -->
+  <rect x="18" y="36" width="148" height="148" rx="12" fill="white" stroke="#F59E0B" stroke-width="2"/>
+  <text x="92" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#92400E">① OUVRIR</text>
+  <!-- Fichier icône -->
+  <rect x="62" y="62" width="58" height="72" rx="4" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="1.5"/>
+  <polygon points="100,62 120,62 120,78 100,78" fill="#1E3A8A"/>
+  <line x1="74" y1="90" x2="108" y2="90" stroke="#1E3A8A" stroke-width="1.5"/>
+  <line x1="74" y1="100" x2="108" y2="100" stroke="#1E3A8A" stroke-width="1.5"/>
+  <line x1="74" y1="110" x2="95" y2="110" stroke="#1E3A8A" stroke-width="1.5"/>
+  <text x="92" y="150" text-anchor="middle" font-family="Fira Code,monospace" font-size="9.5" fill="#1E3A8A">toto.txt</text>
+  <text x="92" y="165" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">open("toto.txt","r")</text>
+  <text x="92" y="178" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">encoding="utf-8"</text>
+
+  <!-- Flèche -->
+  <line x1="168" y1="110" x2="192" y2="110" stroke="#F59E0B" stroke-width="2.5" marker-end="url(#go)"/>
+
+  <!-- Étape 2 : Lire -->
+  <rect x="194" y="36" width="132" height="148" rx="12" fill="white" stroke="#059669" stroke-width="2"/>
+  <text x="260" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#065F46">② LIRE</text>
+  <rect x="210" y="62" width="100" height="80" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <text x="260" y="82" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#065F46">f.read()</text>
+  <text x="260" y="97" text-anchor="middle" font-family="Fira Code,monospace" font-size="8.5" fill="#374151">→ "Bonjour\n</text>
+  <text x="260" y="110" text-anchor="middle" font-family="Fira Code,monospace" font-size="8.5" fill="#374151">le monde\n</text>
+  <text x="260" y="123" text-anchor="middle" font-family="Fira Code,monospace" font-size="8.5" fill="#374151">Python !"</text>
+  <text x="260" y="158" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#065F46">Tout le texte</text>
+  <text x="260" y="170" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#065F46">dans une variable</text>
+  <text x="260" y="178" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#1E3A8A">contenu</text>
+
+  <!-- Flèche -->
+  <line x1="328" y1="110" x2="352" y2="110" stroke="#059669" stroke-width="2.5" marker-end="url(#go2)"/>
+
+  <!-- Étape 3 : Fermer automatiquement -->
+  <rect x="354" y="36" width="148" height="148" rx="12" fill="white" stroke="#7C3AED" stroke-width="2"/>
+  <text x="428" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#7C3AED">③ AUTO-FERMER</text>
+  <text x="428" y="90" text-anchor="middle" font-size="36">🔒</text>
+  <text x="428" y="118" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#7C3AED" font-weight="600">with</text>
+  <text x="428" y="133" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#4B5563">ferme le fichier</text>
+  <text x="428" y="146" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#4B5563">automatiquement</text>
+  <text x="428" y="159" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#4B5563">même en cas</text>
+  <text x="428" y="172" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#4B5563">d'erreur !</text>
+
+  <defs>
+    <marker id="go" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#F59E0B"/></marker>
+    <marker id="go2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#059669"/></marker>
+  </defs>
+</svg>`,
+
+  os: `<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
+  <rect width="520" height="210" rx="14" fill="#FEF2F2"/>
+  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#991B1B">Vérifier un fichier — 2 questions à poser</text>
+
+  <!-- Question 1 -->
+  <rect x="20" y="38" width="230" height="80" rx="12" fill="white" stroke="#DC2626" stroke-width="2"/>
+  <text x="135" y="57" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#DC2626">❓ Question 1</text>
+  <text x="135" y="76" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Le fichier existe-t-il ?</text>
+  <text x="135" y="95" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">os.path.isfile(nom)</text>
+  <text x="135" y="110" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">renvoie True ou False</text>
+
+  <!-- OUI / NON Q1 -->
+  <text x="135" y="138" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#374151">Si False :</text>
+  <rect x="40" y="146" width="190" height="28" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="135" y="165" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#991B1B">print("file not found")</text>
+  <text x="135" y="190" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#991B1B">return  ← on s'arrête</text>
+
+  <!-- Séparateur -->
+  <line x1="265" y1="38" x2="265" y2="200" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Question 2 -->
+  <rect x="272" y="38" width="230" height="80" rx="12" fill="white" stroke="#F59E0B" stroke-width="2"/>
+  <text x="387" y="57" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#F59E0B">❓ Question 2</text>
+  <text x="387" y="76" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Peut-on le lire ?</text>
+  <text x="387" y="95" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">os.access(nom, os.R_OK)</text>
+  <text x="387" y="110" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">R_OK = droit de lecture</text>
+
+  <!-- OUI / NON Q2 -->
+  <text x="387" y="138" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#374151">Si False :</text>
+  <rect x="290" y="146" width="190" height="28" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="387" y="165" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#92400E">print("cannot read file")</text>
+  <text x="387" y="190" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#92400E">return  ← on s'arrête</text>
+</svg>`,
+
+  dict: `<svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
+  <rect width="520" height="220" rx="14" fill="#F5F3FF"/>
+  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#4C1D95">Un dictionnaire = des tiroirs étiquetés</text>
+
+  <!-- Armoire à tiroirs -->
+  <rect x="30" y="36" width="200" height="168" rx="10" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+  <text x="130" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#4C1D95">compteur = {}</text>
+
+  <!-- Tiroirs -->
+  <rect x="44" y="62" width="172" height="34" rx="6" fill="white" stroke="#8B5CF6" stroke-width="1.5"/>
+  <rect x="44" y="62" width="80" height="34" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="84" y="83" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#4C1D95">"chat"</text>
+  <text x="186" y="83" text-anchor="middle" font-family="Fira Code,monospace" font-size="16" font-weight="700" fill="#7C3AED">2</text>
+  <text x="152" y="75" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">valeur</text>
+
+  <rect x="44" y="102" width="172" height="34" rx="6" fill="white" stroke="#8B5CF6" stroke-width="1.5"/>
+  <rect x="44" y="102" width="80" height="34" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="84" y="123" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#4C1D95">"mange"</text>
+  <text x="186" y="123" text-anchor="middle" font-family="Fira Code,monospace" font-size="16" font-weight="700" fill="#7C3AED">1</text>
+
+  <rect x="44" y="142" width="172" height="34" rx="6" fill="white" stroke="#8B5CF6" stroke-width="1.5"/>
+  <rect x="44" y="142" width="80" height="34" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="84" y="163" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#4C1D95">"dort"</text>
+  <text x="186" y="163" text-anchor="middle" font-family="Fira Code,monospace" font-size="16" font-weight="700" fill="#7C3AED">1</text>
+
+  <text x="56" y="72" font-family="Poppins,sans-serif" font-size="8" fill="#6B7280">clé</text>
+
+  <!-- Légende + comptes -->
+  <rect x="248" y="36" width="254" height="168" rx="10" fill="white" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="375" y="58" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#4C1D95">Ce qu'on peut en tirer</text>
+
+  <rect x="264" y="68" width="222" height="30" rx="6" fill="#EDE9FE"/>
+  <text x="375" y="81" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#4C1D95">len(compteur)</text>
+  <text x="375" y="93" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ 3 mots différents</text>
+
+  <rect x="264" y="108" width="222" height="30" rx="6" fill="#EDE9FE"/>
+  <text x="375" y="121" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#4C1D95">len(mots)</text>
+  <text x="375" y="133" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ 4 mots au total</text>
+
+  <rect x="264" y="148" width="222" height="46" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <text x="375" y="164" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#065F46">Richesse lexicale :</text>
+  <text x="375" y="179" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#065F46">3 / 4 = 0.75</text>
+  <text x="375" y="191" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#065F46">différents / total</text>
+</svg>`,
+
+  re: `<svg viewBox="0 0 520 215" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
+  <rect width="520" height="215" rx="14" fill="#ECFDF5"/>
+  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#065F46">re.findall() — la loupe magique</text>
+
+  <!-- Texte source -->
+  <rect x="20" y="36" width="480" height="38" rx="8" fill="white" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="30" y="52" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">Texte original :</text>
+  <!-- Mots avec couleurs -->
+  <text x="30" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151">"</text>
+  <text x="40" y="66" font-family="Fira Code,monospace" font-size="12" fill="#DC2626">Le</text>
+  <text x="60" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
+  <text x="66" y="66" font-family="Fira Code,monospace" font-size="12" fill="#059669">chat</text>
+  <rect x="64" y="55" width="32" height="14" rx="3" fill="none" stroke="#059669" stroke-width="1.5"/>
+  <text x="100" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
+  <text x="106" y="66" font-family="Fira Code,monospace" font-size="12" fill="#059669">mange</text>
+  <rect x="104" y="55" width="47" height="14" rx="3" fill="none" stroke="#059669" stroke-width="1.5"/>
+  <text x="155" y="66" font-family="Fira Code,monospace" font-size="12" fill="#DC2626">,</text>
+  <text x="164" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
+  <text x="170" y="66" font-family="Fira Code,monospace" font-size="12" fill="#DC2626">le</text>
+  <text x="188" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
+  <text x="194" y="66" font-family="Fira Code,monospace" font-size="12" fill="#059669">CHAT</text>
+  <rect x="192" y="55" width="36" height="14" rx="3" fill="none" stroke="#059669" stroke-width="1.5"/>
+  <text x="232" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
+  <text x="238" y="66" font-family="Fira Code,monospace" font-size="12" fill="#059669">dort</text>
+  <rect x="236" y="55" width="32" height="14" rx="3" fill="none" stroke="#059669" stroke-width="1.5"/>
+  <text x="272" y="66" font-family="Fira Code,monospace" font-size="12" fill="#DC2626">!"</text>
+
+  <!-- Légende couleurs -->
+  <rect x="310" y="42" width="190" height="30" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="316" y="54" font-family="Poppins,sans-serif" font-size="9.5" fill="#DC2626">En rouge = ignoré (trop court, ponctuation)</text>
+  <text x="316" y="66" font-family="Poppins,sans-serif" font-size="9.5" fill="#059669">En vert  = gardé (4+ lettres uniquement)</text>
+
+  <!-- Loupe -->
+  <text x="260" y="100" text-anchor="middle" font-size="28">🔍</text>
+  <text x="260" y="117" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" fill="#065F46" font-weight="600">re.findall(r'[a-zA-Z]+', texte)</text>
+  <text x="260" y="132" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">puis on filtre : [ m.lower() for m in ... if len(m) >= 4 ]</text>
+
+  <!-- Flèche -->
+  <line x1="260" y1="136" x2="260" y2="148" stroke="#059669" stroke-width="2" marker-end="url(#gre)"/>
+
+  <!-- Résultat -->
+  <rect x="60" y="152" width="400" height="50" rx="10" fill="#D1FAE5" stroke="#059669" stroke-width="2"/>
+  <text x="260" y="170" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="600" fill="#065F46">Résultat = seulement les mots valides :</text>
+  <text x="260" y="190" text-anchor="middle" font-family="Fira Code,monospace" font-size="12" fill="#065F46">['chat', 'mange', 'chat', 'dort']</text>
+
+  <defs><marker id="gre" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#059669"/></marker></defs>
+</svg>`
+};
+
 const CONCEPTS = [
   {
     icon: "🔁", iconClass: "",
     label: "while True + break",
     summary: "Boucle infinie — tourne jusqu'à ce que l'utilisateur arrête",
-    text: "while True crée une boucle qui ne s'arrête jamais toute seule. L'instruction break en sort immédiatement. C'est le moteur de COUNT et RILEX : on demande une saisie, on la traite, on recommence.",
+    svgKey: "while",
+    text: "Imagine un robot qui tourne en rond. À chaque tour, il pose une question à l'utilisateur. Il s'arrête SEULEMENT si l'utilisateur tape 'exit' ou appuie sur Entrée. Le <strong>break</strong> c'est la porte de sortie.",
     code: `while True:\n    saisie = input("<> ").strip()\n    \n    if saisie == "" or saisie == "exit":\n        break   # on quitte la boucle\n    \n    # sinon, on traite la saisie...`,
     tips: ["while True = boucle infinie, jamais fausse", "break = sortir de la boucle immédiatement", "strip() = supprimer les espaces en début/fin", "continue = passer à l'itération suivante (sans quitter)"]
   },
@@ -418,7 +703,9 @@ const CONCEPTS = [
     icon: "✂️", iconClass: "",
     label: "split() / splitlines() / lower()",
     summary: "Découper une chaîne en liste de mots ou de lignes",
-    text: "split() sans argument découpe selon les espaces. splitlines() découpe selon les sauts de ligne. lower() met tout en minuscules. Ces méthodes renvoient une copie — l'original n'est pas modifié.",
+    svgKey: "split",
+    text: "Imagine une saucisse d'un seul tenant. <strong>split()</strong> c'est les ciseaux qui la coupe en morceaux à chaque espace. Chaque morceau devient un élément de la liste. <strong>splitlines()</strong> coupe aux sauts de ligne. <strong>lower()</strong> met tout en minuscules.",
+    text: "Imagine une saucisse d'un seul tenant. <strong>split()</strong> c'est les ciseaux qui la coupent en morceaux à chaque espace. <strong>splitlines()</strong> coupe aux sauts de ligne. <strong>lower()</strong> met tout en minuscules — 'CHAT' devient 'chat'.",
     code: `s = "toto.txt titi.txt"\nfichiers = s.split()         # → ['toto.txt', 'titi.txt']\n\ntexte = "ligne1\\nligne2\\nligne3"\nlignes = texte.splitlines()  # → ['ligne1', 'ligne2', 'ligne3']\n\n"CHAT".lower()               # → 'chat'`,
     tips: ["split() → découper par espaces → liste de mots", "splitlines() → découper par lignes → liste de lignes", "lower() → tout en minuscules (sans modifier l'original)", "len(liste) → nombre d'éléments dans la liste"]
   },
@@ -426,7 +713,8 @@ const CONCEPTS = [
     icon: "📂", iconClass: "",
     label: "open() + with — lire un fichier",
     summary: "Ouvrir un fichier et lire son contenu proprement",
-    text: "Le mot-clé with garantit que le fichier sera fermé automatiquement après usage, même en cas d'erreur. read() lit tout le contenu d'un coup sous forme de chaîne.",
+    svgKey: "open",
+    text: "C'est comme ouvrir un livre, lire tout ce qu'il y a dedans, et le refermer. Le mot-clé <strong>with</strong> est magique : il ferme le fichier automatiquement quand on a fini — même si une erreur arrive. <strong>f.read()</strong> lit tout le texte d'un coup.",
     code: `with open("toto.txt", "r", encoding="utf-8") as f:\n    contenu = f.read()   # tout le texte en une chaîne\n\n# Le fichier est fermé automatiquement ici\nprint(len(contenu))  # → nombre de caractères`,
     tips: ["'r' = mode lecture (read)", "encoding='utf-8' = gère les accents correctement", "with = fermeture automatique du fichier (même en cas d'erreur)", "f.read() renvoie tout le texte en une seule chaîne"]
   },
@@ -434,7 +722,8 @@ const CONCEPTS = [
     icon: "🔍", iconClass: "amber",
     label: "os.path.isfile() + os.access()",
     summary: "Vérifier qu'un fichier existe et peut être lu",
-    text: "Avant d'ouvrir un fichier, on vérifie toujours : 1) qu'il existe, 2) qu'on a le droit de le lire. Si un test échoue, on affiche un message et on return pour stopper la fonction.",
+    svgKey: "os",
+    text: "Avant d'ouvrir un fichier, on pose TOUJOURS 2 questions. D'abord : est-ce qu'il existe ? Ensuite : a-t-on le droit de le lire ? Si une réponse est non → on affiche un message d'erreur et on fait <strong>return</strong> pour stopper la fonction.",
     code: `import os\n\n# 1) Vérifier que le fichier existe\nif not os.path.isfile(nom):\n    print(f"{nom} : file not found")\n    return\n\n# 2) Vérifier les droits de lecture\nif not os.access(nom, os.R_OK):\n    print(f"{nom} : cannot read file")\n    return`,
     tips: ["isfile() → True si le chemin est un fichier existant", "os.R_OK → constante signifiant 'droit de lecture'", "os.access(f, os.R_OK) → True si on peut lire f", "Ordre : on vérifie toujours existence → lecture"]
   },
@@ -442,7 +731,8 @@ const CONCEPTS = [
     icon: "📚", iconClass: "amber",
     label: "Dictionnaire {} — compter les mots",
     summary: "Stocker des paires clé → valeur pour compter les occurrences",
-    text: "Un dictionnaire Python associe des clés à des valeurs. Ici on s'en sert pour compter combien de fois chaque mot apparaît. len() sur le dictionnaire donne le nombre de mots différents.",
+    svgKey: "dict",
+    text: "Un dictionnaire c'est comme une armoire avec des tiroirs. Chaque tiroir a une étiquette (la <strong>clé</strong>) et un contenu (la <strong>valeur</strong>). Ici : l'étiquette c'est le mot, la valeur c'est combien de fois il apparaît.",
     code: `compteur = {}  # dictionnaire vide\n\nfor mot in ["chat", "mange", "chat", "dort"]:\n    if mot in compteur:\n        compteur[mot] += 1  # déjà vu → on ajoute 1\n    else:\n        compteur[mot] = 1   # nouveau → on initialise\n\n# résultat : {'chat': 2, 'mange': 1, 'dort': 1}\nprint(len(compteur))  # → 3 mots différents`,
     tips: ["mot in compteur → True si la clé existe", "compteur[clé] → accéder à la valeur", "len(compteur) → nombre de clés = mots différents", "len(liste_mots) → nombre total de mots"]
   },
@@ -450,7 +740,8 @@ const CONCEPTS = [
     icon: "🔎", iconClass: "amber",
     label: "re.findall() — extraire les mots",
     summary: "Extraire uniquement les séquences de lettres, sans ponctuation",
-    text: "split() garderait la ponctuation (chat, ≠ chat). re.findall() extrait exactement ce qu'on veut. On filtre ensuite sur la taille (≥4) et on met en minuscules avec une liste en compréhension.",
+    svgKey: "re",
+    text: "Imagine une loupe qui passe sur le texte et ne ramasse que les lettres — elle ignore les virgules, les points d'exclamation, les chiffres. C'est ce que fait <strong>re.findall()</strong>. Ensuite on filtre pour garder uniquement les mots de 4 lettres ou plus.",
     code: `import re\n\ntexte = "Le chat mange, le CHAT dort!"\n\nmots_bruts = re.findall(r'[a-zA-Z]+', texte)\n# → ['Le', 'chat', 'mange', 'le', 'CHAT', 'dort']\n\nmots = [m.lower() for m in mots_bruts if len(m) >= 4]\n# → ['chat', 'mange', 'chat', 'dort']`,
     tips: ["[a-zA-Z]+ = une ou plusieurs lettres (pas de chiffres ni ponctuation)", "findall = 'trouve TOUTES les occurrences dans le texte'", "[m.lower() for m in ... if len(m)>=4] = liste en compréhension filtrée", "r'...' = raw string, les \\ ne sont pas interprétés"]
   }
@@ -608,9 +899,10 @@ function renderCours() {
       </button>
       ${openConcepts[i] ? `
         <div class="concept-detail">
-          <p class="concept-text">${concept.text}</p>
+          <p class="concept-text" style="margin-bottom:16px">${concept.text}</p>
+          <div style="margin-bottom:16px">${SVGS[concept.svgKey] || ''}</div>
           <pre class="code-block">${concept.code}</pre>
-          <div class="tips">
+          <div class="tips" style="margin-top:12px">
             ${concept.tips.map(t => `<div class="tip"><div class="tip-dot"></div><span>${t}</span></div>`).join('')}
           </div>
         </div>
