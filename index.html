@@ -3,1075 +3,981 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Préparation DS — Python Fichiers</title>
-<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<title>DS Python — COUNT & RILEX</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 60%,#FDE68A 100%);min-height:100vh;padding:20px}
+.wrap{max-width:860px;margin:0 auto}
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 60%, #FDE68A 100%);
-  min-height: 100vh;
-  padding: 20px;
-}
+/* HEADER */
+.hdr{background:white;padding:24px 32px;border-radius:22px;margin-bottom:22px;box-shadow:0 4px 24px rgba(0,0,0,.08);text-align:center;border:2px solid #F59E0B;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#1E3A8A,#F59E0B,#1E3A8A)}
+.hdr-title{font-size:26px;font-weight:700;color:#1E3A8A;margin-bottom:4px}
+.hdr-sub{font-size:14px;color:#6B7280;font-style:italic}
+.hdr-badge{display:inline-block;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;font-size:11px;font-weight:600;padding:3px 14px;border-radius:50px;margin-top:8px}
 
-/* ── HEADER ── */
-.header {
-  background: white;
-  padding: 28px 36px;
-  border-radius: 24px;
-  margin-bottom: 28px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  text-align: center;
-  border: 2px solid #F59E0B;
-  position: relative;
-  overflow: hidden;
-}
-.header::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, #1E3A8A, #F59E0B, #1E3A8A);
-}
-.header-emoji { font-size: 40px; margin-bottom: 8px; }
-.header-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #1E3A8A;
-  margin-bottom: 4px;
-}
-.header-sub {
-  font-size: 15px;
-  color: #6B7280;
-  font-style: italic;
-}
-.header-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, #F59E0B, #FBBF24);
-  color: white;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 14px;
-  border-radius: 50px;
-  margin-top: 10px;
-}
+/* TABS */
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:22px;flex-wrap:wrap}
+.tab{padding:11px 24px;border:none;border-radius:14px;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Poppins',sans-serif;background:white;color:#6B7280;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.tab.on{background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;transform:translateY(-3px);box-shadow:0 8px 24px rgba(30,58,138,.3)}
+.tab:hover:not(.on){transform:translateY(-2px);color:#1E3A8A}
+.pane{display:none}.pane.on{display:block;animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── TABS ── */
-.tabs {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 28px;
-  flex-wrap: wrap;
-}
-.tab-btn {
-  padding: 13px 32px;
-  border: none;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-family: 'Poppins', sans-serif;
-  background: white;
-  color: #6B7280;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-.tab-btn.active {
-  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(30,58,138,0.35);
-}
-.tab-btn:hover:not(.active) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  color: #1E3A8A;
-}
+/* CARDS */
+.card{background:white;border-radius:18px;padding:24px;margin-bottom:14px;box-shadow:0 4px 18px rgba(0,0,0,.07);border:1.5px solid #FDE68A;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.10)}
+.card.bl{border-left:5px solid #1E3A8A}
+.card.am{border-left:5px solid #F59E0B}
+.card.pu{border-left:5px solid #7C3AED}
+.card.gr{border-left:5px solid #059669}
 
-/* ── CONTENT WRAPPER ── */
-.content { max-width: 860px; margin: 0 auto; }
-.tab-content { display: none; }
-.tab-content.active {
-  display: block;
-  animation: fadeUp 0.4s ease;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+/* CODE */
+.code{background:#0F172A;color:#E2E8F0;font-family:'Fira Code',monospace;font-size:12px;line-height:1.75;padding:16px 18px;border-radius:12px;overflow-x:auto;white-space:pre;margin:12px 0;border:1.5px solid #1E3A8A}
 
-/* ── CARDS ── */
-.card {
-  background: white;
-  border-radius: 20px;
-  padding: 28px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  border: 1.5px solid #FDE68A;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.11);
-}
-.card-blue { border-left: 5px solid #1E3A8A; }
-.card-amber { border-left: 5px solid #F59E0B; }
+/* CONCEPT */
+.cbtn{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:0;font-family:'Poppins',sans-serif}
+.crow{display:flex;align-items:center;gap:12px}
+.cico{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cico.am{background:linear-gradient(135deg,#F59E0B,#FBBF24)}
+.cico.pu{background:linear-gradient(135deg,#7C3AED,#8B5CF6)}
+.clbl{font-family:'Fira Code',monospace;font-size:13px;font-weight:500;color:#1E3A8A;margin-bottom:2px}
+.csub{font-size:12.5px;color:#6B7280}
+.carr{margin-left:auto;width:30px;height:30px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;font-size:17px;color:#9CA3AF;transition:all .25s;flex-shrink:0}
+.carr.open{background:#FEF3C7;color:#F59E0B;transform:rotate(45deg)}
+.cdet{margin-top:16px;padding-top:16px;border-top:1.5px dashed #FDE68A}
+.ctxt{font-size:13.5px;color:#374151;line-height:1.7;margin-bottom:14px}
 
-/* ── CONCEPT CARDS (cours) ── */
-.concept-btn {
-  width: 100%; background: none; border: none; cursor: pointer; text-align: left; padding: 0; font-family: 'Poppins', sans-serif;
-}
-.concept-header { display: flex; align-items: center; gap: 14px; }
-.concept-icon {
-  width: 46px; height: 46px; border-radius: 14px;
-  background: linear-gradient(135deg, #1E3A8A, #2563EB);
-  color: white; font-size: 20px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.concept-icon.amber { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
-.concept-label { font-family: 'Fira Code', monospace; font-size: 14px; font-weight: 500; color: #1E3A8A; margin-bottom: 2px; }
-.concept-summary { font-size: 13px; color: #6B7280; }
-.expand-arrow {
-  margin-left: auto;
-  width: 32px; height: 32px; border-radius: 50%;
-  background: #F3F4F6;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: #9CA3AF;
-  transition: all 0.3s; flex-shrink: 0;
-}
-.expand-arrow.open { background: #FEF3C7; color: #F59E0B; transform: rotate(45deg); }
+/* WHERE label */
+.where{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:50px;font-size:11px;font-weight:600;margin-bottom:12px}
+.where.count{background:#DBEAFE;color:#1E3A8A}
+.where.rilex{background:#EDE9FE;color:#7C3AED}
+.where.both{background:#D1FAE5;color:#065F46}
 
-.concept-detail {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1.5px dashed #FDE68A;
-}
-.concept-text { font-size: 14px; color: #374151; line-height: 1.7; margin-bottom: 14px; }
+/* TIPS */
+.tips{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.tip{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#374151;line-height:1.5}
+.tdot{width:7px;height:7px;border-radius:50%;background:#F59E0B;flex-shrink:0;margin-top:5px}
 
-.code-block {
-  background: #0F172A;
-  color: #E2E8F0;
-  font-family: 'Fira Code', monospace;
-  font-size: 12.5px;
-  line-height: 1.7;
-  padding: 18px 20px;
-  border-radius: 14px;
-  overflow-x: auto;
-  white-space: pre;
-  margin-bottom: 14px;
-  border: 1.5px solid #1E3A8A;
-}
+/* STEPS */
+.etabs{display:flex;gap:8px;margin-bottom:18px}
+.etab{padding:9px 24px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;transition:all .22s;font-family:'Poppins',sans-serif;border:2px solid transparent}
+.etab.on{background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;box-shadow:0 4px 12px rgba(245,158,11,.35)}
+.etab.off{background:white;color:#6B7280;border-color:#E5E7EB}
+.etab.off:hover{border-color:#F59E0B;color:#F59E0B}
+.scard{background:white;border-radius:18px;padding:20px 24px;margin-bottom:12px;box-shadow:0 4px 16px rgba(0,0,0,.07);border:1.5px solid #FDE68A;transition:all .2s}
+.scard:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(0,0,0,.10)}
+.sbtn{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:0;font-family:'Poppins',sans-serif}
+.srow{display:flex;align-items:center;gap:12px}
+.snum{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stitle{font-size:14px;font-weight:600;color:#1E3A8A;flex:1}
+.sbody{margin-top:14px;padding-top:14px;border-top:1.5px dashed #FDE68A}
+.stxt{font-size:13px;color:#374151;line-height:1.7;margin-bottom:12px}
+.notebox{background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border:1.5px solid #6EE7B7;border-radius:12px;padding:13px 16px;font-size:13px;color:#065F46;line-height:1.65;margin-bottom:16px}
 
-.tips {
-  display: flex; flex-direction: column; gap: 7px;
-}
-.tip {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 13px; color: #374151; line-height: 1.5;
-}
-.tip-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #F59E0B; flex-shrink: 0; margin-top: 5px;
-}
+/* QUIZ */
+.qprog{margin-bottom:20px}
+.qptop{display:flex;justify-content:space-between;margin-bottom:6px}
+.qplbl{font-size:13px;font-weight:600;color:#1E3A8A}
+.qpsco{font-size:13px;color:#6B7280}
+.qptrack{height:7px;background:#E5E7EB;border-radius:50px;overflow:hidden}
+.qpfill{height:100%;background:linear-gradient(90deg,#1E3A8A,#F59E0B);border-radius:50px;transition:width .4s ease}
+.qcard{background:white;border-radius:18px;padding:24px;margin-bottom:14px;box-shadow:0 4px 18px rgba(0,0,0,.08);border:2px solid #1E3A8A}
+.qtag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;padding:3px 10px;border-radius:50px;display:inline-block}
+.qtag.count{background:#DBEAFE;color:#1E3A8A}
+.qtag.rilex{background:#EDE9FE;color:#7C3AED}
+.qtag.both{background:#D1FAE5;color:#065F46}
+.qq{font-family:'Fira Code',monospace;font-size:13.5px;font-weight:500;color:#1E3A8A;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;cursor:pointer;margin-bottom:8px;font-size:13px;font-family:'Fira Code',monospace;line-height:1.4;transition:all .18s}
+.opt.def{border:1.5px solid #E5E7EB;background:white;color:#374151}
+.opt.def:hover{border-color:#1E3A8A;background:#EFF6FF;color:#1E3A8A;transform:translateX(4px)}
+.opt.sel{border:2px solid #F59E0B;background:#FFFBEB;color:#92400E}
+.opt.ok{border:2px solid #10B981;background:#ECFDF5;color:#065F46}
+.opt.ko{border:2px solid #EF4444;background:#FEF2F2;color:#991B1B}
+.expl{border-radius:12px;padding:13px 16px;font-size:13px;line-height:1.65;margin-bottom:14px}
+.expl.ok{background:#ECFDF5;border:1.5px solid #6EE7B7;color:#065F46}
+.expl.ko{background:#FFFBEB;border:1.5px solid #F59E0B;color:#92400E}
+.qbtn{padding:12px 28px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all .22s;font-family:'Poppins',sans-serif;border:none}
+.qbtn.val{background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;box-shadow:0 4px 12px rgba(30,58,138,.25)}
+.qbtn.val:hover{transform:translateY(-2px);box-shadow:0 7px 18px rgba(30,58,138,.35)}
+.qbtn.val:disabled{background:#E5E7EB;color:#9CA3AF;box-shadow:none;cursor:not-allowed;transform:none}
+.qbtn.nxt{background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;box-shadow:0 4px 12px rgba(245,158,11,.25)}
+.qbtn.nxt:hover{transform:translateY(-2px)}
+.qbtn.rst{background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white}
+.scircle{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 8px 28px rgba(30,58,138,.3)}
+.snum2{font-size:40px;font-weight:700;line-height:1}
+.stot{font-size:15px;opacity:.8}
+.spct{font-size:17px;font-weight:600;color:#F59E0B;margin-bottom:6px}
+.smsg{font-size:13.5px;color:#6B7280;max-width:300px;margin:0 auto 24px;line-height:1.65}
 
-/* ── STEPS (exercices) ── */
-.exo-tabs {
-  display: flex; gap: 10px; margin-bottom: 22px;
-}
-.exo-tab {
-  padding: 10px 28px; border-radius: 50px;
-  font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: all 0.25s;
-  font-family: 'Poppins', sans-serif;
-  border: 2px solid transparent;
-}
-.exo-tab.active {
-  background: linear-gradient(135deg, #F59E0B, #FBBF24);
-  color: white;
-  box-shadow: 0 4px 14px rgba(245,158,11,0.4);
-}
-.exo-tab.inactive {
-  background: white; color: #6B7280;
-  border-color: #E5E7EB;
-}
-.exo-tab.inactive:hover { border-color: #F59E0B; color: #F59E0B; }
-
-.step-card {
-  background: white;
-  border-radius: 20px;
-  padding: 22px 26px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-  border: 1.5px solid #FDE68A;
-  transition: all 0.2s;
-}
-.step-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
-.step-btn { width: 100%; background: none; border: none; cursor: pointer; text-align: left; padding: 0; font-family: 'Poppins', sans-serif; }
-.step-row { display: flex; align-items: center; gap: 14px; }
-.step-num {
-  width: 38px; height: 38px; border-radius: 12px;
-  background: linear-gradient(135deg, #1E3A8A, #2563EB);
-  color: white; font-size: 16px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.step-title { font-size: 15px; font-weight: 600; color: #1E3A8A; flex: 1; }
-.step-body { margin-top: 16px; padding-top: 16px; border-top: 1.5px dashed #FDE68A; }
-.step-text { font-size: 13.5px; color: #374151; line-height: 1.7; margin-bottom: 14px; }
-
-.note-box {
-  background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
-  border: 1.5px solid #6EE7B7;
-  border-radius: 14px;
-  padding: 14px 18px;
-  font-size: 13.5px;
-  color: #065F46;
-  line-height: 1.65;
-  margin-bottom: 20px;
-}
-
-/* ── QUIZ ── */
-.progress-wrap { margin-bottom: 22px; }
-.progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.progress-label { font-size: 13px; font-weight: 600; color: #1E3A8A; }
-.progress-score { font-size: 13px; color: #6B7280; }
-.progress-track {
-  height: 8px; background: #E5E7EB; border-radius: 50px; overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #1E3A8A, #F59E0B);
-  border-radius: 50px;
-  transition: width 0.4s ease;
-}
-
-.quiz-card {
-  background: white; border-radius: 20px; padding: 28px;
-  margin-bottom: 18px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  border: 2px solid #1E3A8A;
-}
-.quiz-q { font-family: 'Fira Code', monospace; font-size: 14px; font-weight: 500; color: #1E3A8A; line-height: 1.6; }
-
-.opt-btn {
-  display: block; width: 100%;
-  text-align: left; padding: 13px 18px;
-  border-radius: 14px; cursor: pointer;
-  margin-bottom: 10px;
-  font-size: 13px; font-family: 'Fira Code', monospace;
-  line-height: 1.45; transition: all 0.2s;
-}
-.opt-default { border: 1.5px solid #E5E7EB; background: white; color: #374151; }
-.opt-default:hover { border-color: #1E3A8A; background: #EFF6FF; color: #1E3A8A; transform: translateX(4px); }
-.opt-selected { border: 2px solid #F59E0B; background: #FFFBEB; color: #92400E; }
-.opt-correct { border: 2px solid #10B981; background: #ECFDF5; color: #065F46; }
-.opt-wrong { border: 2px solid #EF4444; background: #FEF2F2; color: #991B1B; }
-
-.expl-box {
-  border-radius: 14px; padding: 14px 18px;
-  font-size: 13.5px; line-height: 1.65;
-  margin-bottom: 18px;
-}
-.expl-ok { background: #ECFDF5; border: 1.5px solid #6EE7B7; color: #065F46; }
-.expl-ko { background: #FFFBEB; border: 1.5px solid #F59E0B; color: #92400E; }
-
-.btn-validate, .btn-next, .btn-restart {
-  padding: 13px 32px; border-radius: 14px;
-  font-size: 15px; font-weight: 600;
-  cursor: pointer; transition: all 0.25s;
-  font-family: 'Poppins', sans-serif; border: none;
-}
-.btn-validate {
-  background: linear-gradient(135deg, #1E3A8A, #2563EB);
-  color: white; box-shadow: 0 4px 14px rgba(30,58,138,0.3);
-}
-.btn-validate:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30,58,138,0.4); }
-.btn-validate:disabled {
-  background: #E5E7EB; color: #9CA3AF;
-  box-shadow: none; cursor: not-allowed; transform: none;
-}
-.btn-next {
-  background: linear-gradient(135deg, #F59E0B, #FBBF24);
-  color: white; box-shadow: 0 4px 14px rgba(245,158,11,0.3);
-}
-.btn-next:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(245,158,11,0.4); }
-.btn-restart {
-  background: linear-gradient(135deg, #1E3A8A, #2563EB);
-  color: white; box-shadow: 0 4px 14px rgba(30,58,138,0.3);
-}
-.btn-restart:hover { transform: translateY(-2px); }
-
-.score-section {
-  text-align: center; padding: 2rem 1rem;
-}
-.score-circle {
-  width: 130px; height: 130px; border-radius: 50%;
-  background: linear-gradient(135deg, #1E3A8A, #2563EB);
-  color: white; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  margin: 0 auto 20px;
-  box-shadow: 0 8px 28px rgba(30,58,138,0.35);
-}
-.score-num { font-size: 42px; font-weight: 700; line-height: 1; }
-.score-tot { font-size: 16px; opacity: 0.8; }
-.score-pct { font-size: 18px; font-weight: 600; color: #F59E0B; margin-bottom: 8px; }
-.score-msg { font-size: 14px; color: #6B7280; max-width: 320px; margin: 0 auto 28px; line-height: 1.65; }
-
-/* ── MEMO ── */
-.memo-section {
-  background: white; border-radius: 20px;
-  overflow: hidden; margin-bottom: 18px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-}
-.memo-header {
-  padding: 12px 20px;
-  display: flex; align-items: center; gap: 10px;
-}
-.memo-header-blue { background: linear-gradient(135deg, #1E3A8A, #2563EB); }
-.memo-header-amber { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
-.memo-header-green { background: linear-gradient(135deg, #059669, #10B981); }
-.memo-header-red { background: linear-gradient(135deg, #DC2626, #EF4444); }
-.memo-header-purple { background: linear-gradient(135deg, #7C3AED, #8B5CF6); }
-.memo-header-gray { background: linear-gradient(135deg, #4B5563, #6B7280); }
-.memo-cat { font-size: 14px; font-weight: 700; color: white; }
-.memo-row {
-  display: flex; align-items: flex-start; gap: 14px;
-  padding: 11px 20px;
-  border-bottom: 1px solid #FEF3C7;
-}
-.memo-row:last-child { border-bottom: none; }
-.memo-code {
-  font-family: 'Fira Code', monospace;
-  font-size: 12.5px; color: #1E3A8A;
-  font-weight: 500; flex-shrink: 0; min-width: 200px;
-}
-.memo-desc { font-size: 13px; color: #4B5563; line-height: 1.5; }
+/* MEMO */
+.msec{background:white;border-radius:18px;overflow:hidden;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.mhdr{padding:11px 18px;display:flex;align-items:center;gap:8px}
+.mhdr.bl{background:linear-gradient(135deg,#1E3A8A,#2563EB)}
+.mhdr.am{background:linear-gradient(135deg,#F59E0B,#FBBF24)}
+.mhdr.gr{background:linear-gradient(135deg,#059669,#10B981)}
+.mhdr.rd{background:linear-gradient(135deg,#DC2626,#EF4444)}
+.mhdr.pu{background:linear-gradient(135deg,#7C3AED,#8B5CF6)}
+.mhdr.gy{background:linear-gradient(135deg,#4B5563,#6B7280)}
+.mcat{font-size:13px;font-weight:700;color:white}
+.mrow{display:flex;align-items:flex-start;gap:12px;padding:9px 18px;border-bottom:1px solid #FEF3C7}
+.mrow:last-child{border-bottom:none}
+.mcode{font-family:'Fira Code',monospace;font-size:12px;color:#1E3A8A;font-weight:500;flex-shrink:0;min-width:190px}
+.mdesc{font-size:12.5px;color:#4B5563;line-height:1.5}
+.mexo{font-size:10px;font-weight:600;padding:2px 7px;border-radius:50px;flex-shrink:0;margin-left:auto}
+.mexo.c{background:#DBEAFE;color:#1E3A8A}
+.mexo.r{background:#EDE9FE;color:#7C3AED}
+.mexo.b{background:#D1FAE5;color:#065F46}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<!-- HEADER -->
-<div class="header">
-  <div class="header-emoji">🐍</div>
-  <div class="header-title">Préparation DS — Python Fichiers</div>
-  <div class="header-sub">COUNT &amp; RILEX — Comprendre, pratiquer, réussir</div>
-  <div class="header-badge">L1 · Traitement de fichiers · Dictionnaires</div>
+<div class="hdr">
+  <div class="hdr-title">🐍 Préparation DS — Python Fichiers</div>
+  <div class="hdr-sub">Tout ce dont tu as besoin pour réussir COUNT et RILEX</div>
+  <div class="hdr-badge">L1 · Exercices B1 &amp; B2</div>
 </div>
 
-<!-- TABS -->
 <div class="tabs">
-  <button class="tab-btn active" onclick="setTab('cours')">📖 Cours</button>
-  <button class="tab-btn" onclick="setTab('exercices')">💻 Exercices</button>
-  <button class="tab-btn" onclick="setTab('quiz')">🧠 Quiz</button>
-  <button class="tab-btn" onclick="setTab('memo')">📋 Mémo DS</button>
+  <button class="tab on"  onclick="go('cours')">📖 Cours</button>
+  <button class="tab"     onclick="go('sujet')">📝 Sujet DS</button>
+  <button class="tab"     onclick="go('solution')">💻 Solution</button>
+  <button class="tab"     onclick="go('quiz')">🧠 Quiz</button>
+  <button class="tab"     onclick="go('memo')">📋 Mémo</button>
 </div>
 
-<div class="content">
+<!-- ═══ COURS ═══ -->
+<div id="pane-cours" class="pane on"><div id="cours-body"></div></div>
 
-<!-- ════════════ COURS ════════════ -->
-<div id="tab-cours" class="tab-content active">
+<!-- ═══ SUJET DS ═══ -->
+<div id="pane-sujet" class="pane"><div id="sujet-body"></div></div>
 
-  <div id="concepts-container"></div>
-
-</div>
-
-<!-- ════════════ EXERCICES ════════════ -->
-<div id="tab-exercices" class="tab-content">
-
-  <div class="exo-tabs">
-    <button class="exo-tab active" id="exo-count-btn" onclick="setExo('count')">Exercice 1 — COUNT</button>
-    <button class="exo-tab inactive" id="exo-rilex-btn" onclick="setExo('rilex')">Exercice 2 — RILEX</button>
+<!-- ═══ SOLUTION ═══ -->
+<div id="pane-solution" class="pane">
+  <div class="etabs">
+    <button class="etab on"  id="eb1" onclick="setExo('count')">B1 — COUNT</button>
+    <button class="etab off" id="eb2" onclick="setExo('rilex')">B2 — RILEX</button>
   </div>
-
-  <div id="steps-container"></div>
-
+  <div id="sol-body"></div>
 </div>
 
-<!-- ════════════ QUIZ ════════════ -->
-<div id="tab-quiz" class="tab-content">
-  <div id="quiz-container"></div>
-</div>
+<!-- ═══ QUIZ ═══ -->
+<div id="pane-quiz" class="pane"><div id="quiz-body"></div></div>
 
-<!-- ════════════ MEMO ════════════ -->
-<div id="tab-memo" class="tab-content">
-  <div id="memo-container"></div>
-</div>
+<!-- ═══ MEMO ═══ -->
+<div id="pane-memo" class="pane"><div id="memo-body"></div></div>
 
-</div><!-- /content -->
+</div>
 
 <script>
-// ─── DATA ─────────────────────────────────────────────────────────────────
-
-const SVGS = {
-
-  while: `<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
-  <!-- Background -->
-  <rect width="520" height="200" rx="14" fill="#EFF6FF"/>
-  <!-- Title -->
-  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Comment fonctionne while True ?</text>
-
-  <!-- START box -->
-  <rect x="20" y="44" width="90" height="36" rx="18" fill="#1E3A8A"/>
-  <text x="65" y="67" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="white">DÉMARRAGE</text>
-
-  <!-- Arrow right -->
-  <line x1="110" y1="62" x2="138" y2="62" stroke="#1E3A8A" stroke-width="2" marker-end="url(#arr)"/>
-
-  <!-- Demander saisie box -->
-  <rect x="140" y="44" width="110" height="36" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="1.5"/>
-  <text x="195" y="64" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" fill="#1E3A8A">Demander saisie</text>
-
-  <!-- Arrow right -->
-  <line x1="250" y1="62" x2="278" y2="62" stroke="#1E3A8A" stroke-width="2" marker-end="url(#arr)"/>
-
-  <!-- Losange décision -->
-  <polygon points="310,42 358,62 310,82 262,62" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
-  <text x="310" y="59" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" font-weight="600" fill="#92400E">exit ou</text>
-  <text x="310" y="72" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" font-weight="600" fill="#92400E">vide ?</text>
-
-  <!-- OUI → break -->
-  <line x1="358" y1="62" x2="400" y2="62" stroke="#F59E0B" stroke-width="2" marker-end="url(#arr2)"/>
-  <text x="377" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#92400E" font-weight="600">OUI</text>
-  <rect x="400" y="44" width="100" height="36" rx="8" fill="#FEF9C3" stroke="#F59E0B" stroke-width="2"/>
-  <text x="450" y="60" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#92400E">break</text>
-  <text x="450" y="74" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#92400E">→ on sort !</text>
-
-  <!-- NON → traiter -->
-  <line x1="310" y1="82" x2="310" y2="110" stroke="#059669" stroke-width="2" marker-end="url(#arr3)"/>
-  <text x="322" y="100" font-family="Poppins,sans-serif" font-size="10" fill="#059669" font-weight="600">NON</text>
-  <rect x="220" y="110" width="180" height="34" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
-  <text x="310" y="132" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" fill="#065F46">Traiter les fichiers</text>
-
-  <!-- Flèche retour -->
-  <line x1="220" y1="127" x2="80" y2="127" stroke="#6366F1" stroke-width="2" stroke-dasharray="5,3"/>
-  <line x1="80" y1="127" x2="80" y2="62" stroke="#6366F1" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr4)"/>
-  <text x="150" y="148" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6366F1" font-style="italic">↺ on recommence depuis le début !</text>
-
-  <!-- Légende -->
-  <rect x="390" y="110" width="120" height="70" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-  <text x="400" y="126" font-family="Poppins,sans-serif" font-size="10" font-weight="600" fill="#374151">Légende</text>
-  <rect x="400" y="133" width="12" height="8" rx="2" fill="#1E3A8A"/>
-  <text x="416" y="141" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">Action</text>
-  <polygon points="406,150 414,155 406,160 398,155" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
-  <text x="416" y="158" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">Décision</text>
-  <line x1="398" y1="170" x2="410" y2="170" stroke="#6366F1" stroke-width="2" stroke-dasharray="3,2"/>
-  <text x="416" y="173" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">Retour</text>
-
-  <defs>
-    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1E3A8A"/></marker>
-    <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#F59E0B"/></marker>
-    <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#059669"/></marker>
-    <marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#6366F1"/></marker>
-  </defs>
-</svg>`,
-
-  split: `<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
-  <rect width="520" height="210" rx="14" fill="#F0FDF4"/>
-  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#065F46">split() — couper une chaîne en morceaux</text>
-
-  <!-- Chaîne originale -->
-  <rect x="30" y="40" width="460" height="38" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="2"/>
-  <text x="260" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="13" font-weight="600" fill="#1E3A8A">"toto.txt</text>
-  <text x="295" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="13" font-weight="600" fill="#DC2626">  </text>
-  <text x="380" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="13" font-weight="600" fill="#1E3A8A">titi.txt</text>
-  <text x="480" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="13" font-weight="600" fill="#1E3A8A">"</text>
-  <text x="260" y="70" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">Une seule chaîne de texte (tout collé)</text>
-
-  <!-- Espaces marqués en rouge -->
-  <rect x="239" y="44" width="14" height="26" rx="3" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="246" y="61" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#DC2626">espace</text>
-
-  <!-- Scissors + label -->
-  <text x="260" y="102" text-anchor="middle" font-size="22">✂️</text>
-  <text x="260" y="118" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#059669">.split()  coupe aux espaces !</text>
-
-  <!-- Flèche vers le bas -->
-  <line x1="260" y1="122" x2="260" y2="134" stroke="#059669" stroke-width="2" marker-end="url(#gs)"/>
-
-  <!-- Résultat : liste -->
-  <rect x="30" y="138" width="460" height="56" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="2"/>
-  <text x="260" y="158" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#065F46" font-weight="600">Résultat → une liste avec 2 éléments séparés :</text>
-
-  <!-- Élément 0 -->
-  <rect x="70" y="165" width="90" height="22" rx="6" fill="white" stroke="#1E3A8A" stroke-width="1.5"/>
-  <text x="115" y="180" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#1E3A8A">"toto.txt"</text>
-  <text x="115" y="195" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">index [0]</text>
-
-  <!-- Élément 1 -->
-  <rect x="360" y="165" width="90" height="22" rx="6" fill="white" stroke="#1E3A8A" stroke-width="1.5"/>
-  <text x="405" y="180" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#1E3A8A">"titi.txt"</text>
-  <text x="405" y="195" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">index [1]</text>
-
-  <text x="240" y="180" text-anchor="middle" font-family="Poppins,sans-serif" font-size="18" fill="#059669">,</text>
-
-  <defs><marker id="gs" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#059669"/></marker></defs>
-</svg>`,
-
-  open: `<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
-  <rect width="520" height="210" rx="14" fill="#FFF7ED"/>
-  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#92400E">Lire un fichier en 3 étapes</text>
-
-  <!-- Étape 1 : Ouvrir -->
-  <rect x="18" y="36" width="148" height="148" rx="12" fill="white" stroke="#F59E0B" stroke-width="2"/>
-  <text x="92" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#92400E">① OUVRIR</text>
-  <!-- Fichier icône -->
-  <rect x="62" y="62" width="58" height="72" rx="4" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="1.5"/>
-  <polygon points="100,62 120,62 120,78 100,78" fill="#1E3A8A"/>
-  <line x1="74" y1="90" x2="108" y2="90" stroke="#1E3A8A" stroke-width="1.5"/>
-  <line x1="74" y1="100" x2="108" y2="100" stroke="#1E3A8A" stroke-width="1.5"/>
-  <line x1="74" y1="110" x2="95" y2="110" stroke="#1E3A8A" stroke-width="1.5"/>
-  <text x="92" y="150" text-anchor="middle" font-family="Fira Code,monospace" font-size="9.5" fill="#1E3A8A">toto.txt</text>
-  <text x="92" y="165" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">open("toto.txt","r")</text>
-  <text x="92" y="178" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">encoding="utf-8"</text>
-
-  <!-- Flèche -->
-  <line x1="168" y1="110" x2="192" y2="110" stroke="#F59E0B" stroke-width="2.5" marker-end="url(#go)"/>
-
-  <!-- Étape 2 : Lire -->
-  <rect x="194" y="36" width="132" height="148" rx="12" fill="white" stroke="#059669" stroke-width="2"/>
-  <text x="260" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#065F46">② LIRE</text>
-  <rect x="210" y="62" width="100" height="80" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
-  <text x="260" y="82" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#065F46">f.read()</text>
-  <text x="260" y="97" text-anchor="middle" font-family="Fira Code,monospace" font-size="8.5" fill="#374151">→ "Bonjour\n</text>
-  <text x="260" y="110" text-anchor="middle" font-family="Fira Code,monospace" font-size="8.5" fill="#374151">le monde\n</text>
-  <text x="260" y="123" text-anchor="middle" font-family="Fira Code,monospace" font-size="8.5" fill="#374151">Python !"</text>
-  <text x="260" y="158" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#065F46">Tout le texte</text>
-  <text x="260" y="170" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#065F46">dans une variable</text>
-  <text x="260" y="178" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#1E3A8A">contenu</text>
-
-  <!-- Flèche -->
-  <line x1="328" y1="110" x2="352" y2="110" stroke="#059669" stroke-width="2.5" marker-end="url(#go2)"/>
-
-  <!-- Étape 3 : Fermer automatiquement -->
-  <rect x="354" y="36" width="148" height="148" rx="12" fill="white" stroke="#7C3AED" stroke-width="2"/>
-  <text x="428" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#7C3AED">③ AUTO-FERMER</text>
-  <text x="428" y="90" text-anchor="middle" font-size="36">🔒</text>
-  <text x="428" y="118" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#7C3AED" font-weight="600">with</text>
-  <text x="428" y="133" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#4B5563">ferme le fichier</text>
-  <text x="428" y="146" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#4B5563">automatiquement</text>
-  <text x="428" y="159" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#4B5563">même en cas</text>
-  <text x="428" y="172" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#4B5563">d'erreur !</text>
-
-  <defs>
-    <marker id="go" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#F59E0B"/></marker>
-    <marker id="go2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#059669"/></marker>
-  </defs>
-</svg>`,
-
-  os: `<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
-  <rect width="520" height="210" rx="14" fill="#FEF2F2"/>
-  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#991B1B">Vérifier un fichier — 2 questions à poser</text>
-
-  <!-- Question 1 -->
-  <rect x="20" y="38" width="230" height="80" rx="12" fill="white" stroke="#DC2626" stroke-width="2"/>
-  <text x="135" y="57" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#DC2626">❓ Question 1</text>
-  <text x="135" y="76" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Le fichier existe-t-il ?</text>
-  <text x="135" y="95" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">os.path.isfile(nom)</text>
-  <text x="135" y="110" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">renvoie True ou False</text>
-
-  <!-- OUI / NON Q1 -->
-  <text x="135" y="138" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#374151">Si False :</text>
-  <rect x="40" y="146" width="190" height="28" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
-  <text x="135" y="165" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#991B1B">print("file not found")</text>
-  <text x="135" y="190" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#991B1B">return  ← on s'arrête</text>
-
-  <!-- Séparateur -->
-  <line x1="265" y1="38" x2="265" y2="200" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,3"/>
-
-  <!-- Question 2 -->
-  <rect x="272" y="38" width="230" height="80" rx="12" fill="white" stroke="#F59E0B" stroke-width="2"/>
-  <text x="387" y="57" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#F59E0B">❓ Question 2</text>
-  <text x="387" y="76" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Peut-on le lire ?</text>
-  <text x="387" y="95" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">os.access(nom, os.R_OK)</text>
-  <text x="387" y="110" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">R_OK = droit de lecture</text>
-
-  <!-- OUI / NON Q2 -->
-  <text x="387" y="138" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#374151">Si False :</text>
-  <rect x="290" y="146" width="190" height="28" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
-  <text x="387" y="165" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#92400E">print("cannot read file")</text>
-  <text x="387" y="190" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#92400E">return  ← on s'arrête</text>
-</svg>`,
-
-  dict: `<svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
-  <rect width="520" height="220" rx="14" fill="#F5F3FF"/>
-  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#4C1D95">Un dictionnaire = des tiroirs étiquetés</text>
-
-  <!-- Armoire à tiroirs -->
-  <rect x="30" y="36" width="200" height="168" rx="10" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
-  <text x="130" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#4C1D95">compteur = {}</text>
-
-  <!-- Tiroirs -->
-  <rect x="44" y="62" width="172" height="34" rx="6" fill="white" stroke="#8B5CF6" stroke-width="1.5"/>
-  <rect x="44" y="62" width="80" height="34" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="84" y="83" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#4C1D95">"chat"</text>
-  <text x="186" y="83" text-anchor="middle" font-family="Fira Code,monospace" font-size="16" font-weight="700" fill="#7C3AED">2</text>
-  <text x="152" y="75" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">valeur</text>
-
-  <rect x="44" y="102" width="172" height="34" rx="6" fill="white" stroke="#8B5CF6" stroke-width="1.5"/>
-  <rect x="44" y="102" width="80" height="34" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="84" y="123" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#4C1D95">"mange"</text>
-  <text x="186" y="123" text-anchor="middle" font-family="Fira Code,monospace" font-size="16" font-weight="700" fill="#7C3AED">1</text>
-
-  <rect x="44" y="142" width="172" height="34" rx="6" fill="white" stroke="#8B5CF6" stroke-width="1.5"/>
-  <rect x="44" y="142" width="80" height="34" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="84" y="163" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#4C1D95">"dort"</text>
-  <text x="186" y="163" text-anchor="middle" font-family="Fira Code,monospace" font-size="16" font-weight="700" fill="#7C3AED">1</text>
-
-  <text x="56" y="72" font-family="Poppins,sans-serif" font-size="8" fill="#6B7280">clé</text>
-
-  <!-- Légende + comptes -->
-  <rect x="248" y="36" width="254" height="168" rx="10" fill="white" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="375" y="58" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#4C1D95">Ce qu'on peut en tirer</text>
-
-  <rect x="264" y="68" width="222" height="30" rx="6" fill="#EDE9FE"/>
-  <text x="375" y="81" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#4C1D95">len(compteur)</text>
-  <text x="375" y="93" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ 3 mots différents</text>
-
-  <rect x="264" y="108" width="222" height="30" rx="6" fill="#EDE9FE"/>
-  <text x="375" y="121" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#4C1D95">len(mots)</text>
-  <text x="375" y="133" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ 4 mots au total</text>
-
-  <rect x="264" y="148" width="222" height="46" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
-  <text x="375" y="164" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#065F46">Richesse lexicale :</text>
-  <text x="375" y="179" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#065F46">3 / 4 = 0.75</text>
-  <text x="375" y="191" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#065F46">différents / total</text>
-</svg>`,
-
-  re: `<svg viewBox="0 0 520 215" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 6px">
-  <rect width="520" height="215" rx="14" fill="#ECFDF5"/>
-  <text x="260" y="24" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#065F46">re.findall() — la loupe magique</text>
-
-  <!-- Texte source -->
-  <rect x="20" y="36" width="480" height="38" rx="8" fill="white" stroke="#D1D5DB" stroke-width="1.5"/>
-  <text x="30" y="52" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">Texte original :</text>
-  <!-- Mots avec couleurs -->
-  <text x="30" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151">"</text>
-  <text x="40" y="66" font-family="Fira Code,monospace" font-size="12" fill="#DC2626">Le</text>
-  <text x="60" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
-  <text x="66" y="66" font-family="Fira Code,monospace" font-size="12" fill="#059669">chat</text>
-  <rect x="64" y="55" width="32" height="14" rx="3" fill="none" stroke="#059669" stroke-width="1.5"/>
-  <text x="100" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
-  <text x="106" y="66" font-family="Fira Code,monospace" font-size="12" fill="#059669">mange</text>
-  <rect x="104" y="55" width="47" height="14" rx="3" fill="none" stroke="#059669" stroke-width="1.5"/>
-  <text x="155" y="66" font-family="Fira Code,monospace" font-size="12" fill="#DC2626">,</text>
-  <text x="164" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
-  <text x="170" y="66" font-family="Fira Code,monospace" font-size="12" fill="#DC2626">le</text>
-  <text x="188" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
-  <text x="194" y="66" font-family="Fira Code,monospace" font-size="12" fill="#059669">CHAT</text>
-  <rect x="192" y="55" width="36" height="14" rx="3" fill="none" stroke="#059669" stroke-width="1.5"/>
-  <text x="232" y="66" font-family="Fira Code,monospace" font-size="12" fill="#374151"> </text>
-  <text x="238" y="66" font-family="Fira Code,monospace" font-size="12" fill="#059669">dort</text>
-  <rect x="236" y="55" width="32" height="14" rx="3" fill="none" stroke="#059669" stroke-width="1.5"/>
-  <text x="272" y="66" font-family="Fira Code,monospace" font-size="12" fill="#DC2626">!"</text>
-
-  <!-- Légende couleurs -->
-  <rect x="310" y="42" width="190" height="30" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
-  <text x="316" y="54" font-family="Poppins,sans-serif" font-size="9.5" fill="#DC2626">En rouge = ignoré (trop court, ponctuation)</text>
-  <text x="316" y="66" font-family="Poppins,sans-serif" font-size="9.5" fill="#059669">En vert  = gardé (4+ lettres uniquement)</text>
-
-  <!-- Loupe -->
-  <text x="260" y="100" text-anchor="middle" font-size="28">🔍</text>
-  <text x="260" y="117" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" fill="#065F46" font-weight="600">re.findall(r'[a-zA-Z]+', texte)</text>
-  <text x="260" y="132" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">puis on filtre : [ m.lower() for m in ... if len(m) >= 4 ]</text>
-
-  <!-- Flèche -->
-  <line x1="260" y1="136" x2="260" y2="148" stroke="#059669" stroke-width="2" marker-end="url(#gre)"/>
-
-  <!-- Résultat -->
-  <rect x="60" y="152" width="400" height="50" rx="10" fill="#D1FAE5" stroke="#059669" stroke-width="2"/>
-  <text x="260" y="170" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="600" fill="#065F46">Résultat = seulement les mots valides :</text>
-  <text x="260" y="190" text-anchor="middle" font-family="Fira Code,monospace" font-size="12" fill="#065F46">['chat', 'mange', 'chat', 'dort']</text>
-
-  <defs><marker id="gre" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#059669"/></marker></defs>
-</svg>`
-};
+// ════════════════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════════════════
 
 const CONCEPTS = [
-  {
-    icon: "🔁", iconClass: "",
-    label: "while True + break",
-    summary: "Boucle infinie — tourne jusqu'à ce que l'utilisateur arrête",
-    svgKey: "while",
-    text: "Imagine un robot qui tourne en rond. À chaque tour, il pose une question à l'utilisateur. Il s'arrête SEULEMENT si l'utilisateur tape 'exit' ou appuie sur Entrée. Le <strong>break</strong> c'est la porte de sortie.",
-    code: `while True:\n    saisie = input("<> ").strip()\n    \n    if saisie == "" or saisie == "exit":\n        break   # on quitte la boucle\n    \n    # sinon, on traite la saisie...`,
-    tips: ["while True = boucle infinie, jamais fausse", "break = sortir de la boucle immédiatement", "strip() = supprimer les espaces en début/fin", "continue = passer à l'itération suivante (sans quitter)"]
-  },
-  {
-    icon: "✂️", iconClass: "",
-    label: "split() / splitlines() / lower()",
-    summary: "Découper une chaîne en liste de mots ou de lignes",
-    svgKey: "split",
-    text: "Imagine une saucisse d'un seul tenant. <strong>split()</strong> c'est les ciseaux qui la coupe en morceaux à chaque espace. Chaque morceau devient un élément de la liste. <strong>splitlines()</strong> coupe aux sauts de ligne. <strong>lower()</strong> met tout en minuscules.",
-    text: "Imagine une saucisse d'un seul tenant. <strong>split()</strong> c'est les ciseaux qui la coupent en morceaux à chaque espace. <strong>splitlines()</strong> coupe aux sauts de ligne. <strong>lower()</strong> met tout en minuscules — 'CHAT' devient 'chat'.",
-    code: `s = "toto.txt titi.txt"\nfichiers = s.split()         # → ['toto.txt', 'titi.txt']\n\ntexte = "ligne1\\nligne2\\nligne3"\nlignes = texte.splitlines()  # → ['ligne1', 'ligne2', 'ligne3']\n\n"CHAT".lower()               # → 'chat'`,
-    tips: ["split() → découper par espaces → liste de mots", "splitlines() → découper par lignes → liste de lignes", "lower() → tout en minuscules (sans modifier l'original)", "len(liste) → nombre d'éléments dans la liste"]
-  },
-  {
-    icon: "📂", iconClass: "",
-    label: "open() + with — lire un fichier",
-    summary: "Ouvrir un fichier et lire son contenu proprement",
-    svgKey: "open",
-    text: "C'est comme ouvrir un livre, lire tout ce qu'il y a dedans, et le refermer. Le mot-clé <strong>with</strong> est magique : il ferme le fichier automatiquement quand on a fini — même si une erreur arrive. <strong>f.read()</strong> lit tout le texte d'un coup.",
-    code: `with open("toto.txt", "r", encoding="utf-8") as f:\n    contenu = f.read()   # tout le texte en une chaîne\n\n# Le fichier est fermé automatiquement ici\nprint(len(contenu))  # → nombre de caractères`,
-    tips: ["'r' = mode lecture (read)", "encoding='utf-8' = gère les accents correctement", "with = fermeture automatique du fichier (même en cas d'erreur)", "f.read() renvoie tout le texte en une seule chaîne"]
-  },
-  {
-    icon: "🔍", iconClass: "amber",
-    label: "os.path.isfile() + os.access()",
-    summary: "Vérifier qu'un fichier existe et peut être lu",
-    svgKey: "os",
-    text: "Avant d'ouvrir un fichier, on pose TOUJOURS 2 questions. D'abord : est-ce qu'il existe ? Ensuite : a-t-on le droit de le lire ? Si une réponse est non → on affiche un message d'erreur et on fait <strong>return</strong> pour stopper la fonction.",
-    code: `import os\n\n# 1) Vérifier que le fichier existe\nif not os.path.isfile(nom):\n    print(f"{nom} : file not found")\n    return\n\n# 2) Vérifier les droits de lecture\nif not os.access(nom, os.R_OK):\n    print(f"{nom} : cannot read file")\n    return`,
-    tips: ["isfile() → True si le chemin est un fichier existant", "os.R_OK → constante signifiant 'droit de lecture'", "os.access(f, os.R_OK) → True si on peut lire f", "Ordre : on vérifie toujours existence → lecture"]
-  },
-  {
-    icon: "📚", iconClass: "amber",
-    label: "Dictionnaire {} — compter les mots",
-    summary: "Stocker des paires clé → valeur pour compter les occurrences",
-    svgKey: "dict",
-    text: "Un dictionnaire c'est comme une armoire avec des tiroirs. Chaque tiroir a une étiquette (la <strong>clé</strong>) et un contenu (la <strong>valeur</strong>). Ici : l'étiquette c'est le mot, la valeur c'est combien de fois il apparaît.",
-    code: `compteur = {}  # dictionnaire vide\n\nfor mot in ["chat", "mange", "chat", "dort"]:\n    if mot in compteur:\n        compteur[mot] += 1  # déjà vu → on ajoute 1\n    else:\n        compteur[mot] = 1   # nouveau → on initialise\n\n# résultat : {'chat': 2, 'mange': 1, 'dort': 1}\nprint(len(compteur))  # → 3 mots différents`,
-    tips: ["mot in compteur → True si la clé existe", "compteur[clé] → accéder à la valeur", "len(compteur) → nombre de clés = mots différents", "len(liste_mots) → nombre total de mots"]
-  },
-  {
-    icon: "🔎", iconClass: "amber",
-    label: "re.findall() — extraire les mots",
-    summary: "Extraire uniquement les séquences de lettres, sans ponctuation",
-    svgKey: "re",
-    text: "Imagine une loupe qui passe sur le texte et ne ramasse que les lettres — elle ignore les virgules, les points d'exclamation, les chiffres. C'est ce que fait <strong>re.findall()</strong>. Ensuite on filtre pour garder uniquement les mots de 4 lettres ou plus.",
-    code: `import re\n\ntexte = "Le chat mange, le CHAT dort!"\n\nmots_bruts = re.findall(r'[a-zA-Z]+', texte)\n# → ['Le', 'chat', 'mange', 'le', 'CHAT', 'dort']\n\nmots = [m.lower() for m in mots_bruts if len(m) >= 4]\n# → ['chat', 'mange', 'chat', 'dort']`,
-    tips: ["[a-zA-Z]+ = une ou plusieurs lettres (pas de chiffres ni ponctuation)", "findall = 'trouve TOUTES les occurrences dans le texte'", "[m.lower() for m in ... if len(m)>=4] = liste en compréhension filtrée", "r'...' = raw string, les \\ ne sont pas interprétés"]
-  }
+{
+  ico:'🔁', icoCls:'',
+  lbl:'while True + break',
+  sub:'La boucle qui fait tourner COUNT et RILEX',
+  where:'both', whereLabel:'COUNT et RILEX',
+  txt:`Dans <strong>les deux programmes</strong>, le cœur c'est une boucle infinie. 
+Le programme demande en boucle des noms de fichiers à l'utilisateur — et il s'arrête SEULEMENT quand l'utilisateur tape "exit" ou appuie sur Entrée sans rien écrire.
+<br><br>
+Imagine un distributeur automatique : il attend ta commande, la traite, et recommence indéfiniment. <strong>break</strong> c'est le bouton "éteindre".`,
+  svg:`<svg viewBox="0 0 520 192" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="192" rx="14" fill="#EFF6FF"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#1E3A8A">Boucle principale de COUNT et RILEX — identique dans les 2 programmes</text>
+  <rect x="18" y="34" width="90" height="32" rx="16" fill="#1E3A8A"/>
+  <text x="63" y="55" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="600" fill="white">DÉMARRAGE</text>
+  <line x1="108" y1="50" x2="134" y2="50" stroke="#1E3A8A" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="136" y="34" width="112" height="32" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="1.5"/>
+  <text x="192" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#1E3A8A">input() → saisie</text>
+  <line x1="248" y1="50" x2="272" y2="50" stroke="#1E3A8A" stroke-width="2" marker-end="url(#a1)"/>
+  <polygon points="304,32 348,50 304,68 260,50" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="304" y="47" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" font-weight="600" fill="#92400E">exit ou</text>
+  <text x="304" y="60" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" font-weight="600" fill="#92400E">vide ?</text>
+  <line x1="348" y1="50" x2="388" y2="50" stroke="#F59E0B" stroke-width="2" marker-end="url(#a2)"/>
+  <text x="366" y="44" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="600" fill="#92400E">OUI</text>
+  <rect x="388" y="34" width="116" height="32" rx="8" fill="#FEF9C3" stroke="#F59E0B" stroke-width="2"/>
+  <text x="446" y="48" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#92400E">break</text>
+  <text x="446" y="61" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#92400E">→ programme terminé</text>
+  <line x1="304" y1="68" x2="304" y2="96" stroke="#059669" stroke-width="2" marker-end="url(#a3)"/>
+  <text x="316" y="87" font-family="Poppins,sans-serif" font-size="10" fill="#059669" font-weight="600">NON</text>
+  <rect x="168" y="100" width="272" height="32" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <text x="304" y="120" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" fill="#065F46">help/about → afficher  |  fichiers → traiter</text>
+  <line x1="168" y1="116" x2="80" y2="116" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="80" y1="116" x2="80" y2="50" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a4)"/>
+  <text x="122" y="148" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6366F1" font-style="italic">↺ recommencer depuis le début !</text>
+  <defs>
+    <marker id="a1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#1E3A8A"/></marker>
+    <marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#F59E0B"/></marker>
+    <marker id="a3" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#059669"/></marker>
+    <marker id="a4" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#6366F1"/></marker>
+  </defs>
+</svg>`,
+  code:`# Dans COUNT et RILEX — structure identique
+while True:
+    saisie = input("<> <filename> [filename ...]: ").strip()
+
+    if saisie == "" or saisie == "exit":
+        break                      # ← sortir de la boucle
+
+    elif saisie in ("help", "?"):
+        print(AIDE)
+
+    elif saisie in ("about", "!"):
+        print(A_PROPOS)
+
+    else:
+        fichiers = saisie.split()  # découper en liste
+        for nom in fichiers:
+            traiter_fichier(nom)   # traiter chaque fichier`,
+  tips:['while True = boucle infinie — ne s\'arrête jamais seule','break = quitter la boucle (exit ou ligne vide)','strip() = enlever les espaces en début/fin de saisie','Cette structure est IDENTIQUE dans COUNT et dans RILEX']
+},
+{
+  ico:'📂', icoCls:'',
+  lbl:'os.path.isfile() + os.access()',
+  sub:'Vérifier un fichier avant de l\'ouvrir — COUNT et RILEX',
+  where:'both', whereLabel:'COUNT et RILEX',
+  txt:`Dans <strong>les deux programmes</strong>, avant de toucher à un fichier, on pose 2 questions dans l'ordre.
+<br><br>
+C'est comme avant d'ouvrir une porte : d'abord on vérifie <strong>qu'elle existe</strong>, ensuite <strong>qu'on a la clé</strong>. Si une vérification échoue → on affiche un message d'erreur et on fait <strong>return</strong> (on s'arrête là, sans aller plus loin).`,
+  svg:`<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="200" rx="14" fill="#FEF2F2"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#991B1B">2 vérifications obligatoires — COUNT et RILEX</text>
+  <rect x="18" y="36" width="234" height="78" rx="14" fill="white" stroke="#DC2626" stroke-width="2"/>
+  <text x="135" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#DC2626">❓ Vérification 1</text>
+  <text x="135" y="73" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Le fichier existe-t-il ?</text>
+  <text x="135" y="90" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">os.path.isfile(nom)</text>
+  <rect x="30" y="122" width="210" height="28" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="135" y="140" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#991B1B">print(f"{nom} : file not found")</text>
+  <text x="135" y="165" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#DC2626">return ← STOP</text>
+  <line x1="270" y1="75" x2="296" y2="75" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="270" y="36" width="234" height="78" rx="14" fill="white" stroke="#F59E0B" stroke-width="2"/>
+  <text x="387" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#F59E0B">❓ Vérification 2</text>
+  <text x="387" y="73" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Peut-on le lire ?</text>
+  <text x="387" y="90" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">os.access(nom, os.R_OK)</text>
+  <rect x="280" y="122" width="215" height="28" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="387" y="140" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#92400E">print(f"{nom} : cannot read file")</text>
+  <text x="387" y="165" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#F59E0B">return ← STOP</text>
+  <text x="260" y="190" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#059669" font-weight="600">✓ Si les 2 passent → on ouvre le fichier normalement</text>
+</svg>`,
+  code:`import os
+
+def traiter_fichier(nom):     # même code dans COUNT et RILEX
+    # Question 1 : le fichier existe-t-il ?
+    if not os.path.isfile(nom):
+        print(f"{nom} : file not found")
+        return          # ← on s'arrête, on n'ouvre rien
+
+    # Question 2 : a-t-on le droit de le lire ?
+    if not os.access(nom, os.R_OK):
+        print(f"{nom} : cannot read file")
+        return          # ← on s'arrête, on n'ouvre rien
+
+    # Ici on sait que le fichier existe et est lisible
+    with open(nom, 'r', encoding='utf-8') as f:
+        contenu = f.read()
+    # ... suite du traitement`,
+  tips:['os.path.isfile() → True si le fichier existe','os.R_OK = constante Python signifiant "droit de lecture"','os.access(f, os.R_OK) → True si on peut lire f','return après chaque erreur : sans ça, open() planterait !']
+},
+{
+  ico:'📏', icoCls:'',
+  lbl:'splitlines() · split() · len() — compter dans COUNT',
+  sub:'Les 3 outils pour lignes, mots et caractères — B1 uniquement',
+  where:'count', whereLabel:'COUNT uniquement',
+  txt:`Dans <strong>COUNT uniquement</strong>, une fois le fichier lu, on doit compter 3 choses. Python a exactement les bons outils :
+<br><br>
+• <strong>splitlines()</strong> coupe le texte à chaque saut de ligne → on compte les lignes<br>
+• <strong>split()</strong> coupe à chaque espace → on compte les mots<br>
+• <strong>len(contenu)</strong> directement → on compte les caractères`,
+  svg:`<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="200" rx="14" fill="#ECFDF5"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#065F46">COUNT — compter lignes, mots, caractères</text>
+  <rect x="18" y="34" width="484" height="32" rx="8" fill="#0F172A" stroke="#1E3A8A" stroke-width="1.5"/>
+  <text x="260" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#E2E8F0">contenu = "Bonjour monde\nPython est super\nFin"</text>
+  <line x1="120" y1="66" x2="90" y2="90" stroke="#1E3A8A" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="260" y1="66" x2="260" y2="90" stroke="#059669" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="390" y1="66" x2="420" y2="90" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <rect x="18" y="92" width="148" height="86" rx="12" fill="white" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="92" y="110" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#1E3A8A">splitlines()</text>
+  <text x="92" y="127" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">coupe aux \n</text>
+  <text x="92" y="145" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#1E3A8A">→ 3 lignes</text>
+  <text x="92" y="163" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="700" fill="#1E3A8A">lines = 3</text>
+  <text x="92" y="174" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#6B7280">len(splitlines())</text>
+  <rect x="186" y="92" width="148" height="86" rx="12" fill="white" stroke="#059669" stroke-width="2"/>
+  <text x="260" y="110" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#059669">split()</text>
+  <text x="260" y="127" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">coupe aux espaces</text>
+  <text x="260" y="145" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#059669">→ 5 mots</text>
+  <text x="260" y="163" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="700" fill="#059669">words = 5</text>
+  <text x="260" y="174" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#6B7280">len(split())</text>
+  <rect x="354" y="92" width="148" height="86" rx="12" fill="white" stroke="#7C3AED" stroke-width="2"/>
+  <text x="428" y="110" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#7C3AED">len(contenu)</text>
+  <text x="428" y="127" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">longueur brute</text>
+  <text x="428" y="145" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#7C3AED">→ 38 chars</text>
+  <text x="428" y="163" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="700" fill="#7C3AED">chars = 38</text>
+  <text x="428" y="174" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#6B7280">len(contenu)</text>
+</svg>`,
+  code:`# Dans COUNT uniquement — traiter_fichier()
+with open(nom, 'r', encoding='utf-8') as f:
+    contenu = f.read()          # tout le texte = une seule chaîne
+
+nb_lignes = len(contenu.splitlines())  # ["Bonjour monde","Python...","Fin"] → 3
+nb_mots   = len(contenu.split())       # ["Bonjour","monde","Python",...] → 5
+nb_chars  = len(contenu)               # 38 caractères (espaces + \\n inclus)
+
+print(f"{nom} : lines = {nb_lignes}, words = {nb_mots}, chars = {nb_chars}")
+# → toto.txt : lines = 4, words = 23, chars = 112`,
+  tips:['splitlines() → liste de lignes (coupe aux \\n)','split() → liste de mots (coupe aux espaces ET \\n)','len(contenu) → nombre de caractères bruts, espaces compris','Ces 3 outils ne servent QUE dans COUNT, pas dans RILEX']
+},
+{
+  ico:'🔎', icoCls:'pu',
+  lbl:'re.findall() + lower() + filtre len≥4',
+  sub:'Extraire les mots valides — RILEX uniquement',
+  where:'rilex', whereLabel:'RILEX uniquement',
+  txt:`Dans <strong>RILEX uniquement</strong>, on ne peut pas utiliser split() pour trouver les mots — il garderait la ponctuation ("chat," serait différent de "chat").
+<br><br>
+<strong>re.findall()</strong> c'est une loupe magique qui parcourt tout le texte et ramasse uniquement les séquences de lettres — virgules, points, chiffres sont ignorés. Ensuite on filtre : <strong>4 lettres minimum</strong>, tout en <strong>minuscules</strong>.`,
+  svg:`<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="210" rx="14" fill="#F5F3FF"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">RILEX — extraire les mots valides (≥4 lettres)</text>
+  <rect x="18" y="32" width="484" height="30" rx="8" fill="#0F172A" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="260" y="52" text-anchor="middle" font-family="Fira Code,monospace" font-size="11.5" fill="#E2E8F0">"Le chat mange, le CHAT dort! Python."</text>
+  <text x="260" y="82" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">🔍  re.findall(r'[a-zA-Z]+', contenu)</text>
+  <text x="260" y="97" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">extrait toutes les suites de lettres, ignore virgules et !</text>
+  <line x1="260" y1="101" x2="260" y2="113" stroke="#7C3AED" stroke-width="2" marker-end="url(#ap)"/>
+  <rect x="18" y="116" width="484" height="26" rx="8" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="260" y="133" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#4C1D95">['Le','chat','mange','le','CHAT','dort','Python']</text>
+  <text x="260" y="158" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">[m.lower() for m in ... if len(m) >= 4]</text>
+  <text x="260" y="172" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">'Le'(2) et 'le'(2) trop courts → exclus  |  lower() : 'CHAT'→'chat'</text>
+  <line x1="260" y1="176" x2="260" y2="188" stroke="#059669" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="80" y="191" width="360" height="14" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <text x="260" y="202" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#065F46">['chat','mange','chat','dort','python'] ← mots valides !</text>
+  <defs>
+    <marker id="ap" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#7C3AED"/></marker>
+    <marker id="ag" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#059669"/></marker>
+  </defs>
+</svg>`,
+  code:`import re    # ← obligatoire pour RILEX !
+
+# Dans RILEX uniquement — traiter_fichier()
+with open(nom, 'r', encoding='utf-8') as f:
+    contenu = f.read()
+
+# Étape 1 : extraire les séquences de lettres (ignore ponctuation)
+mots_bruts = re.findall(r'[a-zA-Z]+', contenu)
+# → ['Le','chat','mange','le','CHAT','dort','Python']
+
+# Étape 2 : garder ≥4 lettres + mettre en minuscules
+mots = [m.lower() for m in mots_bruts if len(m) >= 4]
+# → ['chat','mange','chat','dort','python']
+
+# ⚠️ split() n'aurait PAS fonctionné :
+# "mange," → garderait la virgule !`,
+  tips:['re.findall(r\'[a-zA-Z]+\', texte) → trouve toutes les suites de lettres','[m.lower() for m in mots_bruts if len(m)>=4] → filtre + minuscules','split() garde la ponctuation → NE PAS utiliser dans RILEX','import re est obligatoire en haut du fichier']
+},
+{
+  ico:'📚', icoCls:'pu',
+  lbl:'Dictionnaire {} — compter les occurrences',
+  sub:'Trouver le nombre de mots différents — RILEX uniquement',
+  where:'rilex', whereLabel:'RILEX uniquement',
+  txt:`Dans <strong>RILEX uniquement</strong>, après avoir extrait les mots valides, il faut savoir combien sont <em>différents</em>. Un dictionnaire Python c'est parfait pour ça.
+<br><br>
+Imagine une armoire avec des tiroirs. Chaque mot a son tiroir (la clé). Le contenu du tiroir (la valeur) dit combien de fois ce mot est apparu. À la fin, <strong>len(compteur)</strong> = nombre de tiroirs = mots différents.`,
+  svg:`<svg viewBox="0 0 520 215" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="215" rx="14" fill="#F5F3FF"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">RILEX — le dictionnaire compte les occurrences</text>
+  <rect x="18" y="32" width="484" height="24" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="260" y="48" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#4C1D95">mots = ['chat','mange','chat','dort','chat']</text>
+  <text x="140" y="74" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">On parcourt la liste :</text>
+  <rect x="18" y="82" width="200" height="118" rx="12" fill="white" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="118" y="101" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#4C1D95">Dictionnaire final</text>
+  <rect x="30" y="108" width="80" height="24" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="70" y="124" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#4C1D95">"chat"</text>
+  <text x="190" y="124" text-anchor="middle" font-family="Fira Code,monospace" font-size="18" font-weight="700" fill="#7C3AED">3</text>
+  <rect x="30" y="138" width="80" height="24" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="70" y="154" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#4C1D95">"mange"</text>
+  <text x="190" y="154" text-anchor="middle" font-family="Fira Code,monospace" font-size="18" font-weight="700" fill="#7C3AED">1</text>
+  <rect x="30" y="168" width="80" height="24" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="70" y="184" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#4C1D95">"dort"</text>
+  <text x="190" y="184" text-anchor="middle" font-family="Fira Code,monospace" font-size="18" font-weight="700" fill="#7C3AED">1</text>
+  <rect x="236" y="82" width="266" height="118" rx="12" fill="white" stroke="#059669" stroke-width="1.5"/>
+  <text x="369" y="101" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#065F46">Ce qu'on calcule</text>
+  <rect x="248" y="108" width="242" height="28" rx="8" fill="#D1FAE5"/>
+  <text x="369" y="120" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" fill="#065F46">len(mots) = 5      ← total</text>
+  <text x="369" y="131" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#6B7280">5 mots dans la liste</text>
+  <rect x="248" y="142" width="242" height="28" rx="8" fill="#D1FAE5"/>
+  <text x="369" y="154" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" fill="#065F46">len(compteur) = 3  ← différents</text>
+  <text x="369" y="165" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#6B7280">3 clés dans le dictionnaire</text>
+  <rect x="248" y="176" width="242" height="22" rx="8" fill="#FEF9C3" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="369" y="191" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="700" fill="#92400E">rilex = 3/5 = 0.60</text>
+</svg>`,
+  code:`# Dans RILEX uniquement — après avoir obtenu la liste mots
+compteur = {}                  # dictionnaire vide
+
+for mot in mots:
+    if mot in compteur:
+        compteur[mot] += 1     # mot déjà vu → on ajoute 1
+    else:
+        compteur[mot] = 1      # nouveau mot → on démarre à 1
+
+# ['chat','mange','chat','dort','chat']
+# → {'chat': 3, 'mange': 1, 'dort': 1}
+
+total      = len(mots)         # 5 mots au total
+differents = len(compteur)     # 3 clés dans le dict = 3 mots différents
+rilex      = differents / total  # 3/5 = 0.60
+
+print(f"{nom} : rilex = {rilex:.2f}")   # → toto.txt : rilex = 0.60`,
+  tips:['mot in compteur → True si la clé existe déjà','compteur[mot] = 1 → créer une nouvelle entrée','compteur[mot] += 1 → incrémenter une entrée existante','len(compteur) = nombre de clés = mots différents',':.2f dans le f-string → exactement 2 décimales (0.67 pas 0.6666...)']
+}
 ];
 
 const STEPS = {
-  count: [
-    {
-      title: "Afficher le bandeau d'accueil",
-      text: "Au lancement, on affiche un bandeau avec le nom du programme, la description et les commandes disponibles. C'est un simple print() d'une chaîne préparée à l'avance avec des f-strings.",
-      code: `SEPARATEUR = "─" * 80\n\nACCUEIL = f"""\n{SEPARATEUR}\nCOUNT : print the number of lines, words and chars of a list of text files\n\nUser input : <filename> [filename ...]\n...\n{SEPARATEUR}"""\n\nprint(ACCUEIL)`
-    },
-    {
-      title: "Lancer la boucle principale",
-      text: "On entre dans une boucle while True. À chaque tour, on demande une saisie à l'utilisateur avec input(). Le .strip() supprime les espaces inutiles.",
-      code: `def main():\n    print(ACCUEIL)\n    \n    while True:\n        saisie = input("<> <filename> [filename ...]: ").strip()`
-    },
-    {
-      title: "Gérer exit, help, about",
-      text: "Avant de traiter des fichiers, on vérifie si l'utilisateur a tapé une commande spéciale. Si oui, on répond et on recommence la boucle. Seul exit (ou ligne vide) provoque un break.",
-      code: `        if saisie == "" or saisie == "exit":\n            break\n        \n        elif saisie in ("help", "?"):\n            print(AIDE)\n        \n        elif saisie in ("about", "!"):\n            print(A_PROPOS)`
-    },
-    {
-      title: "Découper la saisie en liste de fichiers",
-      text: "L'utilisateur peut taper plusieurs noms séparés par des espaces. split() les sépare en une liste, qu'on parcourt ensuite avec une boucle for.",
-      code: `        else:\n            fichiers = saisie.split()\n            # "toto.txt titi.txt" → ["toto.txt", "titi.txt"]\n            \n            for nom in fichiers:\n                traiter_fichier(nom)`
-    },
-    {
-      title: "Vérifier le fichier (existence + droits)",
-      text: "Dans traiter_fichier(), on vérifie l'existence puis les droits de lecture. Si un test échoue → message d'erreur + return (on ne continue pas la fonction).",
-      code: `def traiter_fichier(nom):\n    if not os.path.isfile(nom):\n        print(f"{nom} : file not found")\n        return\n    \n    if not os.access(nom, os.R_OK):\n        print(f"{nom} : cannot read file")\n        return`
-    },
-    {
-      title: "Lire, compter et afficher",
-      text: "On lit le fichier en une chaîne, puis on utilise splitlines() pour les lignes, split() pour les mots, et len() pour les caractères. Tout s'affiche avec un f-string.",
-      code: `    with open(nom, 'r', encoding='utf-8') as f:\n        contenu = f.read()\n    \n    nb_lignes = len(contenu.splitlines())\n    nb_mots   = len(contenu.split())\n    nb_chars  = len(contenu)\n    \n    print(f"{nom} : lines = {nb_lignes}, words = {nb_mots}, chars = {nb_chars}")`
-    }
-  ],
-  rilex: [
-    {
-      title: "Structure identique à COUNT",
-      text: "Le bandeau, la boucle, les commandes spéciales (help/about/exit) et la vérification des fichiers sont exactement les mêmes que dans COUNT. Seule la logique de traiter_fichier() change.",
-      code: `# Identique à COUNT :\n# - Constantes ACCUEIL, AIDE, A_PROPOS\n# - while True avec break\n# - Gestion help / about / exit\n# - os.path.isfile() + os.access()\n# - for nom in fichiers: traiter_fichier(nom)`
-    },
-    {
-      title: "Extraire les mots valides avec re",
-      text: "On ne peut pas utiliser split() car il garderait la ponctuation. re.findall() extrait uniquement les séquences de lettres. On filtre sur la taille (≥4) et on met tout en minuscules.",
-      code: `import re\n\n# Lire le fichier\nwith open(nom, 'r', encoding='utf-8') as f:\n    contenu = f.read()\n\n# Extraire les mots valides\nmots_bruts = re.findall(r'[a-zA-Z]+', contenu)\nmots = [m.lower() for m in mots_bruts if len(m) >= 4]`
-    },
-    {
-      title: "Gérer le cas fichier vide",
-      text: "Si aucun mot valide n'est trouvé (fichier vide ou sans lettres), on ne peut pas diviser. On affiche un message et on return pour éviter une ZeroDivisionError.",
-      code: `    if len(mots) == 0:\n        print(f"{nom} : no valid words found")\n        return\n    \n    # On continue seulement si len(mots) > 0`
-    },
-    {
-      title: "Compter les occurrences avec un dictionnaire",
-      text: "Pour chaque mot de la liste : s'il est déjà dans le dictionnaire, on incrémente ; sinon, on l'ajoute avec la valeur 1. À la fin, len(compteur) = nombre de mots différents.",
-      code: `    compteur = {}\n    for mot in mots:\n        if mot in compteur:\n            compteur[mot] += 1\n        else:\n            compteur[mot] = 1\n    \n    # len(compteur) = mots différents\n    # len(mots) = total de mots`
-    },
-    {
-      title: "Calculer et afficher la richesse lexicale",
-      text: "Richesse = mots différents / total. Le format :.2f affiche exactement 2 décimales (0.666... → 0.67).",
-      code: `    total      = len(mots)       # nombre total de mots\n    differents = len(compteur)   # nombre de mots différents\n    rilex      = differents / total\n    \n    print(f"{nom} : rilex = {rilex:.2f}")`
-    }
-  ]
-};
+count:[
+  {t:'Importer os et définir les constantes',
+   txt:'On commence par importer le module os (nécessaire pour vérifier les fichiers), puis on définit 3 chaînes de texte : ACCUEIL (le bandeau affiché au démarrage), AIDE (le texte de help), et A_PROPOS (le texte de about).',
+   code:`import os
+
+SEP = "─" * 80
+
+ACCUEIL = f"""
+{SEP}
+COUNT : print the number of lines, words and chars of a list of text files
+
+User input : <filename> [filename ...]
+App output : number of lines, words and chars for each provided file
+
+Enter 'help' or '?' to display some user instructions
+Enter 'about' or '!' to display some info about the application
+Enter 'exit' or an empty line to stop the interaction loop
+{SEP}"""
+
+AIDE     = "Entrez un ou plusieurs noms de fichiers séparés par des espaces."
+A_PROPOS = "COUNT v1.0 — compte lignes, mots et caractères d'un fichier."`},
+  {t:'Fonction traiter_fichier(nom) — vérifications',
+   txt:'Cette fonction est appelée pour chaque fichier. D\'abord on vérifie l\'existence avec isfile(), puis les droits de lecture avec os.access(). Si l\'un échoue → message d\'erreur et return (on arrête là).',
+   code:`def traiter_fichier(nom):
+    # Vérification 1 : le fichier existe-t-il ?
+    if not os.path.isfile(nom):
+        print(f"{nom} : file not found")
+        return
+
+    # Vérification 2 : peut-on le lire ?
+    if not os.access(nom, os.R_OK):
+        print(f"{nom} : cannot read file")
+        return`},
+  {t:'Fonction traiter_fichier(nom) — compter et afficher',
+   txt:'Si les 2 vérifications passent, on ouvre le fichier avec with open(), on lit tout le contenu, puis on utilise splitlines() pour les lignes, split() pour les mots, et len() directement pour les caractères.',
+   code:`    # Ouverture et lecture (si les vérifications ont passé)
+    with open(nom, 'r', encoding='utf-8') as f:
+        contenu = f.read()
+
+    nb_lignes = len(contenu.splitlines())  # couper par \\n → compter
+    nb_mots   = len(contenu.split())       # couper par espaces → compter
+    nb_chars  = len(contenu)               # longueur de la chaîne
+
+    print(f"{nom} : lines = {nb_lignes}, words = {nb_mots}, chars = {nb_chars}")`},
+  {t:'Fonction main() — bandeau + boucle',
+   txt:'main() affiche le bandeau au démarrage, puis entre dans while True. À chaque tour, on lit la saisie. Si c\'est vide ou "exit" → break. Si c\'est help ou about → afficher le texte correspondant.',
+   code:`def main():
+    print(ACCUEIL)      # afficher le bandeau une seule fois
+
+    while True:
+        saisie = input("<> <filename> [filename ...]: ").strip()
+
+        if saisie == "" or saisie == "exit":
+            break
+
+        elif saisie in ("help", "?"):
+            print(AIDE)
+
+        elif saisie in ("about", "!"):
+            print(A_PROPOS)`},
+  {t:'Fonction main() — traiter les fichiers',
+   txt:'Si la saisie n\'est ni une commande ni vide, c\'est forcément des noms de fichiers. On utilise split() pour les séparer, puis une boucle for pour appeler traiter_fichier() sur chacun.',
+   code:`        else:
+            fichiers = saisie.split()   # "toto.txt titi.txt" → liste
+            for nom in fichiers:
+                traiter_fichier(nom)    # appel pour chaque fichier
+
+
+# Point d'entrée
+if __name__ == "__main__":
+    main()`}
+],
+rilex:[
+  {t:'Imports et constantes (identiques à COUNT, sauf import re)',
+   txt:'RILEX a exactement la même structure que COUNT. La seule différence dans les imports : on ajoute "import re" car on va utiliser les expressions régulières pour extraire les mots. Les constantes ACCUEIL, AIDE, A_PROPOS changent juste le texte.',
+   code:`import os
+import re     # ← NOUVEAU par rapport à COUNT
+
+SEP = "─" * 80
+
+ACCUEIL = f"""
+{SEP}
+RILEX : print the lexical richness of a list of text files
+
+User input : <filename> [filename ...]
+App output : lexical richness of all provided files
+
+Enter 'help' or '?' to display some user instructions
+Enter 'about' or '!' to display some info about the application
+Enter 'exit' or an empty line to stop the interaction loop
+{SEP}"""
+
+AIDE     = "Entrez un ou plusieurs fichiers. Mot = 4+ lettres alphabétiques."
+A_PROPOS = "RILEX v1.0 — calcule la richesse lexicale d'un fichier texte."`},
+  {t:'Vérifications du fichier — identiques à COUNT',
+   txt:'Les deux premières lignes de traiter_fichier() sont copiées-collées depuis COUNT. C\'est exactement le même code : isfile() puis os.access(). Rien ne change ici.',
+   code:`def traiter_fichier(nom):
+    # ← IDENTIQUE à COUNT, rien ne change
+    if not os.path.isfile(nom):
+        print(f"{nom} : file not found")
+        return
+
+    if not os.access(nom, os.R_OK):
+        print(f"{nom} : cannot read file")
+        return
+
+    with open(nom, 'r', encoding='utf-8') as f:
+        contenu = f.read()           # ← pareil aussi`},
+  {t:'Extraire les mots valides avec re.findall()',
+   txt:'C\'est ici que RILEX diverge de COUNT. On ne peut pas utiliser split() : il garderait la ponctuation. re.findall() avec le pattern [a-zA-Z]+ ramasse uniquement les suites de lettres. Ensuite on filtre sur len≥4 et on met en minuscules.',
+   code:`    # Étape A : extraire toutes les séquences de lettres
+    mots_bruts = re.findall(r'[a-zA-Z]+', contenu)
+    # ex: ['Le','chat','mange','le','CHAT','dort']
+
+    # Étape B : garder ≥4 lettres + tout en minuscules
+    mots = [m.lower() for m in mots_bruts if len(m) >= 4]
+    # ex: ['chat','mange','chat','dort']
+
+    # Étape C : cas fichier sans aucun mot valide
+    if len(mots) == 0:
+        print(f"{nom} : no valid words found")
+        return`},
+  {t:'Compter avec un dictionnaire',
+   txt:'On parcourt la liste mots. Pour chaque mot : s\'il est déjà dans le dictionnaire, on ajoute 1 à son compteur. Sinon, on l\'ajoute avec la valeur 1. À la fin, le dictionnaire ressemble à {"chat": 2, "mange": 1, "dort": 1}.',
+   code:`    # Étape D : compter les occurrences de chaque mot
+    compteur = {}
+    for mot in mots:
+        if mot in compteur:
+            compteur[mot] += 1   # mot déjà vu → +1
+        else:
+            compteur[mot] = 1    # nouveau mot → initialiser à 1
+
+    # ex: {'chat': 2, 'mange': 1, 'dort': 1}`},
+  {t:'Calculer et afficher la richesse lexicale',
+   txt:'len(mots) = total des mots, len(compteur) = mots différents (nombre de clés). On divise, et on affiche avec :.2f pour avoir exactement 2 décimales comme dans l\'exemple du sujet.',
+   code:`    # Étape E : calculer et afficher
+    total      = len(mots)          # nb total de mots
+    differents = len(compteur)      # nb de mots différents (clés du dict)
+    rilex      = differents / total
+
+    print(f"{nom} : rilex = {rilex:.2f}")
+    # → toto.txt : rilex = 0.67
+
+
+# main() et point d'entrée — identiques à COUNT
+def main():
+    print(ACCUEIL)
+    while True:
+        saisie = input("<> <filename> [filename ...]: ").strip()
+        if saisie == "" or saisie == "exit":
+            break
+        elif saisie in ("help", "?"): print(AIDE)
+        elif saisie in ("about", "!"): print(A_PROPOS)
+        else:
+            for nom in saisie.split():
+                traiter_fichier(nom)
+
+if __name__ == "__main__":
+    main()`}
+]};
 
 const QUIZ = [
-  { q: '"hello world python".split()  renvoie ?', opts: ['["hello world python"]', '["hello", "world", "python"]', '["h","e","l","l","o"...]', 'SyntaxError'], ans: 1, exp: 'split() sans argument découpe selon les espaces → liste de mots. La chaîne entière serait renvoyée seulement si on passait un séparateur absent.' },
-  { q: 'Pour sortir d\'une boucle while True, on utilise ?', opts: ['continue', 'return', 'stop', 'break'], ans: 3, exp: 'break interrompt immédiatement la boucle. continue passe à l\'itération suivante sans quitter. return quitte la fonction mais pas la boucle.' },
-  { q: 'os.path.isfile("toto.txt") renvoie False si...', opts: ['le fichier est vide', 'le fichier n\'existe pas', 'le fichier est trop grand', 'le fichier est ouvert'], ans: 1, exp: 'isfile() vérifie uniquement que le chemin existe et pointe vers un fichier (pas un dossier). Renvoie False s\'il n\'existe pas.' },
-  { q: 'Que vaut len({"chat": 2, "mange": 1, "dort": 3}) ?', opts: ['6', '3', '9', '2'], ans: 1, exp: 'len() sur un dictionnaire renvoie le nombre de clés — ici 3. La somme des valeurs serait 6, mais ce n\'est pas ce que len() renvoie.' },
-  { q: 'Comment mettre "Bonjour" en minuscules ?', opts: ['"Bonjour".small()', 'lower("Bonjour")', '"Bonjour".lower()', '"Bonjour".min()'], ans: 2, exp: '.lower() est une méthode de l\'objet chaîne. Elle renvoie une copie — l\'original reste inchangé. small() et min() n\'existent pas.' },
-  { q: 'Dans RILEX, un "mot valide" c\'est ?', opts: ['toute séquence de caractères', 'au moins 3 lettres uniquement', 'au moins 4 lettres uniquement', 'entre 4 et 10 lettres'], ans: 2, exp: 'Mot valide = au moins 4 caractères + exclusivement des lettres alphabétiques. re.findall garantit "uniquement des lettres", on filtre len(m)>=4 ensuite.' },
-  { q: 're.findall(r\'[a-zA-Z]+\', "hello, world!") donne ?', opts: ['["hello, world!"]', '["hello,", "world!"]', '["hello", "world"]', 'Erreur'], ans: 2, exp: '[a-zA-Z]+ = une ou plusieurs lettres. La virgule et le ! ne sont pas des lettres → findall les ignore.' },
-  { q: 'Richesse lexicale de "le chat mange le chat"  (mots ≥ 4 lettres) ?', opts: ['1.0', '0.50', '0.67', '0.75'], ans: 2, exp: 'Mots ≥4 lettres : "chat", "mange", "chat" → 3 total. Différents : "chat" et "mange" → 2. Richesse = 2/3 ≈ 0.67. ("le" a 2 lettres, exclu)' },
-  { q: 'Quelle méthode découpe un texte en liste de lignes ?', opts: ['split()', 'splitlines()', 'lines()', 'getlines()'], ans: 1, exp: 'splitlines() gère correctement tous les types de retour à la ligne (\\n, \\r\\n...). split() découpe par espaces. lines() et getlines() n\'existent pas.' },
-  { q: 'os.access(f, os.R_OK) vérifie que...', opts: ['f est un fichier texte', 'f est non vide', 'on a le droit de lire f', 'f existe dans le dossier courant'], ans: 2, exp: 'os.R_OK est la constante "droit de lecture". os.access(f, os.R_OK) renvoie True si le programme a la permission de lire ce fichier.' }
+// COUNT
+{tag:'count', tagLabel:'COUNT — B1',
+ q:'Dans COUNT, que fait contenu.splitlines() ?',
+ opts:['Coupe le texte aux espaces → liste de mots','Coupe le texte aux \\n → liste de lignes','Compte le nombre de lignes directement','Supprime les lignes vides'],
+ ans:1, exp:'splitlines() coupe aux sauts de ligne (\\n) et renvoie une liste. len(splitlines()) = nombre de lignes. Dans COUNT : nb_lignes = len(contenu.splitlines()).'},
+{tag:'count', tagLabel:'COUNT — B1',
+ q:'Dans COUNT, pour compter les mots on utilise :',
+ opts:['len(contenu.splitlines())','len(contenu)','len(contenu.split())','re.findall(r\'[a-zA-Z]+\', contenu)'],
+ ans:2, exp:'split() sans argument coupe aux espaces et retours à la ligne → liste de mots. len() dessus donne le nombre de mots. C\'est différent de RILEX où on utilise re.findall().'},
+{tag:'count', tagLabel:'COUNT — B1',
+ q:'Dans COUNT, que renvoie len(contenu) ?',
+ opts:['Le nombre de mots','Le nombre de lignes','Le nombre de caractères (espaces et \\n inclus)','Le nombre de phrases'],
+ ans:2, exp:'len() sur une chaîne donne sa longueur totale — tous les caractères comptent : lettres, espaces, \\n. Dans COUNT : nb_chars = len(contenu).'},
+{tag:'both', tagLabel:'COUNT et RILEX',
+ q:'Pourquoi met-on return après print("file not found") ?',
+ opts:['Pour afficher un message supplémentaire','Pour éviter que open() soit appelé sur un fichier inexistant','Pour quitter le programme entier','C\'est obligatoire après tout print()'],
+ ans:1, exp:'Sans return, le code continuerait et essaierait d\'ouvrir un fichier qui n\'existe pas → erreur Python (FileNotFoundError). Le return arrête la fonction là.'},
+{tag:'both', tagLabel:'COUNT et RILEX',
+ q:'os.access(nom, os.R_OK) renvoie True si...',
+ opts:['Le fichier existe','Le fichier est vide','On a le droit de lire le fichier','Le fichier est un fichier texte'],
+ ans:2, exp:'os.R_OK est la constante "droit de lecture". os.access() vérifie les permissions. C\'est la 2ème vérification dans les deux programmes, après os.path.isfile().'},
+{tag:'both', tagLabel:'COUNT et RILEX',
+ q:'Quel est le rôle de .strip() dans input(...).strip() ?',
+ opts:['Mettre la saisie en minuscules','Couper la chaîne en liste','Supprimer les espaces en début et fin de saisie','Vérifier que la saisie n\'est pas vide'],
+ ans:2, exp:'.strip() enlève les espaces et les \\n en début et fin. Sans ça, "exit " (avec un espace) ne serait pas reconnu comme "exit". Utilisé dans les deux programmes.'},
+// RILEX
+{tag:'rilex', tagLabel:'RILEX — B2',
+ q:'Dans RILEX, pourquoi ne peut-on pas utiliser split() pour trouver les mots ?',
+ opts:['split() est trop lent','split() garde la ponctuation : "chat," ≠ "chat"','split() ne fonctionne pas avec les fichiers','split() met tout en majuscules'],
+ ans:1, exp:'"chat," et "chat" seraient comptés comme 2 mots différents. re.findall(r\'[a-zA-Z]+\') ne ramasse que les lettres → ponctuation ignorée.'},
+{tag:'rilex', tagLabel:'RILEX — B2',
+ q:'Dans RILEX, à quoi sert m.lower() dans la liste en compréhension ?',
+ opts:['Filtrer les mots trop courts','Mettre le mot en minuscules pour que CHAT = chat = Chat','Supprimer la ponctuation','Compter les lettres du mot'],
+ ans:1, exp:'Sans lower(), "Chat" et "chat" et "CHAT" seraient 3 clés différentes dans le dictionnaire → résultat faux. lower() normalise tout en minuscules.'},
+{tag:'rilex', tagLabel:'RILEX — B2',
+ q:'Dans RILEX, len(compteur) donne :',
+ opts:['Le nombre total de mots dans le texte','Le nombre de mots différents (clés du dictionnaire)','La longueur du fichier en caractères','Le nombre de lignes'],
+ ans:1, exp:'len() sur un dictionnaire = nombre de clés. Chaque mot différent est une clé → len(compteur) = mots différents. C\'est le numérateur de la formule rilex.'},
+{tag:'rilex', tagLabel:'RILEX — B2',
+ q:'Qu\'affiche f"{rilex:.2f}" si rilex = 0.6666... ?',
+ opts:['0.6666666666','0.67','0.666','0.7'],
+ ans:1, exp:':.2f = format "nombre flottant avec 2 décimales". Python arrondit automatiquement. C\'est pour reproduire l\'exemple du sujet : "toto.txt : rilex = 0.67".'},
+{tag:'rilex', tagLabel:'RILEX — B2',
+ q:'Pourquoi vérifie-t-on len(mots) == 0 avant de calculer rilex ?',
+ opts:['Pour afficher un message plus joli','Pour éviter une division par zéro si aucun mot valide','Pour vérifier que le fichier est en UTF-8','C\'est obligatoire avec les dictionnaires'],
+ ans:1, exp:'Si le fichier est vide ou ne contient que des chiffres/ponctuation, mots = []. len(mots) = 0. rilex = len(compteur)/0 → ZeroDivisionError → le programme plante.'}
 ];
 
 const MEMO = [
-  { cat: "Boucle d'interaction", hcls: "memo-header-blue", rows: [
-    ["while True:", "boucle infinie — tourne jusqu'au break"],
-    ["break", "quitter la boucle immédiatement"],
-    ["continue", "passer à l'itération suivante"],
-    [".strip()", "supprimer espaces/sauts en début/fin"]
-  ]},
-  { cat: "Méthodes de chaînes", hcls: "memo-header-amber", rows: [
-    [".split()", "découper par espaces → liste de mots"],
-    [".splitlines()", "découper par lignes → liste de lignes"],
-    [".lower()", "tout mettre en minuscules"],
-    ["len(s)", "longueur d'une chaîne ou liste"]
-  ]},
-  { cat: "Lecture de fichier", hcls: "memo-header-green", rows: [
-    ["with open(f,'r',encoding='utf-8') as h:", "ouvrir en lecture"],
-    ["h.read()", "lire tout le contenu → une chaîne"],
-    ["return", "stopper la fonction en cas d'erreur fichier"]
-  ]},
-  { cat: "Module os", hcls: "memo-header-red", rows: [
-    ["import os", "importer le module"],
-    ["os.path.isfile(f)", "True si f existe et est un fichier"],
-    ["os.access(f, os.R_OK)", "True si on a le droit de lire f"]
-  ]},
-  { cat: "Dictionnaire", hcls: "memo-header-purple", rows: [
-    ["d = {}", "créer un dictionnaire vide"],
-    ["clé in d", "True si la clé existe dans d"],
-    ["d[clé] = 1", "créer une entrée avec valeur 1"],
-    ["d[clé] += 1", "incrémenter la valeur de la clé"],
-    ["len(d)", "nombre de clés (= mots différents)"]
-  ]},
-  { cat: "Module re", hcls: "memo-header-blue", rows: [
-    ["import re", "importer le module"],
-    ["re.findall(r'[a-zA-Z]+', t)", "extraire toutes les séquences de lettres"],
-    ["[m.lower() for m in l if len(m)>=4]", "filtrer (≥4 lettres) + mettre en minuscules"]
-  ]},
-  { cat: "Affichage formaté", hcls: "memo-header-gray", rows: [
-    ['f"{nom} : lines = {n}"', "f-string — interpolation de variables"],
-    ['f"{val:.2f}"', "afficher val avec exactement 2 décimales"],
-    ['f"{nom} : rilex = {rilex:.2f}"', "exemple RILEX — richesse lexicale"]
-  ]}
+{cat:'Imports',hcls:'gy',rows:[
+  ['import os','Obligatoire dans COUNT ET RILEX (vérifications fichier)','b'],
+  ['import re','Obligatoire dans RILEX uniquement (re.findall)','r'],
+]},
+{cat:'Boucle d\'interaction — COUNT et RILEX',hcls:'bl',rows:[
+  ['while True:','boucle infinie — tourne jusqu\'au break','b'],
+  ['saisie = input(...).strip()','lire la saisie + enlever espaces','b'],
+  ['if saisie == "" or saisie == "exit": break','condition de sortie','b'],
+  ['saisie in ("help", "?")','tester plusieurs valeurs à la fois','b'],
+  ['saisie.split()','découper "a.txt b.txt" → liste','b'],
+]},
+{cat:'Vérification fichier — COUNT et RILEX',hcls:'rd',rows:[
+  ['os.path.isfile(nom)','True si le fichier existe','b'],
+  ['os.access(nom, os.R_OK)','True si on peut lire le fichier','b'],
+  ['print(f"{nom} : file not found")','message si fichier inexistant','b'],
+  ['print(f"{nom} : cannot read file")','message si pas le droit de lire','b'],
+  ['return','arrêter la fonction (avant open)','b'],
+]},
+{cat:'Lecture fichier — COUNT et RILEX',hcls:'gr',rows:[
+  ['with open(nom,\'r\',encoding=\'utf-8\') as f:','ouvrir en lecture','b'],
+  ['contenu = f.read()','tout le texte dans une variable','b'],
+]},
+{cat:'Compter — COUNT uniquement',hcls:'bl',rows:[
+  ['len(contenu.splitlines())','nombre de lignes','c'],
+  ['len(contenu.split())','nombre de mots','c'],
+  ['len(contenu)','nombre de caractères','c'],
+  ['f"{nom} : lines={l}, words={w}, chars={c}"','format exact à respecter','c'],
+]},
+{cat:'Extraire mots — RILEX uniquement',hcls:'pu',rows:[
+  ['re.findall(r\'[a-zA-Z]+\', contenu)','extraire les séquences de lettres','r'],
+  ['[m.lower() for m in bruts if len(m)>=4]','filtrer ≥4 lettres + minuscules','r'],
+  ['if len(mots) == 0: return','éviter la division par zéro','r'],
+]},
+{cat:'Dictionnaire — RILEX uniquement',hcls:'pu',rows:[
+  ['compteur = {}','créer un dictionnaire vide','r'],
+  ['if mot in compteur: compteur[mot]+=1','incrémenter si déjà vu','r'],
+  ['else: compteur[mot] = 1','initialiser si nouveau mot','r'],
+  ['len(mots)','total de mots','r'],
+  ['len(compteur)','mots différents (nb de clés)','r'],
+  ['rilex = len(compteur)/len(mots)','formule de la richesse lexicale','r'],
+  ['f"{nom} : rilex = {rilex:.2f}"','format exact à respecter','r'],
+]}
 ];
 
-// ─── STATE ───────────────────────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════════
 
-let openConcepts = {};
-let openSteps = {};
-let activeExo = 'count';
-let quizState = { idx: 0, sel: null, confirmed: false, score: 0, done: false };
+let openC = {}, openS = {}, activeExo = 'count';
+let QS = {idx:0, sel:null, confirmed:false, score:0, done:false};
 
-// ─── TABS ────────────────────────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════════════════════════════
 
-function setTab(id) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  const tabs = ['cours','exercices','quiz','memo'];
-  document.querySelectorAll('.tab-btn')[tabs.indexOf(id)].classList.add('active');
+function go(id){
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('pane-'+id).classList.add('on');
+  const ids=['cours','sujet','solution','quiz','memo'];
+  document.querySelectorAll('.tab')[ids.indexOf(id)].classList.add('on');
 }
 
-// ─── COURS ───────────────────────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// COURS
+// ════════════════════════════════════════════════════════════════
 
-function renderCours() {
-  const c = document.getElementById('concepts-container');
-  c.innerHTML = CONCEPTS.map((concept, i) => `
-    <div class="card card-${i % 2 === 0 ? 'blue' : 'amber'}">
-      <button class="concept-btn" onclick="toggleConcept(${i})">
-        <div class="concept-header">
-          <div class="concept-icon ${concept.iconClass}">${concept.icon}</div>
+const WCLS={both:'both',count:'count',rilex:'rilex'};
+const WLBL={both:'COUNT et RILEX',count:'COUNT uniquement',rilex:'RILEX uniquement'};
+
+function renderCours(){
+  document.getElementById('cours-body').innerHTML = CONCEPTS.map((c,i)=>`
+    <div class="card ${i<2?'bl':i<3?'gr':'pu'}">
+      <button class="cbtn" onclick="toggleC(${i})">
+        <div class="crow">
+          <div class="cico ${c.icoCls}">${c.ico}</div>
           <div style="flex:1">
-            <div class="concept-label">${concept.label}</div>
-            <div class="concept-summary">${concept.summary}</div>
+            <div class="where ${WCLS[c.where]}">${WLBL[c.where]}</div>
+            <div class="clbl">${c.lbl}</div>
+            <div class="csub">${c.sub}</div>
           </div>
-          <div class="expand-arrow ${openConcepts[i] ? 'open' : ''}">+</div>
+          <div class="carr ${openC[i]?'open':''}">+</div>
         </div>
       </button>
-      ${openConcepts[i] ? `
-        <div class="concept-detail">
-          <p class="concept-text" style="margin-bottom:16px">${concept.text}</p>
-          <div style="margin-bottom:16px">${SVGS[concept.svgKey] || ''}</div>
-          <pre class="code-block">${concept.code}</pre>
-          <div class="tips" style="margin-top:12px">
-            ${concept.tips.map(t => `<div class="tip"><div class="tip-dot"></div><span>${t}</span></div>`).join('')}
-          </div>
-        </div>
-      ` : ''}
+      ${openC[i]?`
+        <div class="cdet">
+          <p class="ctxt">${c.txt}</p>
+          <div style="margin-bottom:14px">${c.svg}</div>
+          <pre class="code">${c.code}</pre>
+          <div class="tips">${c.tips.map(t=>`<div class="tip"><div class="tdot"></div><span>${t}</span></div>`).join('')}</div>
+        </div>`:''}
+    </div>`).join('');
+}
+function toggleC(i){openC[i]=!openC[i];renderCours();}
+
+// ════════════════════════════════════════════════════════════════
+// SUJET DS
+// ════════════════════════════════════════════════════════════════
+
+function renderSujet(){
+  document.getElementById('sujet-body').innerHTML = `
+
+  <!-- B1 -->
+  <div style="background:linear-gradient(135deg,#1E3A8A,#2563EB);border-radius:18px;padding:18px 24px;margin-bottom:16px;color:white">
+    <div style="font-size:10px;font-family:'Fira Code',monospace;opacity:.7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Devoir Surveillé — Exercice B1</div>
+    <div style="font-size:21px;font-weight:700;margin-bottom:3px">Programme COUNT</div>
+    <div style="font-size:12.5px;opacity:.85">Lignes · Mots · Caractères · Vérification fichiers</div>
+  </div>
+
+  <div class="card bl" style="margin-bottom:16px">
+    <div style="display:inline-block;background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">ÉNONCÉ</div>
+    <p style="font-size:14px;color:#374151;line-height:1.75;margin-bottom:14px">Écrire un programme <strong style="color:#1E3A8A;font-family:'Fira Code',monospace">count</strong> qui compte le nombre de <strong>lignes</strong>, de <strong>mots</strong> et de <strong>caractères</strong> d'une liste de fichiers texte, dont les noms sont entrés par l'utilisateur. L'existence et la protection en lecture de chaque fichier doit être vérifiée et un message d'erreur affiché le cas échéant.</p>
+    <div style="background:#0F172A;border-radius:12px;padding:16px 18px;font-family:'Fira Code',monospace;font-size:12px;line-height:1.8;color:#E2E8F0;border:1.5px solid #1E3A8A">
+      <div style="color:#475569;margin-bottom:6px;font-size:10px">── Exemple d'exécution ──────────────────────</div>
+      <div style="color:#94A3B8">COUNT : print the number of lines, words and chars of a list of text files</div>
+      <div style="color:#94A3B8;margin-bottom:8px">...</div>
+      <div><span style="color:#F59E0B">&lt;&gt; &lt;filename&gt; [filename ...]:</span> <span style="color:#86EFAC;font-weight:600">toto.txt titi.txt</span></div>
+      <div>toto.txt : lines = 4, words = 23, chars = 112</div>
+      <div style="color:#FCA5A5">titi.txt : cannot read file</div>
+      <div><span style="color:#F59E0B">&lt;&gt; &lt;filename&gt; [filename ...]:</span> <span style="color:#475569">← Entrée → on arrête</span></div>
     </div>
-  `).join('');
+  </div>
+
+  <div class="card am" style="margin-bottom:16px">
+    <div style="display:inline-block;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">DÉCRYPTER L'ÉNONCÉ → EN CODE</div>
+    ${[
+      ['"noms sont entrés par l\'utilisateur"','while True + input() en boucle','💬'],
+      ['"liste de fichiers"','saisie.split() → for nom in fichiers','📋'],
+      ['"existence doit être vérifiée"','if not os.path.isfile(nom): return','🔎'],
+      ['"protection en lecture vérifiée"','if not os.access(nom, os.R_OK): return','🔒'],
+      ['"message d\'erreur le cas échéant"','print(f"{nom} : file not found/cannot read file")','⚠️'],
+      ['"nombre de lignes"','len(contenu.splitlines())','📏'],
+      ['"nombre de mots"','len(contenu.split())','📝'],
+      ['"nombre de caractères"','len(contenu)','🔢'],
+    ].map(([phrase,code,ico])=>`
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px dashed #FDE68A">
+        <span style="font-size:16px;flex-shrink:0">${ico}</span>
+        <div style="flex:1">
+          <div style="font-size:12.5px;color:#374151;font-style:italic;margin-bottom:2px">"${phrase}"</div>
+          <div style="font-size:12px;font-family:'Fira Code',monospace;color:#1E3A8A;font-weight:500">→ ${code}</div>
+        </div>
+      </div>`).join('')}
+  </div>
+
+  <!-- SÉPARATEUR -->
+  <div style="display:flex;align-items:center;gap:12px;margin:24px 0">
+    <div style="flex:1;height:2px;background:linear-gradient(90deg,#F59E0B,transparent)"></div>
+    <div style="background:linear-gradient(135deg,#7C3AED,#8B5CF6);color:white;padding:5px 18px;border-radius:50px;font-size:11px;font-weight:700">EXERCICE B2</div>
+    <div style="flex:1;height:2px;background:linear-gradient(90deg,transparent,#F59E0B)"></div>
+  </div>
+
+  <!-- B2 -->
+  <div style="background:linear-gradient(135deg,#7C3AED,#8B5CF6);border-radius:18px;padding:18px 24px;margin-bottom:16px;color:white">
+    <div style="font-size:10px;font-family:'Fira Code',monospace;opacity:.7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Devoir Surveillé — Exercice B2</div>
+    <div style="font-size:21px;font-weight:700;margin-bottom:3px">Programme RILEX</div>
+    <div style="font-size:12.5px;opacity:.85">Richesse lexicale · Dictionnaire · re.findall() · Mots ≥4 lettres</div>
+  </div>
+
+  <div class="card pu" style="margin-bottom:16px">
+    <div style="display:inline-block;background:linear-gradient(135deg,#7C3AED,#8B5CF6);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">ÉNONCÉ</div>
+    <p style="font-size:14px;color:#374151;line-height:1.75;margin-bottom:8px">Écrire un programme <strong style="color:#7C3AED;font-family:'Fira Code',monospace">rilex</strong> qui calcule la <strong>richesse lexicale</strong> d'un texte contenu dans un fichier.</p>
+    <p style="font-size:14px;color:#374151;line-height:1.75;margin-bottom:8px">La richesse lexicale = <strong>le quotient entre le nombre de mots différents et le nombre total de mots</strong>.</p>
+    <p style="font-size:14px;color:#374151;line-height:1.75;margin-bottom:14px">Un <strong>"mot"</strong> = séquence de <strong>taille ≥ 4</strong>, <strong>uniquement des lettres alphabétiques</strong>, sans distinction majuscules/minuscules. On utilisera un <strong>dictionnaire</strong>.</p>
+    <div style="background:#EDE9FE;border:1.5px solid #7C3AED;border-radius:10px;padding:12px 16px;margin-bottom:14px;text-align:center">
+      <div style="font-size:10px;color:#6B7280;margin-bottom:4px">Formule</div>
+      <div style="font-size:17px;font-weight:700;color:#4C1D95;font-family:'Fira Code',monospace">rilex = mots_différents / mots_total</div>
+    </div>
+    <div style="background:#0F172A;border-radius:12px;padding:16px 18px;font-family:'Fira Code',monospace;font-size:12px;line-height:1.8;color:#E2E8F0;border:1.5px solid #7C3AED">
+      <div style="color:#475569;margin-bottom:6px;font-size:10px">── Exemple d'exécution ──────────────────────</div>
+      <div style="color:#94A3B8">RILEX : print the lexical richness of a list of text files</div>
+      <div style="color:#94A3B8;margin-bottom:8px">...</div>
+      <div><span style="color:#C4B5FD">&lt;&gt; &lt;filename&gt; [filename ...]:</span> <span style="color:#86EFAC;font-weight:600">toto.txt titi.txt</span></div>
+      <div>toto.txt : rilex = 0.67</div>
+      <div style="color:#FCA5A5">titi.txt : cannot read file</div>
+      <div><span style="color:#C4B5FD">&lt;&gt; &lt;filename&gt; [filename ...]:</span> <span style="color:#475569">← Entrée → on arrête</span></div>
+    </div>
+  </div>
+
+  <div class="card pu" style="margin-bottom:16px">
+    <div style="display:inline-block;background:linear-gradient(135deg,#7C3AED,#8B5CF6);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">DÉCRYPTER L'ÉNONCÉ → EN CODE</div>
+    ${[
+      ['"séquence de taille supérieure ou égale à quatre"','if len(m) >= 4','📏'],
+      ['"formée exclusivement de caractères alphabétiques"','re.findall(r\'[a-zA-Z]+\', contenu)','🔡'],
+      ['"on ne distingue pas majuscules et minuscules"','m.lower() → CHAT et chat → même clé','🔤'],
+      ['"on utilisera la structure de dictionnaire"','compteur = {} puis compteur[mot] += 1','📚'],
+      ['"nombre de mots différents"','len(compteur) → nb de clés','🔢'],
+      ['"nombre total de mots du texte"','len(mots) → longueur de la liste','🔢'],
+      ['"quotient entre les deux"','rilex = len(compteur) / len(mots) → f"{rilex:.2f}"','➗'],
+    ].map(([phrase,code,ico])=>`
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px dashed #EDE9FE">
+        <span style="font-size:16px;flex-shrink:0">${ico}</span>
+        <div style="flex:1">
+          <div style="font-size:12.5px;color:#374151;font-style:italic;margin-bottom:2px">"${phrase}"</div>
+          <div style="font-size:12px;font-family:'Fira Code',monospace;color:#7C3AED;font-weight:500">→ ${code}</div>
+        </div>
+      </div>`).join('')}
+  </div>
+
+  <!-- Comparatif B1/B2 -->
+  <div class="card am">
+    <div style="display:inline-block;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">⚡ CE QUI CHANGE : COUNT → RILEX</div>
+    <div style="background:#FEF9C3;border:1.5px solid #F59E0B;border-radius:10px;padding:12px 16px;font-size:13px;color:#92400E;line-height:1.7;margin-bottom:14px">
+      <strong>La structure est identique</strong> — même boucle, même help/about/exit, mêmes vérifications os. Seule <code style="font-family:'Fira Code',monospace">traiter_fichier()</code> change après la lecture du fichier.
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:12px;padding:13px">
+        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:8px">B1 COUNT — après f.read()</div>
+        <div style="font-size:12px;color:#374151;padding:3px 0;border-bottom:1px dashed #FECACA">splitlines() → lignes</div>
+        <div style="font-size:12px;color:#374151;padding:3px 0;border-bottom:1px dashed #FECACA">split() → mots</div>
+        <div style="font-size:12px;color:#374151;padding:3px 0">len(contenu) → chars</div>
+      </div>
+      <div style="background:#F0FDF4;border:1.5px solid #6EE7B7;border-radius:12px;padding:13px">
+        <div style="font-size:11px;font-weight:700;color:#059669;margin-bottom:8px">B2 RILEX — après f.read()</div>
+        <div style="font-size:12px;color:#374151;padding:3px 0;border-bottom:1px dashed #D1FAE5">re.findall() → lettres</div>
+        <div style="font-size:12px;color:#374151;padding:3px 0;border-bottom:1px dashed #D1FAE5">filtre len≥4 + lower()</div>
+        <div style="font-size:12px;color:#374151;padding:3px 0">dict → compter → diviser</div>
+      </div>
+    </div>
+  </div>`;
 }
 
-function toggleConcept(i) {
-  openConcepts[i] = !openConcepts[i];
-  renderCours();
+// ════════════════════════════════════════════════════════════════
+// SOLUTION
+// ════════════════════════════════════════════════════════════════
+
+function setExo(e){
+  activeExo=e; openS={};
+  document.getElementById('eb1').className='etab '+(e==='count'?'on':'off');
+  document.getElementById('eb2').className='etab '+(e==='rilex'?'on':'off');
+  renderSol();
 }
 
-// ─── EXERCICES ───────────────────────────────────────────────────────────
-
-function setExo(exo) {
-  activeExo = exo;
-  openSteps = {};
-  document.getElementById('exo-count-btn').className = 'exo-tab ' + (exo === 'count' ? 'active' : 'inactive');
-  document.getElementById('exo-rilex-btn').className = 'exo-tab ' + (exo === 'rilex' ? 'active' : 'inactive');
-  renderSteps();
-}
-
-function renderSteps() {
-  const steps = STEPS[activeExo];
-  const c = document.getElementById('steps-container');
-  let html = '';
-  if (activeExo === 'rilex') {
-    html += `<div class="note-box">
-      <strong>Bonne nouvelle :</strong> RILEX a la même structure que COUNT — même bandeau, même boucle, même gestion des erreurs.
-      Seule <code>traiter_fichier()</code> change : au lieu de compter lignes/mots/chars, on calcule la richesse lexicale avec un dictionnaire et <code>re.findall()</code>.
+function renderSol(){
+  const steps=STEPS[activeExo];
+  let h='';
+  if(activeExo==='rilex'){
+    h+=`<div class="notebox">
+      <strong>Rappel :</strong> RILEX a la même structure que COUNT. La boucle, les commandes (help/about/exit) et les vérifications os sont identiques. Seule la partie traitement dans traiter_fichier() change — c'est ça qu'on détaille ici.
     </div>`;
   }
-  html += steps.map((s, i) => `
-    <div class="step-card">
-      <button class="step-btn" onclick="toggleStep(${i})">
-        <div class="step-row">
-          <div class="step-num">${i+1}</div>
-          <div class="step-title">${s.title}</div>
-          <div class="expand-arrow ${openSteps[i] ? 'open' : ''}">+</div>
+  h+=steps.map((s,i)=>`
+    <div class="scard">
+      <button class="sbtn" onclick="toggleS(${i})">
+        <div class="srow">
+          <div class="snum">${i+1}</div>
+          <div class="stitle">${s.t}</div>
+          <div class="carr ${openS[i]?'open':''}">+</div>
         </div>
       </button>
-      ${openSteps[i] ? `
-        <div class="step-body">
-          <p class="step-text">${s.text}</p>
-          <pre class="code-block">${s.code}</pre>
-        </div>
-      ` : ''}
-    </div>
-  `).join('');
-  c.innerHTML = html;
+      ${openS[i]?`
+        <div class="sbody">
+          <p class="stxt">${s.txt}</p>
+          <pre class="code">${s.code}</pre>
+        </div>`:''}
+    </div>`).join('');
+  document.getElementById('sol-body').innerHTML=h;
 }
 
-function toggleStep(i) {
-  openSteps[i] = !openSteps[i];
-  renderSteps();
-}
+function toggleS(i){openS[i]=!openS[i];renderSol();}
 
-// ─── QUIZ ────────────────────────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// QUIZ
+// ════════════════════════════════════════════════════════════════
 
-function renderQuiz() {
-  const c = document.getElementById('quiz-container');
-  if (quizState.done) {
-    const pct = Math.round((quizState.score / QUIZ.length) * 100);
-    const msg = pct >= 80 ? "Excellent ! Tu maîtrises bien les bases — bonne chance pour le DS !" : pct >= 60 ? "Bien joué ! Quelques points à revoir. Retourne dans Cours sur ce qui t'a posé problème." : "Continue à réviser — relis les fiches et refais le quiz. Tu y es presque !";
-    c.innerHTML = `
-      <div class="card" style="text-align:center;padding:36px">
-        <div class="score-circle">
-          <div class="score-num">${quizState.score}</div>
-          <div class="score-tot">/ ${QUIZ.length}</div>
-        </div>
-        <div class="score-pct">${pct}% de bonnes réponses</div>
-        <div class="score-msg">${msg}</div>
-        <button class="btn-restart" onclick="quizRestart()">🔁 Recommencer le quiz</button>
-      </div>
-    `;
+function renderQuiz(){
+  const c=document.getElementById('quiz-body');
+  if(QS.done){
+    const pct=Math.round(QS.score/QUIZ.length*100);
+    const msg=pct>=80?'Excellent ! Tu maîtrises COUNT et RILEX — bonne chance pour le DS !':pct>=60?'Bien ! Quelques points à revoir — retourne dans Cours ou Sujet DS.':'Continue à réviser — relis les fiches et refais le quiz. Tu y es presque !';
+    c.innerHTML=`<div class="card" style="text-align:center;padding:32px">
+      <div class="scircle"><div class="snum2">${QS.score}</div><div class="stot">/ ${QUIZ.length}</div></div>
+      <div class="spct">${pct}%</div>
+      <div class="smsg">${msg}</div>
+      <button class="qbtn rst" onclick="restartQ()">🔁 Recommencer</button>
+    </div>`;
     return;
   }
-
-  const q = QUIZ[quizState.idx];
-  const pct = (quizState.idx / QUIZ.length) * 100;
-  const isCorrect = quizState.sel === q.ans;
-
-  c.innerHTML = `
-    <div class="progress-wrap">
-      <div class="progress-top">
-        <span class="progress-label">Question ${quizState.idx + 1} / ${QUIZ.length}</span>
-        <span class="progress-score">Score : ${quizState.score} ✓</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" style="width:${pct}%"></div>
-      </div>
+  const q=QUIZ[QS.idx];
+  const pct=QS.idx/QUIZ.length*100;
+  c.innerHTML=`
+    <div class="qprog">
+      <div class="qptop"><span class="qplbl">Question ${QS.idx+1} / ${QUIZ.length}</span><span class="qpsco">Score : ${QS.score} ✓</span></div>
+      <div class="qptrack"><div class="qpfill" style="width:${pct}%"></div></div>
     </div>
-    <div class="quiz-card">
-      <p class="quiz-q">${q.q}</p>
+    <div class="qcard">
+      <div class="qtag ${q.tag}">${q.tagLabel}</div>
+      <div class="qq">${q.q}</div>
     </div>
-    ${q.opts.map((opt, i) => {
-      let cls = 'opt-default';
-      if (quizState.confirmed) {
-        if (i === q.ans) cls = 'opt-correct';
-        else if (i === quizState.sel) cls = 'opt-wrong';
-      } else if (i === quizState.sel) {
-        cls = 'opt-selected';
-      }
-      const click = quizState.confirmed ? '' : `quizSelect(${i})`;
-      return `<button class="opt-btn ${cls}" onclick="${click}">${opt}</button>`;
+    ${q.opts.map((o,i)=>{
+      let cl='def';
+      if(QS.confirmed){cl=i===q.ans?'ok':i===QS.sel?'ko':'def';}
+      else if(i===QS.sel) cl='sel';
+      return`<button class="opt ${cl}" onclick="${QS.confirmed?'':' selQ('+i+')'}">${o}</button>`;
     }).join('')}
-    ${quizState.confirmed ? `
-      <div class="expl-box ${isCorrect ? 'expl-ok' : 'expl-ko'}">
-        <strong>${isCorrect ? '✅ Correct !' : '❌ Pas tout à fait.'}</strong> ${q.exp}
-      </div>
-    ` : ''}
-    <div style="margin-top:6px">
-      ${!quizState.confirmed
-        ? `<button class="btn-validate" ${quizState.sel === null ? 'disabled' : ''} onclick="quizConfirm()">Valider →</button>`
-        : `<button class="btn-next" onclick="quizNext()">${quizState.idx + 1 < QUIZ.length ? 'Question suivante →' : 'Voir les résultats →'}</button>`
-      }
-    </div>
-  `;
+    ${QS.confirmed?`<div class="expl ${QS.sel===q.ans?'ok':'ko'}"><strong>${QS.sel===q.ans?'✅ Correct !':'❌ Pas tout à fait.'}</strong> ${q.exp}</div>`:''}
+    <div>
+      ${!QS.confirmed
+        ?`<button class="qbtn val" ${QS.sel===null?'disabled':''} onclick="confirmQ()">Valider →</button>`
+        :`<button class="qbtn nxt" onclick="nextQ()">${QS.idx+1<QUIZ.length?'Question suivante →':'Voir les résultats →'}</button>`}
+    </div>`;
 }
 
-function quizSelect(i) {
-  quizState.sel = i;
-  renderQuiz();
-}
-function quizConfirm() {
-  if (quizState.sel === null) return;
-  const correct = quizState.sel === QUIZ[quizState.idx].ans;
-  quizState.confirmed = true;
-  if (correct) quizState.score++;
-  renderQuiz();
-}
-function quizNext() {
-  if (quizState.idx + 1 >= QUIZ.length) {
-    quizState.done = true;
-  } else {
-    quizState.idx++;
-    quizState.sel = null;
-    quizState.confirmed = false;
-  }
-  renderQuiz();
-}
-function quizRestart() {
-  quizState = { idx: 0, sel: null, confirmed: false, score: 0, done: false };
-  renderQuiz();
+function selQ(i){QS.sel=i;renderQuiz();}
+function confirmQ(){if(QS.sel===null)return;QS.confirmed=true;if(QS.sel===QUIZ[QS.idx].ans)QS.score++;renderQuiz();}
+function nextQ(){if(QS.idx+1>=QUIZ.length){QS.done=true;}else{QS.idx++;QS.sel=null;QS.confirmed=false;}renderQuiz();}
+function restartQ(){QS={idx:0,sel:null,confirmed:false,score:0,done:false};renderQuiz();}
+
+// ════════════════════════════════════════════════════════════════
+// MEMO
+// ════════════════════════════════════════════════════════════════
+
+function renderMemo(){
+  document.getElementById('memo-body').innerHTML=MEMO.map(m=>`
+    <div class="msec">
+      <div class="mhdr ${m.hcls}"><span class="mcat">${m.cat}</span></div>
+      ${m.rows.map(([code,desc,exo])=>`
+        <div class="mrow">
+          <code class="mcode">${code}</code>
+          <span class="mdesc">${desc}</span>
+          <span class="mexo ${exo}">${exo==='b'?'B1+B2':exo==='c'?'B1 COUNT':'B2 RILEX'}</span>
+        </div>`).join('')}
+    </div>`).join('');
 }
 
-// ─── MEMO ────────────────────────────────────────────────────────────────
-
-function renderMemo() {
-  document.getElementById('memo-container').innerHTML = MEMO.map(m => `
-    <div class="memo-section">
-      <div class="memo-header ${m.hcls}">
-        <span class="memo-cat">${m.cat}</span>
-      </div>
-      ${m.rows.map(([code, desc]) => `
-        <div class="memo-row">
-          <code class="memo-code">${code}</code>
-          <span class="memo-desc">${desc}</span>
-        </div>
-      `).join('')}
-    </div>
-  `).join('');
-}
-
-// ─── INIT ────────────────────────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════════
 
 renderCours();
-renderSteps();
+renderSujet();
+renderSol();
 renderQuiz();
 renderMemo();
 </script>
