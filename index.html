@@ -9,58 +9,37 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 60%,#FDE68A 100%);min-height:100vh;padding:20px}
 .wrap{max-width:860px;margin:0 auto}
-
-/* HEADER */
 .hdr{background:white;padding:24px 32px;border-radius:22px;margin-bottom:22px;box-shadow:0 4px 24px rgba(0,0,0,.08);text-align:center;border:2px solid #F59E0B;position:relative;overflow:hidden}
 .hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#1E3A8A,#F59E0B,#1E3A8A)}
 .hdr-title{font-size:26px;font-weight:700;color:#1E3A8A;margin-bottom:4px}
 .hdr-sub{font-size:14px;color:#6B7280;font-style:italic}
 .hdr-badge{display:inline-block;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;font-size:11px;font-weight:600;padding:3px 14px;border-radius:50px;margin-top:8px}
-
-/* TABS */
 .tabs{display:flex;gap:8px;justify-content:center;margin-bottom:22px;flex-wrap:wrap}
 .tab{padding:11px 24px;border:none;border-radius:14px;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Poppins',sans-serif;background:white;color:#6B7280;box-shadow:0 2px 10px rgba(0,0,0,.07)}
 .tab.on{background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;transform:translateY(-3px);box-shadow:0 8px 24px rgba(30,58,138,.3)}
 .tab:hover:not(.on){transform:translateY(-2px);color:#1E3A8A}
 .pane{display:none}.pane.on{display:block;animation:up .35s ease}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-
-/* CARDS */
 .card{background:white;border-radius:18px;padding:24px;margin-bottom:14px;box-shadow:0 4px 18px rgba(0,0,0,.07);border:1.5px solid #FDE68A;transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.10)}
-.card.bl{border-left:5px solid #1E3A8A}
-.card.am{border-left:5px solid #F59E0B}
-.card.pu{border-left:5px solid #7C3AED}
-.card.gr{border-left:5px solid #059669}
-
-/* CODE */
+.card.bl{border-left:5px solid #1E3A8A}.card.am{border-left:5px solid #F59E0B}
+.card.pu{border-left:5px solid #7C3AED}.card.gr{border-left:5px solid #059669}
 .code{background:#0F172A;color:#E2E8F0;font-family:'Fira Code',monospace;font-size:12px;line-height:1.75;padding:16px 18px;border-radius:12px;overflow-x:auto;white-space:pre;margin:12px 0;border:1.5px solid #1E3A8A}
-
-/* CONCEPT */
 .cbtn{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:0;font-family:'Poppins',sans-serif}
 .crow{display:flex;align-items:center;gap:12px}
 .cico{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cico.am{background:linear-gradient(135deg,#F59E0B,#FBBF24)}
-.cico.pu{background:linear-gradient(135deg,#7C3AED,#8B5CF6)}
+.cico.am{background:linear-gradient(135deg,#F59E0B,#FBBF24)}.cico.pu{background:linear-gradient(135deg,#7C3AED,#8B5CF6)}
 .clbl{font-family:'Fira Code',monospace;font-size:13px;font-weight:500;color:#1E3A8A;margin-bottom:2px}
 .csub{font-size:12.5px;color:#6B7280}
 .carr{margin-left:auto;width:30px;height:30px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;font-size:17px;color:#9CA3AF;transition:all .25s;flex-shrink:0}
 .carr.open{background:#FEF3C7;color:#F59E0B;transform:rotate(45deg)}
 .cdet{margin-top:16px;padding-top:16px;border-top:1.5px dashed #FDE68A}
 .ctxt{font-size:13.5px;color:#374151;line-height:1.7;margin-bottom:14px}
-
-/* WHERE label */
-.where{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:50px;font-size:11px;font-weight:600;margin-bottom:12px}
-.where.count{background:#DBEAFE;color:#1E3A8A}
-.where.rilex{background:#EDE9FE;color:#7C3AED}
-.where.both{background:#D1FAE5;color:#065F46}
-
-/* TIPS */
+.where{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:50px;font-size:10.5px;font-weight:600;margin-bottom:10px}
+.where.count{background:#DBEAFE;color:#1E3A8A}.where.rilex{background:#EDE9FE;color:#7C3AED}.where.both{background:#D1FAE5;color:#065F46}
 .tips{display:flex;flex-direction:column;gap:6px;margin-top:10px}
 .tip{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#374151;line-height:1.5}
 .tdot{width:7px;height:7px;border-radius:50%;background:#F59E0B;flex-shrink:0;margin-top:5px}
-
-/* STEPS */
 .etabs{display:flex;gap:8px;margin-bottom:18px}
 .etab{padding:9px 24px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;transition:all .22s;font-family:'Poppins',sans-serif;border:2px solid transparent}
 .etab.on{background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;box-shadow:0 4px 12px rgba(245,158,11,.35)}
@@ -75,21 +54,17 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#FFFBEB 
 .sbody{margin-top:14px;padding-top:14px;border-top:1.5px dashed #FDE68A}
 .stxt{font-size:13px;color:#374151;line-height:1.7;margin-bottom:12px}
 .notebox{background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border:1.5px solid #6EE7B7;border-radius:12px;padding:13px 16px;font-size:13px;color:#065F46;line-height:1.65;margin-bottom:16px}
-
-/* QUIZ */
+.warnbox{background:#FEF9C3;border:1.5px solid #F59E0B;border-radius:12px;padding:13px 16px;font-size:13px;color:#92400E;line-height:1.65;margin-bottom:16px}
 .qprog{margin-bottom:20px}
 .qptop{display:flex;justify-content:space-between;margin-bottom:6px}
-.qplbl{font-size:13px;font-weight:600;color:#1E3A8A}
-.qpsco{font-size:13px;color:#6B7280}
+.qplbl{font-size:13px;font-weight:600;color:#1E3A8A}.qpsco{font-size:13px;color:#6B7280}
 .qptrack{height:7px;background:#E5E7EB;border-radius:50px;overflow:hidden}
 .qpfill{height:100%;background:linear-gradient(90deg,#1E3A8A,#F59E0B);border-radius:50px;transition:width .4s ease}
-.qcard{background:white;border-radius:18px;padding:24px;margin-bottom:14px;box-shadow:0 4px 18px rgba(0,0,0,.08);border:2px solid #1E3A8A}
+.qcard{background:white;border-radius:18px;padding:22px;margin-bottom:14px;box-shadow:0 4px 18px rgba(0,0,0,.08);border:2px solid #1E3A8A}
 .qtag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;padding:3px 10px;border-radius:50px;display:inline-block}
-.qtag.count{background:#DBEAFE;color:#1E3A8A}
-.qtag.rilex{background:#EDE9FE;color:#7C3AED}
-.qtag.both{background:#D1FAE5;color:#065F46}
-.qq{font-family:'Fira Code',monospace;font-size:13.5px;font-weight:500;color:#1E3A8A;line-height:1.6}
-.opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;cursor:pointer;margin-bottom:8px;font-size:13px;font-family:'Fira Code',monospace;line-height:1.4;transition:all .18s}
+.qtag.count{background:#DBEAFE;color:#1E3A8A}.qtag.rilex{background:#EDE9FE;color:#7C3AED}.qtag.both{background:#D1FAE5;color:#065F46}.qtag.ezcli{background:#FEF3C7;color:#92400E}
+.qq{font-family:'Fira Code',monospace;font-size:13px;font-weight:500;color:#1E3A8A;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;cursor:pointer;margin-bottom:8px;font-size:12.5px;font-family:'Fira Code',monospace;line-height:1.4;transition:all .18s}
 .opt.def{border:1.5px solid #E5E7EB;background:white;color:#374151}
 .opt.def:hover{border-color:#1E3A8A;background:#EFF6FF;color:#1E3A8A;transform:translateX(4px)}
 .opt.sel{border:2px solid #F59E0B;background:#FFFBEB;color:#92400E}
@@ -100,35 +75,25 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#FFFBEB 
 .expl.ko{background:#FFFBEB;border:1.5px solid #F59E0B;color:#92400E}
 .qbtn{padding:12px 28px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all .22s;font-family:'Poppins',sans-serif;border:none}
 .qbtn.val{background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;box-shadow:0 4px 12px rgba(30,58,138,.25)}
-.qbtn.val:hover{transform:translateY(-2px);box-shadow:0 7px 18px rgba(30,58,138,.35)}
-.qbtn.val:disabled{background:#E5E7EB;color:#9CA3AF;box-shadow:none;cursor:not-allowed;transform:none}
-.qbtn.nxt{background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;box-shadow:0 4px 12px rgba(245,158,11,.25)}
-.qbtn.nxt:hover{transform:translateY(-2px)}
+.qbtn.val:hover{transform:translateY(-2px)}.qbtn.val:disabled{background:#E5E7EB;color:#9CA3AF;box-shadow:none;cursor:not-allowed;transform:none}
+.qbtn.nxt{background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white}.qbtn.nxt:hover{transform:translateY(-2px)}
 .qbtn.rst{background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white}
 .scircle{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 8px 28px rgba(30,58,138,.3)}
-.snum2{font-size:40px;font-weight:700;line-height:1}
-.stot{font-size:15px;opacity:.8}
+.snum2{font-size:40px;font-weight:700;line-height:1}.stot{font-size:15px;opacity:.8}
 .spct{font-size:17px;font-weight:600;color:#F59E0B;margin-bottom:6px}
 .smsg{font-size:13.5px;color:#6B7280;max-width:300px;margin:0 auto 24px;line-height:1.65}
-
-/* MEMO */
 .msec{background:white;border-radius:18px;overflow:hidden;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,.07)}
 .mhdr{padding:11px 18px;display:flex;align-items:center;gap:8px}
-.mhdr.bl{background:linear-gradient(135deg,#1E3A8A,#2563EB)}
-.mhdr.am{background:linear-gradient(135deg,#F59E0B,#FBBF24)}
-.mhdr.gr{background:linear-gradient(135deg,#059669,#10B981)}
-.mhdr.rd{background:linear-gradient(135deg,#DC2626,#EF4444)}
-.mhdr.pu{background:linear-gradient(135deg,#7C3AED,#8B5CF6)}
-.mhdr.gy{background:linear-gradient(135deg,#4B5563,#6B7280)}
+.mhdr.bl{background:linear-gradient(135deg,#1E3A8A,#2563EB)}.mhdr.am{background:linear-gradient(135deg,#F59E0B,#FBBF24)}
+.mhdr.gr{background:linear-gradient(135deg,#059669,#10B981)}.mhdr.rd{background:linear-gradient(135deg,#DC2626,#EF4444)}
+.mhdr.pu{background:linear-gradient(135deg,#7C3AED,#8B5CF6)}.mhdr.gy{background:linear-gradient(135deg,#4B5563,#6B7280)}
 .mcat{font-size:13px;font-weight:700;color:white}
-.mrow{display:flex;align-items:flex-start;gap:12px;padding:9px 18px;border-bottom:1px solid #FEF3C7}
+.mrow{display:flex;align-items:flex-start;gap:10px;padding:9px 18px;border-bottom:1px solid #FEF3C7}
 .mrow:last-child{border-bottom:none}
-.mcode{font-family:'Fira Code',monospace;font-size:12px;color:#1E3A8A;font-weight:500;flex-shrink:0;min-width:190px}
-.mdesc{font-size:12.5px;color:#4B5563;line-height:1.5}
-.mexo{font-size:10px;font-weight:600;padding:2px 7px;border-radius:50px;flex-shrink:0;margin-left:auto}
-.mexo.c{background:#DBEAFE;color:#1E3A8A}
-.mexo.r{background:#EDE9FE;color:#7C3AED}
-.mexo.b{background:#D1FAE5;color:#065F46}
+.mcode{font-family:'Fira Code',monospace;font-size:12px;color:#1E3A8A;font-weight:500;flex-shrink:0;min-width:185px}
+.mdesc{font-size:12.5px;color:#4B5563;line-height:1.5;flex:1}
+.mexo{font-size:10px;font-weight:600;padding:2px 7px;border-radius:50px;flex-shrink:0}
+.mexo.c{background:#DBEAFE;color:#1E3A8A}.mexo.r{background:#EDE9FE;color:#7C3AED}.mexo.b{background:#D1FAE5;color:#065F46}.mexo.e{background:#FEF3C7;color:#92400E}
 </style>
 </head>
 <body>
@@ -136,590 +101,528 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#FFFBEB 
 
 <div class="hdr">
   <div class="hdr-title">🐍 Préparation DS — Python Fichiers</div>
-  <div class="hdr-sub">Tout ce dont tu as besoin pour réussir COUNT et RILEX</div>
-  <div class="hdr-badge">L1 · Exercices B1 &amp; B2</div>
+  <div class="hdr-sub">Basé sur le corrigé officiel du professeur</div>
+  <div class="hdr-badge">L1 · Exercices B1 COUNT &amp; B2 RILEX · ezCLI</div>
 </div>
 
 <div class="tabs">
   <button class="tab on"  onclick="go('cours')">📖 Cours</button>
   <button class="tab"     onclick="go('sujet')">📝 Sujet DS</button>
-  <button class="tab"     onclick="go('solution')">💻 Solution</button>
+  <button class="tab"     onclick="go('corrige')">✅ Corrigé</button>
   <button class="tab"     onclick="go('quiz')">🧠 Quiz</button>
   <button class="tab"     onclick="go('memo')">📋 Mémo</button>
 </div>
 
-<!-- ═══ COURS ═══ -->
-<div id="pane-cours" class="pane on"><div id="cours-body"></div></div>
-
-<!-- ═══ SUJET DS ═══ -->
-<div id="pane-sujet" class="pane"><div id="sujet-body"></div></div>
-
-<!-- ═══ SOLUTION ═══ -->
-<div id="pane-solution" class="pane">
+<div id="pane-cours"   class="pane on"><div id="cours-body"></div></div>
+<div id="pane-sujet"   class="pane"><div id="sujet-body"></div></div>
+<div id="pane-corrige" class="pane">
   <div class="etabs">
     <button class="etab on"  id="eb1" onclick="setExo('count')">B1 — COUNT</button>
     <button class="etab off" id="eb2" onclick="setExo('rilex')">B2 — RILEX</button>
   </div>
   <div id="sol-body"></div>
 </div>
-
-<!-- ═══ QUIZ ═══ -->
-<div id="pane-quiz" class="pane"><div id="quiz-body"></div></div>
-
-<!-- ═══ MEMO ═══ -->
-<div id="pane-memo" class="pane"><div id="memo-body"></div></div>
+<div id="pane-quiz"    class="pane"><div id="quiz-body"></div></div>
+<div id="pane-memo"    class="pane"><div id="memo-body"></div></div>
 
 </div>
-
 <script>
-// ════════════════════════════════════════════════════════════════
-// DATA
-// ════════════════════════════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════
+// CONCEPTS — basés sur le corrigé officiel
+// ══════════════════════════════════════════════════════
 const CONCEPTS = [
 {
-  ico:'🔁', icoCls:'',
-  lbl:'while True + break',
-  sub:'La boucle qui fait tourner COUNT et RILEX',
-  where:'both', whereLabel:'COUNT et RILEX',
-  txt:`Dans <strong>les deux programmes</strong>, le cœur c'est une boucle infinie. 
-Le programme demande en boucle des noms de fichiers à l'utilisateur — et il s'arrête SEULEMENT quand l'utilisateur tape "exit" ou appuie sur Entrée sans rien écrire.
+  ico:'📦', icoCls:'am',
+  lbl:'from ezCLI import *',
+  sub:'La bibliothèque du prof qui remplace beaucoup de code',
+  where:'both', wlbl:'COUNT et RILEX',
+  txt:`Le prof utilise une bibliothèque personnelle <strong>ezCLI</strong> qui fournit des fonctions prêtes à l'emploi. Elle remplace tout ce qu'on aurait écrit à la main (while True, input, os...).
 <br><br>
-Imagine un distributeur automatique : il attend ta commande, la traite, et recommence indéfiniment. <strong>break</strong> c'est le bouton "éteindre".`,
-  svg:`<svg viewBox="0 0 520 192" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
-  <rect width="520" height="192" rx="14" fill="#EFF6FF"/>
-  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#1E3A8A">Boucle principale de COUNT et RILEX — identique dans les 2 programmes</text>
-  <rect x="18" y="34" width="90" height="32" rx="16" fill="#1E3A8A"/>
-  <text x="63" y="55" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="600" fill="white">DÉMARRAGE</text>
-  <line x1="108" y1="50" x2="134" y2="50" stroke="#1E3A8A" stroke-width="2" marker-end="url(#a1)"/>
-  <rect x="136" y="34" width="112" height="32" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="1.5"/>
-  <text x="192" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#1E3A8A">input() → saisie</text>
-  <line x1="248" y1="50" x2="272" y2="50" stroke="#1E3A8A" stroke-width="2" marker-end="url(#a1)"/>
-  <polygon points="304,32 348,50 304,68 260,50" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
-  <text x="304" y="47" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" font-weight="600" fill="#92400E">exit ou</text>
-  <text x="304" y="60" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" font-weight="600" fill="#92400E">vide ?</text>
-  <line x1="348" y1="50" x2="388" y2="50" stroke="#F59E0B" stroke-width="2" marker-end="url(#a2)"/>
-  <text x="366" y="44" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="600" fill="#92400E">OUI</text>
-  <rect x="388" y="34" width="116" height="32" rx="8" fill="#FEF9C3" stroke="#F59E0B" stroke-width="2"/>
-  <text x="446" y="48" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#92400E">break</text>
-  <text x="446" y="61" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#92400E">→ programme terminé</text>
-  <line x1="304" y1="68" x2="304" y2="96" stroke="#059669" stroke-width="2" marker-end="url(#a3)"/>
-  <text x="316" y="87" font-family="Poppins,sans-serif" font-size="10" fill="#059669" font-weight="600">NON</text>
-  <rect x="168" y="100" width="272" height="32" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
-  <text x="304" y="120" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" fill="#065F46">help/about → afficher  |  fichiers → traiter</text>
-  <line x1="168" y1="116" x2="80" y2="116" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <line x1="80" y1="116" x2="80" y2="50" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a4)"/>
-  <text x="122" y="148" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6366F1" font-style="italic">↺ recommencer depuis le début !</text>
-  <defs>
-    <marker id="a1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#1E3A8A"/></marker>
-    <marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#F59E0B"/></marker>
-    <marker id="a3" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#059669"/></marker>
-    <marker id="a4" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#6366F1"/></marker>
-  </defs>
+3 fonctions essentielles à retenir : <strong>read_txt()</strong>, <strong>parse()</strong> et <strong>userloop()</strong>.`,
+  svg:`<svg viewBox="0 0 520 185" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="185" rx="14" fill="#FFFBEB"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#92400E">from ezCLI import * — ce que ça apporte</text>
+  <rect x="18" y="34" width="148" height="132" rx="12" fill="white" stroke="#F59E0B" stroke-width="2"/>
+  <text x="92" y="56" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#92400E">read_txt(name)</text>
+  <text x="92" y="75" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">Lit un fichier texte</text>
+  <text x="92" y="89" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">et renvoie son</text>
+  <text x="92" y="103" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">contenu (str)</text>
+  <text x="92" y="120" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">Lève OSError si</text>
+  <text x="92" y="132" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#DC2626">fichier illisible</text>
+  <rect x="186" y="34" width="148" height="132" rx="12" fill="white" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="260" y="56" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#1E3A8A">parse(command)</text>
+  <text x="260" y="75" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">Découpe la saisie</text>
+  <text x="260" y="89" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ str si 1 fichier</text>
+  <text x="260" y="103" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ list si plusieurs</text>
+  <text x="260" y="120" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">Gère aussi help,</text>
+  <text x="260" y="132" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">about, exit...</text>
+  <rect x="354" y="34" width="148" height="132" rx="12" fill="white" stroke="#7C3AED" stroke-width="2"/>
+  <text x="428" y="56" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#7C3AED">userloop(fn, msg)</text>
+  <text x="428" y="75" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">Lance la boucle</text>
+  <text x="428" y="89" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">d'interaction</text>
+  <text x="428" y="103" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">complète</text>
+  <text x="428" y="120" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">Remplace le</text>
+  <text x="428" y="132" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#6B7280">while True entier</text>
+  <text x="260" y="175" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">Ces 3 fonctions sont disponibles grâce à : from ezCLI import *</text>
 </svg>`,
-  code:`# Dans COUNT et RILEX — structure identique
-while True:
-    saisie = input("<> <filename> [filename ...]: ").strip()
+  code:`from ezCLI import *
+# Cette ligne donne accès à :
+# - read_txt(name)   → lire un fichier
+# - parse(command)   → découper la saisie
+# - userloop(fn, msg) → gérer la boucle d'interaction
 
-    if saisie == "" or saisie == "exit":
-        break                      # ← sortir de la boucle
-
-    elif saisie in ("help", "?"):
-        print(AIDE)
-
-    elif saisie in ("about", "!"):
-        print(A_PROPOS)
-
-    else:
-        fichiers = saisie.split()  # découper en liste
-        for nom in fichiers:
-            traiter_fichier(nom)   # traiter chaque fichier`,
-  tips:['while True = boucle infinie — ne s\'arrête jamais seule','break = quitter la boucle (exit ou ligne vide)','strip() = enlever les espaces en début/fin de saisie','Cette structure est IDENTIQUE dans COUNT et dans RILEX']
+# Dans le programme principal :
+if __name__ == '__main__':
+    userloop(parser, "Enter <filename> [filename ...]")
+    # ↑ userloop appelle parser() automatiquement
+    #   à chaque saisie de l'utilisateur`,
+  tips:['from ezCLI import * = importer TOUT ce que ezCLI contient','read_txt() remplace open() + f.read() + gestion OSError','parse() remplace saisie.split() et gère les cas spéciaux','userloop() remplace le while True entier']
 },
 {
   ico:'📂', icoCls:'',
-  lbl:'os.path.isfile() + os.access()',
-  sub:'Vérifier un fichier avant de l\'ouvrir — COUNT et RILEX',
-  where:'both', whereLabel:'COUNT et RILEX',
-  txt:`Dans <strong>les deux programmes</strong>, avant de toucher à un fichier, on pose 2 questions dans l'ordre.
+  lbl:'read_txt(name) + try/except OSError',
+  sub:'Lire un fichier et gérer l\'erreur — COUNT et RILEX',
+  where:'both', wlbl:'COUNT et RILEX',
+  txt:`Dans le corrigé, le prof n'utilise <strong>pas</strong> os.path.isfile() ni os.access(). À la place, il utilise <strong>try/except</strong> :
 <br><br>
-C'est comme avant d'ouvrir une porte : d'abord on vérifie <strong>qu'elle existe</strong>, ensuite <strong>qu'on a la clé</strong>. Si une vérification échoue → on affiche un message d'erreur et on fait <strong>return</strong> (on s'arrête là, sans aller plus loin).`,
-  svg:`<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
-  <rect width="520" height="200" rx="14" fill="#FEF2F2"/>
-  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#991B1B">2 vérifications obligatoires — COUNT et RILEX</text>
-  <rect x="18" y="36" width="234" height="78" rx="14" fill="white" stroke="#DC2626" stroke-width="2"/>
-  <text x="135" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#DC2626">❓ Vérification 1</text>
-  <text x="135" y="73" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Le fichier existe-t-il ?</text>
-  <text x="135" y="90" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">os.path.isfile(nom)</text>
-  <rect x="30" y="122" width="210" height="28" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5"/>
-  <text x="135" y="140" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#991B1B">print(f"{nom} : file not found")</text>
-  <text x="135" y="165" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#DC2626">return ← STOP</text>
-  <line x1="270" y1="75" x2="296" y2="75" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <rect x="270" y="36" width="234" height="78" rx="14" fill="white" stroke="#F59E0B" stroke-width="2"/>
-  <text x="387" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#F59E0B">❓ Vérification 2</text>
-  <text x="387" y="73" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" fill="#1E3A8A">Peut-on le lire ?</text>
-  <text x="387" y="90" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">os.access(nom, os.R_OK)</text>
-  <rect x="280" y="122" width="215" height="28" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
-  <text x="387" y="140" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#92400E">print(f"{nom} : cannot read file")</text>
-  <text x="387" y="165" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#F59E0B">return ← STOP</text>
-  <text x="260" y="190" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#059669" font-weight="600">✓ Si les 2 passent → on ouvre le fichier normalement</text>
+• <strong>try</strong> : on essaie de lire le fichier avec read_txt()<br>
+• <strong>except OSError</strong> : si ça échoue (fichier inexistant ou illisible), on attrape l'erreur et on renvoie le message d'erreur
+<br><br>
+C'est une approche différente mais équivalente — au lieu de vérifier <em>avant</em>, on essaie et on gère le problème <em>si</em> ça échoue.`,
+  svg:`<svg viewBox="0 0 520 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="190" rx="14" fill="#EFF6FF"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#1E3A8A">try/except — comment ça fonctionne</text>
+  <rect x="18" y="34" width="484" height="36" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="1.5"/>
+  <text x="260" y="50" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="600" fill="#1E3A8A">try:</text>
+  <text x="260" y="63" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">Python essaie d'exécuter le code à l'intérieur</text>
+  <line x1="130" y1="70" x2="90" y2="100" stroke="#059669" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="390" y1="70" x2="430" y2="100" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <rect x="18" y="100" width="215" height="52" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+  <text x="125" y="118" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="600" fill="#065F46">✅ Si tout va bien</text>
+  <text x="125" y="134" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">read_txt() renvoie le texte</text>
+  <text x="125" y="147" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ on continue le traitement</text>
+  <rect x="287" y="100" width="215" height="52" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="2"/>
+  <text x="394" y="118" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="600" fill="#DC2626">❌ Si erreur (OSError)</text>
+  <text x="394" y="134" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">except OSError: attrape l'erreur</text>
+  <text x="394" y="147" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ on renvoie "cannot read file"</text>
+  <rect x="100" y="164" width="320" height="20" rx="8" fill="#FEF9C3" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="260" y="178" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="600" fill="#92400E">OSError couvre : fichier inexistant ET fichier illisible</text>
 </svg>`,
-  code:`import os
+  code:`def count(name: str) -> str:
+    try:
+        txt = read_txt(name)      # essayer de lire le fichier
+        # ... traitement du texte ...
+        return f"{name} : lines = ..."
 
-def traiter_fichier(nom):     # même code dans COUNT et RILEX
-    # Question 1 : le fichier existe-t-il ?
-    if not os.path.isfile(nom):
-        print(f"{nom} : file not found")
-        return          # ← on s'arrête, on n'ouvre rien
+    except OSError:               # si read_txt() échoue
+        return f"{name} : cannot read file"
+        #  ↑ OSError est levée si :
+        #    - le fichier n'existe pas
+        #    - on n'a pas le droit de le lire`,
+  tips:['try: → on essaie d\'exécuter le code','except OSError: → si read_txt() échoue, on arrive ici','OSError couvre à la fois "fichier inexistant" et "illisible"','C\'est différent de os.path.isfile() mais le résultat est le même']
+},
+{
+  ico:'🔁', icoCls:'',
+  lbl:'parse(command) + type(x) is str',
+  sub:'Découper la saisie — 1 fichier ou plusieurs ?',
+  where:'both', wlbl:'COUNT et RILEX',
+  txt:`<strong>parse(command)</strong> analyse la saisie de l'utilisateur. Son comportement dépend du nombre de fichiers :
+<br><br>
+• <strong>1 seul fichier</strong> → renvoie une <strong>str</strong> (chaîne de caractères)<br>
+• <strong>plusieurs fichiers</strong> → renvoie une <strong>liste</strong>
+<br><br>
+Pour savoir lequel on a reçu, on utilise <strong>type(tab_name) is str</strong>. C'est le test exact du corrigé.`,
+  svg:`<svg viewBox="0 0 520 185" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="185" rx="14" fill="#F0FDF4"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#065F46">parse() — 2 cas possibles</text>
+  <rect x="100" y="32" width="320" height="28" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1.5"/>
+  <text x="260" y="51" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#E2E8F0">tab_name = parse(command)</text>
+  <line x1="160" y1="60" x2="120" y2="86" stroke="#1E3A8A" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="360" y1="60" x2="400" y2="86" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <rect x="18" y="88" width="218" height="72" rx="12" fill="white" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="127" y="107" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="600" fill="#1E3A8A">1 seul fichier tapé</text>
+  <text x="127" y="123" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" fill="#1E3A8A">type(tab_name) is str</text>
+  <text x="127" y="138" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ True</text>
+  <text x="127" y="152" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">tab_name = "toto.txt"</text>
+  <rect x="284" y="88" width="218" height="72" rx="12" fill="white" stroke="#7C3AED" stroke-width="2"/>
+  <text x="393" y="107" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="600" fill="#7C3AED">Plusieurs fichiers tapés</text>
+  <text x="393" y="123" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" fill="#7C3AED">type(tab_name) is str</text>
+  <text x="393" y="138" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#374151">→ False (c'est une liste)</text>
+  <text x="393" y="152" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#374151">tab_name = ["a.txt","b.txt"]</text>
+  <text x="260" y="176" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">Dans les 2 cas, on appelle count() pour chaque fichier</text>
+</svg>`,
+  code:`def parser(command: str) -> str:
+    tab_name = parse(command)    # parse() découpe la saisie
 
-    # Question 2 : a-t-on le droit de le lire ?
-    if not os.access(nom, os.R_OK):
-        print(f"{nom} : cannot read file")
-        return          # ← on s'arrête, on n'ouvre rien
+    if type(tab_name) is str:    # cas 1 : un seul fichier
+        return count(tab_name)   # → on appelle count() directement
 
-    # Ici on sait que le fichier existe et est lisible
-    with open(nom, 'r', encoding='utf-8') as f:
-        contenu = f.read()
-    # ... suite du traitement`,
-  tips:['os.path.isfile() → True si le fichier existe','os.R_OK = constante Python signifiant "droit de lecture"','os.access(f, os.R_OK) → True si on peut lire f','return après chaque erreur : sans ça, open() planterait !']
+    else:                        # cas 2 : plusieurs fichiers (liste)
+        res = ""
+        for name in tab_name:
+            res = res + count(name) + "\\n"
+        return res.strip()       # enlever le dernier \\n`,
+  tips:['parse() renvoie str si 1 fichier, list si plusieurs','type(x) is str → True si x est une chaîne de caractères','Dans le cas liste, on accumule les résultats dans res','res.strip() enlève le \\n final (dernier saut de ligne inutile)']
 },
 {
   ico:'📏', icoCls:'',
-  lbl:'splitlines() · split() · len() — compter dans COUNT',
-  sub:'Les 3 outils pour lignes, mots et caractères — B1 uniquement',
-  where:'count', whereLabel:'COUNT uniquement',
-  txt:`Dans <strong>COUNT uniquement</strong>, une fois le fichier lu, on doit compter 3 choses. Python a exactement les bons outils :
+  lbl:'split() + len() dans count() — B1 uniquement',
+  sub:'Compter lignes, mots et caractères dans COUNT',
+  where:'count', wlbl:'COUNT uniquement',
+  txt:`Dans la fonction <strong>count()</strong> de B1, une fois le texte lu avec read_txt(), on utilise 3 outils simples pour compter :
 <br><br>
-• <strong>splitlines()</strong> coupe le texte à chaque saut de ligne → on compte les lignes<br>
-• <strong>split()</strong> coupe à chaque espace → on compte les mots<br>
-• <strong>len(contenu)</strong> directement → on compte les caractères`,
-  svg:`<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
-  <rect width="520" height="200" rx="14" fill="#ECFDF5"/>
-  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#065F46">COUNT — compter lignes, mots, caractères</text>
-  <rect x="18" y="34" width="484" height="32" rx="8" fill="#0F172A" stroke="#1E3A8A" stroke-width="1.5"/>
-  <text x="260" y="55" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#E2E8F0">contenu = "Bonjour monde\nPython est super\nFin"</text>
-  <line x1="120" y1="66" x2="90" y2="90" stroke="#1E3A8A" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <line x1="260" y1="66" x2="260" y2="90" stroke="#059669" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <line x1="390" y1="66" x2="420" y2="90" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <rect x="18" y="92" width="148" height="86" rx="12" fill="white" stroke="#1E3A8A" stroke-width="2"/>
-  <text x="92" y="110" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#1E3A8A">splitlines()</text>
-  <text x="92" y="127" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">coupe aux \n</text>
-  <text x="92" y="145" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#1E3A8A">→ 3 lignes</text>
-  <text x="92" y="163" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="700" fill="#1E3A8A">lines = 3</text>
-  <text x="92" y="174" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#6B7280">len(splitlines())</text>
-  <rect x="186" y="92" width="148" height="86" rx="12" fill="white" stroke="#059669" stroke-width="2"/>
-  <text x="260" y="110" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#059669">split()</text>
-  <text x="260" y="127" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">coupe aux espaces</text>
-  <text x="260" y="145" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#059669">→ 5 mots</text>
-  <text x="260" y="163" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="700" fill="#059669">words = 5</text>
-  <text x="260" y="174" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#6B7280">len(split())</text>
-  <rect x="354" y="92" width="148" height="86" rx="12" fill="white" stroke="#7C3AED" stroke-width="2"/>
-  <text x="428" y="110" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#7C3AED">len(contenu)</text>
-  <text x="428" y="127" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">longueur brute</text>
-  <text x="428" y="145" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#7C3AED">→ 38 chars</text>
-  <text x="428" y="163" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10.5" font-weight="700" fill="#7C3AED">chars = 38</text>
-  <text x="428" y="174" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#6B7280">len(contenu)</text>
+Le prof crée d'abord des <strong>tableaux intermédiaires</strong> (tab_line, tab_word) puis appelle len() dessus. C'est plus clair que de tout mettre en une seule ligne.`,
+  svg:`<svg viewBox="0 0 520 185" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="185" rx="14" fill="#ECFDF5"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#065F46">COUNT — 3 étapes pour compter</text>
+  <rect x="18" y="32" width="484" height="24" rx="7" fill="#0F172A" stroke="#1E3A8A" stroke-width="1.5"/>
+  <text x="260" y="48" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#E2E8F0">txt = read_txt(name)   ← le texte complet du fichier</text>
+  <line x1="118" y1="56" x2="88" y2="76" stroke="#1E3A8A" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="260" y1="56" x2="260" y2="76" stroke="#059669" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="400" y1="56" x2="428" y2="76" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <rect x="18" y="78" width="148" height="62" rx="10" fill="white" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="92" y="96" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" font-weight="600" fill="#1E3A8A">txt.split('\n')</text>
+  <text x="92" y="112" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">tab_line = liste de lignes</text>
+  <text x="92" y="128" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#1E3A8A">nb_line = len(tab_line)</text>
+  <rect x="186" y="78" width="148" height="62" rx="10" fill="white" stroke="#059669" stroke-width="2"/>
+  <text x="260" y="96" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" font-weight="600" fill="#059669">txt.split()</text>
+  <text x="260" y="112" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">tab_word = liste de mots</text>
+  <text x="260" y="128" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#059669">nb_word = len(tab_word)</text>
+  <rect x="354" y="78" width="148" height="62" rx="10" fill="white" stroke="#7C3AED" stroke-width="2"/>
+  <text x="428" y="96" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" font-weight="600" fill="#7C3AED">len(txt)</text>
+  <text x="428" y="112" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#374151">longueur brute du texte</text>
+  <text x="428" y="128" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#7C3AED">nb_char = len(txt)</text>
+  <rect x="60" y="152" width="400" height="24" rx="8" fill="#FEF9C3" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="260" y="168" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" fill="#92400E">return f"{name} : lines = {nb_line}, words = {nb_word}, chars = {nb_char}"</text>
 </svg>`,
-  code:`# Dans COUNT uniquement — traiter_fichier()
-with open(nom, 'r', encoding='utf-8') as f:
-    contenu = f.read()          # tout le texte = une seule chaîne
+  code:`def count(name: str) -> str:
+    try:
+        txt = read_txt(name)
 
-nb_lignes = len(contenu.splitlines())  # ["Bonjour monde","Python...","Fin"] → 3
-nb_mots   = len(contenu.split())       # ["Bonjour","monde","Python",...] → 5
-nb_chars  = len(contenu)               # 38 caractères (espaces + \\n inclus)
+        # Créer les tableaux intermédiaires
+        tab_line = txt.split('\\n')   # couper aux \\n → liste de lignes
+        tab_word = txt.split()        # couper aux espaces → liste de mots
 
-print(f"{nom} : lines = {nb_lignes}, words = {nb_mots}, chars = {nb_chars}")
-# → toto.txt : lines = 4, words = 23, chars = 112`,
-  tips:['splitlines() → liste de lignes (coupe aux \\n)','split() → liste de mots (coupe aux espaces ET \\n)','len(contenu) → nombre de caractères bruts, espaces compris','Ces 3 outils ne servent QUE dans COUNT, pas dans RILEX']
+        # Compter avec len()
+        nb_line = len(tab_line)
+        nb_word = len(tab_word)
+        nb_char = len(txt)            # longueur directe de la chaîne
+
+        # Renvoyer la chaîne formatée
+        return f"{name} : lines = {nb_line}, words = {nb_word}, chars = {nb_char}"
+
+    except OSError:
+        return f"{name} : cannot read file"`,
+  tips:['txt.split(\'\\n\') coupe aux sauts de ligne → liste de lignes','txt.split() sans argument coupe aux espaces → liste de mots','len(txt) = nb de caractères (espaces et \\n inclus)','count() renvoie une str dans les 2 cas (succès ou erreur)']
 },
 {
   ico:'🔎', icoCls:'pu',
-  lbl:'re.findall() + lower() + filtre len≥4',
-  sub:'Extraire les mots valides — RILEX uniquement',
-  where:'rilex', whereLabel:'RILEX uniquement',
-  txt:`Dans <strong>RILEX uniquement</strong>, on ne peut pas utiliser split() pour trouver les mots — il garderait la ponctuation ("chat," serait différent de "chat").
-<br><br>
-<strong>re.findall()</strong> c'est une loupe magique qui parcourt tout le texte et ramasse uniquement les séquences de lettres — virgules, points, chiffres sont ignorés. Ensuite on filtre : <strong>4 lettres minimum</strong>, tout en <strong>minuscules</strong>.`,
-  svg:`<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
-  <rect width="520" height="210" rx="14" fill="#F5F3FF"/>
-  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">RILEX — extraire les mots valides (≥4 lettres)</text>
-  <rect x="18" y="32" width="484" height="30" rx="8" fill="#0F172A" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="260" y="52" text-anchor="middle" font-family="Fira Code,monospace" font-size="11.5" fill="#E2E8F0">"Le chat mange, le CHAT dort! Python."</text>
-  <text x="260" y="82" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">🔍  re.findall(r'[a-zA-Z]+', contenu)</text>
-  <text x="260" y="97" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">extrait toutes les suites de lettres, ignore virgules et !</text>
-  <line x1="260" y1="101" x2="260" y2="113" stroke="#7C3AED" stroke-width="2" marker-end="url(#ap)"/>
-  <rect x="18" y="116" width="484" height="26" rx="8" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="260" y="133" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#4C1D95">['Le','chat','mange','le','CHAT','dort','Python']</text>
-  <text x="260" y="158" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">[m.lower() for m in ... if len(m) >= 4]</text>
-  <text x="260" y="172" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" fill="#6B7280">'Le'(2) et 'le'(2) trop courts → exclus  |  lower() : 'CHAT'→'chat'</text>
-  <line x1="260" y1="176" x2="260" y2="188" stroke="#059669" stroke-width="2" marker-end="url(#ag)"/>
-  <rect x="80" y="191" width="360" height="14" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
-  <text x="260" y="202" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#065F46">['chat','mange','chat','dort','python'] ← mots valides !</text>
+  lbl:'re.findall() + dict dans rilex() — B2 uniquement',
+  sub:'Extraire les mots valides et calculer la richesse — RILEX',
+  where:'rilex', wlbl:'RILEX uniquement',
+  txt:`Dans la fonction de B2, après read_txt(), la logique est différente de COUNT. On utilise <strong>re.findall()</strong> pour extraire les séquences de lettres (4+ en minuscules), puis un <strong>dictionnaire</strong> pour compter les occurrences et calculer la richesse lexicale.`,
+  svg:`<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
+  <rect width="520" height="200" rx="14" fill="#F5F3FF"/>
+  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">RILEX — du texte à la richesse lexicale</text>
+  <rect x="130" y="30" width="260" height="22" rx="6" fill="#0F172A" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="260" y="45" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#E2E8F0">txt = read_txt(name)</text>
+  <line x1="260" y1="52" x2="260" y2="64" stroke="#7C3AED" stroke-width="1.5" marker-end="url(#ap)"/>
+  <rect x="80" y="66" width="360" height="22" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="260" y="81" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#4C1D95">re.findall(r'[a-zA-Z]+', txt) → liste de mots bruts</text>
+  <line x1="260" y1="88" x2="260" y2="100" stroke="#7C3AED" stroke-width="1.5" marker-end="url(#ap)"/>
+  <rect x="60" y="102" width="400" height="22" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="260" y="117" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#4C1D95">[m.lower() for m in bruts if len(m) >= 4] → mots valides</text>
+  <line x1="260" y1="124" x2="260" y2="136" stroke="#059669" stroke-width="1.5" marker-end="url(#ag)"/>
+  <rect x="60" y="138" width="400" height="22" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <text x="260" y="153" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#065F46">dict {} → compter occurrences → len(dict)/len(mots)</text>
+  <line x1="260" y1="160" x2="260" y2="172" stroke="#F59E0B" stroke-width="1.5" marker-end="url(#ay)"/>
+  <rect x="100" y="174" width="320" height="20" rx="6" fill="#FEF9C3" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="260" y="188" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#92400E">return f"{name} : rilex = {rilex:.2f}"</text>
   <defs>
-    <marker id="ap" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#7C3AED"/></marker>
-    <marker id="ag" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#059669"/></marker>
+    <marker id="ap" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#7C3AED"/></marker>
+    <marker id="ag" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#059669"/></marker>
+    <marker id="ay" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#F59E0B"/></marker>
   </defs>
 </svg>`,
-  code:`import re    # ← obligatoire pour RILEX !
+  code:`import re
+from ezCLI import *
 
-# Dans RILEX uniquement — traiter_fichier()
-with open(nom, 'r', encoding='utf-8') as f:
-    contenu = f.read()
+def rilex(name: str) -> str:
+    try:
+        txt = read_txt(name)
 
-# Étape 1 : extraire les séquences de lettres (ignore ponctuation)
-mots_bruts = re.findall(r'[a-zA-Z]+', contenu)
-# → ['Le','chat','mange','le','CHAT','dort','Python']
+        # Extraire les mots valides (≥4 lettres, minuscules)
+        bruts = re.findall(r'[a-zA-Z]+', txt)
+        mots  = [m.lower() for m in bruts if len(m) >= 4]
 
-# Étape 2 : garder ≥4 lettres + mettre en minuscules
-mots = [m.lower() for m in mots_bruts if len(m) >= 4]
-# → ['chat','mange','chat','dort','python']
+        if len(mots) == 0:
+            return f"{name} : no valid words found"
 
-# ⚠️ split() n'aurait PAS fonctionné :
-# "mange," → garderait la virgule !`,
-  tips:['re.findall(r\'[a-zA-Z]+\', texte) → trouve toutes les suites de lettres','[m.lower() for m in mots_bruts if len(m)>=4] → filtre + minuscules','split() garde la ponctuation → NE PAS utiliser dans RILEX','import re est obligatoire en haut du fichier']
-},
-{
-  ico:'📚', icoCls:'pu',
-  lbl:'Dictionnaire {} — compter les occurrences',
-  sub:'Trouver le nombre de mots différents — RILEX uniquement',
-  where:'rilex', whereLabel:'RILEX uniquement',
-  txt:`Dans <strong>RILEX uniquement</strong>, après avoir extrait les mots valides, il faut savoir combien sont <em>différents</em>. Un dictionnaire Python c'est parfait pour ça.
-<br><br>
-Imagine une armoire avec des tiroirs. Chaque mot a son tiroir (la clé). Le contenu du tiroir (la valeur) dit combien de fois ce mot est apparu. À la fin, <strong>len(compteur)</strong> = nombre de tiroirs = mots différents.`,
-  svg:`<svg viewBox="0 0 520 215" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto 4px">
-  <rect width="520" height="215" rx="14" fill="#F5F3FF"/>
-  <text x="260" y="22" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">RILEX — le dictionnaire compte les occurrences</text>
-  <rect x="18" y="32" width="484" height="24" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="260" y="48" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#4C1D95">mots = ['chat','mange','chat','dort','chat']</text>
-  <text x="140" y="74" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#4C1D95">On parcourt la liste :</text>
-  <rect x="18" y="82" width="200" height="118" rx="12" fill="white" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="118" y="101" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#4C1D95">Dictionnaire final</text>
-  <rect x="30" y="108" width="80" height="24" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="70" y="124" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#4C1D95">"chat"</text>
-  <text x="190" y="124" text-anchor="middle" font-family="Fira Code,monospace" font-size="18" font-weight="700" fill="#7C3AED">3</text>
-  <rect x="30" y="138" width="80" height="24" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="70" y="154" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#4C1D95">"mange"</text>
-  <text x="190" y="154" text-anchor="middle" font-family="Fira Code,monospace" font-size="18" font-weight="700" fill="#7C3AED">1</text>
-  <rect x="30" y="168" width="80" height="24" rx="6" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="70" y="184" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" font-weight="600" fill="#4C1D95">"dort"</text>
-  <text x="190" y="184" text-anchor="middle" font-family="Fira Code,monospace" font-size="18" font-weight="700" fill="#7C3AED">1</text>
-  <rect x="236" y="82" width="266" height="118" rx="12" fill="white" stroke="#059669" stroke-width="1.5"/>
-  <text x="369" y="101" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#065F46">Ce qu'on calcule</text>
-  <rect x="248" y="108" width="242" height="28" rx="8" fill="#D1FAE5"/>
-  <text x="369" y="120" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" fill="#065F46">len(mots) = 5      ← total</text>
-  <text x="369" y="131" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#6B7280">5 mots dans la liste</text>
-  <rect x="248" y="142" width="242" height="28" rx="8" fill="#D1FAE5"/>
-  <text x="369" y="154" text-anchor="middle" font-family="Fira Code,monospace" font-size="10.5" fill="#065F46">len(compteur) = 3  ← différents</text>
-  <text x="369" y="165" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9.5" fill="#6B7280">3 clés dans le dictionnaire</text>
-  <rect x="248" y="176" width="242" height="22" rx="8" fill="#FEF9C3" stroke="#F59E0B" stroke-width="1.5"/>
-  <text x="369" y="191" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" font-weight="700" fill="#92400E">rilex = 3/5 = 0.60</text>
-</svg>`,
-  code:`# Dans RILEX uniquement — après avoir obtenu la liste mots
-compteur = {}                  # dictionnaire vide
+        # Compter les occurrences avec un dictionnaire
+        compteur = {}
+        for mot in mots:
+            if mot in compteur: compteur[mot] += 1
+            else: compteur[mot] = 1
 
-for mot in mots:
-    if mot in compteur:
-        compteur[mot] += 1     # mot déjà vu → on ajoute 1
-    else:
-        compteur[mot] = 1      # nouveau mot → on démarre à 1
+        # Calculer et renvoyer la richesse lexicale
+        r = len(compteur) / len(mots)
+        return f"{name} : rilex = {r:.2f}"
 
-# ['chat','mange','chat','dort','chat']
-# → {'chat': 3, 'mange': 1, 'dort': 1}
-
-total      = len(mots)         # 5 mots au total
-differents = len(compteur)     # 3 clés dans le dict = 3 mots différents
-rilex      = differents / total  # 3/5 = 0.60
-
-print(f"{nom} : rilex = {rilex:.2f}")   # → toto.txt : rilex = 0.60`,
-  tips:['mot in compteur → True si la clé existe déjà','compteur[mot] = 1 → créer une nouvelle entrée','compteur[mot] += 1 → incrémenter une entrée existante','len(compteur) = nombre de clés = mots différents',':.2f dans le f-string → exactement 2 décimales (0.67 pas 0.6666...)']
+    except OSError:
+        return f"{name} : cannot read file"`,
+  tips:['import re obligatoire en haut pour RILEX','re.findall(r\'[a-zA-Z]+\') → séquences de lettres uniquement','[m.lower() for m in bruts if len(m)>=4] → filtre + normalise','len(compteur)/len(mots) = mots différents / total']
 }
 ];
 
+// ══════════════════════════════════════════════════════
+// STEPS — basés sur le corrigé officiel
+// ══════════════════════════════════════════════════════
 const STEPS = {
 count:[
-  {t:'Importer os et définir les constantes',
-   txt:'On commence par importer le module os (nécessaire pour vérifier les fichiers), puis on définit 3 chaînes de texte : ACCUEIL (le bandeau affiché au démarrage), AIDE (le texte de help), et A_PROPOS (le texte de about).',
-   code:`import os
-
-SEP = "─" * 80
-
-ACCUEIL = f"""
-{SEP}
-COUNT : print the number of lines, words and chars of a list of text files
-
+  {t:'Métadonnées + import ezCLI',
+   txt:'Le corrigé commence par des métadonnées (__author__, __version__, etc.) puis importe ezCLI. C\'est la convention du prof. from ezCLI import * importe toutes les fonctions utiles : read_txt(), parse(), userloop().',
+   code:`# ==============================================================================
+"""COUNT : print the number of lines, words and chars in a set of text files"""
+# ==============================================================================
+__author__  = "Philippe Blasi"
+__version__ = "1.0"
+__date__    = "2026-03-06"
+__usage__   = """
 User input : <filename> [filename ...]
-App output : number of lines, words and chars for each provided file
+App output : number of lines, words and chars for each provided file"""
+# ==============================================================================
 
-Enter 'help' or '?' to display some user instructions
-Enter 'about' or '!' to display some info about the application
-Enter 'exit' or an empty line to stop the interaction loop
-{SEP}"""
+from ezCLI import *   # importe read_txt(), parse(), userloop()`},
+  {t:'Fonction count(name) — lire et compter',
+   txt:'count() reçoit un nom de fichier, essaie de le lire avec read_txt(), compte lignes/mots/chars, et renvoie le résultat formaté. Si le fichier est illisible → except OSError → message d\'erreur. La fonction renvoie TOUJOURS une str.',
+   code:`def count(name: str) -> str:
+    """return the number of lines, words and chars stored in file 'name'"""
+    try:
+        txt = read_txt(name)          # lire le fichier
 
-AIDE     = "Entrez un ou plusieurs noms de fichiers séparés par des espaces."
-A_PROPOS = "COUNT v1.0 — compte lignes, mots et caractères d'un fichier."`},
-  {t:'Fonction traiter_fichier(nom) — vérifications',
-   txt:'Cette fonction est appelée pour chaque fichier. D\'abord on vérifie l\'existence avec isfile(), puis les droits de lecture avec os.access(). Si l\'un échoue → message d\'erreur et return (on arrête là).',
-   code:`def traiter_fichier(nom):
-    # Vérification 1 : le fichier existe-t-il ?
-    if not os.path.isfile(nom):
-        print(f"{nom} : file not found")
-        return
+        # Séparer en lignes et mots
+        tab_line = txt.split('\\n')    # ['ligne1', 'ligne2', ...]
+        tab_word = txt.split()         # ['mot1', 'mot2', ...]
 
-    # Vérification 2 : peut-on le lire ?
-    if not os.access(nom, os.R_OK):
-        print(f"{nom} : cannot read file")
-        return`},
-  {t:'Fonction traiter_fichier(nom) — compter et afficher',
-   txt:'Si les 2 vérifications passent, on ouvre le fichier avec with open(), on lit tout le contenu, puis on utilise splitlines() pour les lignes, split() pour les mots, et len() directement pour les caractères.',
-   code:`    # Ouverture et lecture (si les vérifications ont passé)
-    with open(nom, 'r', encoding='utf-8') as f:
-        contenu = f.read()
+        # Compter
+        nb_line = len(tab_line)
+        nb_word = len(tab_word)
+        nb_char = len(txt)
 
-    nb_lignes = len(contenu.splitlines())  # couper par \\n → compter
-    nb_mots   = len(contenu.split())       # couper par espaces → compter
-    nb_chars  = len(contenu)               # longueur de la chaîne
+        return f"{name} : lines = {nb_line}, words = {nb_word}, chars = {nb_char}"
 
-    print(f"{nom} : lines = {nb_lignes}, words = {nb_mots}, chars = {nb_chars}")`},
-  {t:'Fonction main() — bandeau + boucle',
-   txt:'main() affiche le bandeau au démarrage, puis entre dans while True. À chaque tour, on lit la saisie. Si c\'est vide ou "exit" → break. Si c\'est help ou about → afficher le texte correspondant.',
-   code:`def main():
-    print(ACCUEIL)      # afficher le bandeau une seule fois
+    except OSError:                    # fichier inexistant ou illisible
+        return f"{name} : cannot read file"`},
+  {t:'Fonction parser(command) — gérer 1 ou plusieurs fichiers',
+   txt:'parser() reçoit la commande brute de l\'utilisateur. parse() la découpe. Si le résultat est une str (1 seul fichier) → on appelle count() directement. Sinon c\'est une liste → on boucle dessus et on accumule les résultats.',
+   code:`def parser(command: str) -> str:
+    """parse 'command' and return line/word/char counters for provided files"""
+    tab_name = parse(command)
 
-    while True:
-        saisie = input("<> <filename> [filename ...]: ").strip()
+    if type(tab_name) is str:    # un seul nom de fichier
+        return count(tab_name)
 
-        if saisie == "" or saisie == "exit":
-            break
-
-        elif saisie in ("help", "?"):
-            print(AIDE)
-
-        elif saisie in ("about", "!"):
-            print(A_PROPOS)`},
-  {t:'Fonction main() — traiter les fichiers',
-   txt:'Si la saisie n\'est ni une commande ni vide, c\'est forcément des noms de fichiers. On utilise split() pour les séparer, puis une boucle for pour appeler traiter_fichier() sur chacun.',
-   code:`        else:
-            fichiers = saisie.split()   # "toto.txt titi.txt" → liste
-            for nom in fichiers:
-                traiter_fichier(nom)    # appel pour chaque fichier
-
-
-# Point d'entrée
-if __name__ == "__main__":
-    main()`}
+    else:                        # plusieurs noms → liste
+        res = ""
+        for name in tab_name:
+            res = res + count(name) + "\\n"
+        return res.strip()       # enlever le \\n final`},
+  {t:'Point d\'entrée — userloop()',
+   txt:'La dernière partie du fichier. userloop() de ezCLI gère toute la boucle d\'interaction : bandeau, while True, input(), help, about, exit... On lui donne juste notre fonction parser et le message à afficher.',
+   code:`# ==============================================================================
+if __name__ == '__main__':
+    userloop(parser, "Enter <filename> [filename ...]")
+# ==============================================================================
+# userloop() fait tout automatiquement :
+# - affiche le bandeau avec __usage__
+# - boucle while True
+# - gère help, about, exit, ligne vide
+# - appelle parser() à chaque saisie et affiche le résultat`}
 ],
 rilex:[
-  {t:'Imports et constantes (identiques à COUNT, sauf import re)',
-   txt:'RILEX a exactement la même structure que COUNT. La seule différence dans les imports : on ajoute "import re" car on va utiliser les expressions régulières pour extraire les mots. Les constantes ACCUEIL, AIDE, A_PROPOS changent juste le texte.',
-   code:`import os
-import re     # ← NOUVEAU par rapport à COUNT
+  {t:'Structure identique à COUNT — seul rilex() change',
+   txt:'RILEX a exactement la même structure que COUNT. Les métadonnées, import, parser() et userloop() sont identiques. La seule différence : on remplace la fonction count() par une fonction rilex() (ou on modifie traiter_fichier). Ajouter import re en haut.',
+   code:`import re
+from ezCLI import *
 
-SEP = "─" * 80
-
-ACCUEIL = f"""
-{SEP}
-RILEX : print the lexical richness of a list of text files
-
+# Métadonnées identiques à COUNT (changer le texte)
+__author__  = "..."
+__version__ = "1.0"
+__usage__   = """
 User input : <filename> [filename ...]
-App output : lexical richness of all provided files
+App output : lexical richness of all provided files"""
 
-Enter 'help' or '?' to display some user instructions
-Enter 'about' or '!' to display some info about the application
-Enter 'exit' or an empty line to stop the interaction loop
-{SEP}"""
+# parser() et if __name__... → IDENTIQUES à COUNT
+# Seule rilex() (ou count()) change`},
+  {t:'Extraire les mots valides',
+   txt:'Après read_txt(), on utilise re.findall() pour extraire les séquences de lettres (ignore la ponctuation). Ensuite on filtre : longueur ≥ 4 ET tout en minuscules avec lower(). Si aucun mot valide → on renvoie un message.',
+   code:`    try:
+        txt = read_txt(name)
 
-AIDE     = "Entrez un ou plusieurs fichiers. Mot = 4+ lettres alphabétiques."
-A_PROPOS = "RILEX v1.0 — calcule la richesse lexicale d'un fichier texte."`},
-  {t:'Vérifications du fichier — identiques à COUNT',
-   txt:'Les deux premières lignes de traiter_fichier() sont copiées-collées depuis COUNT. C\'est exactement le même code : isfile() puis os.access(). Rien ne change ici.',
-   code:`def traiter_fichier(nom):
-    # ← IDENTIQUE à COUNT, rien ne change
-    if not os.path.isfile(nom):
-        print(f"{nom} : file not found")
-        return
+        # Étape 1 : extraire toutes les séquences de lettres
+        bruts = re.findall(r'[a-zA-Z]+', txt)
 
-    if not os.access(nom, os.R_OK):
-        print(f"{nom} : cannot read file")
-        return
+        # Étape 2 : garder ≥4 lettres + mettre en minuscules
+        mots = [m.lower() for m in bruts if len(m) >= 4]
 
-    with open(nom, 'r', encoding='utf-8') as f:
-        contenu = f.read()           # ← pareil aussi`},
-  {t:'Extraire les mots valides avec re.findall()',
-   txt:'C\'est ici que RILEX diverge de COUNT. On ne peut pas utiliser split() : il garderait la ponctuation. re.findall() avec le pattern [a-zA-Z]+ ramasse uniquement les suites de lettres. Ensuite on filtre sur len≥4 et on met en minuscules.',
-   code:`    # Étape A : extraire toutes les séquences de lettres
-    mots_bruts = re.findall(r'[a-zA-Z]+', contenu)
-    # ex: ['Le','chat','mange','le','CHAT','dort']
-
-    # Étape B : garder ≥4 lettres + tout en minuscules
-    mots = [m.lower() for m in mots_bruts if len(m) >= 4]
-    # ex: ['chat','mange','chat','dort']
-
-    # Étape C : cas fichier sans aucun mot valide
-    if len(mots) == 0:
-        print(f"{nom} : no valid words found")
-        return`},
+        # Étape 3 : cas où aucun mot valide
+        if len(mots) == 0:
+            return f"{name} : no valid words found"`},
   {t:'Compter avec un dictionnaire',
-   txt:'On parcourt la liste mots. Pour chaque mot : s\'il est déjà dans le dictionnaire, on ajoute 1 à son compteur. Sinon, on l\'ajoute avec la valeur 1. À la fin, le dictionnaire ressemble à {"chat": 2, "mange": 1, "dort": 1}.',
-   code:`    # Étape D : compter les occurrences de chaque mot
-    compteur = {}
-    for mot in mots:
-        if mot in compteur:
-            compteur[mot] += 1   # mot déjà vu → +1
-        else:
-            compteur[mot] = 1    # nouveau mot → initialiser à 1
+   txt:'Pour chaque mot de la liste, s\'il est déjà dans le dictionnaire on ajoute 1 à son compteur, sinon on l\'initialise à 1. À la fin, len(compteur) = nombre de clés = mots différents.',
+   code:`        # Étape 4 : compter les occurrences
+        compteur = {}
+        for mot in mots:
+            if mot in compteur:
+                compteur[mot] += 1    # déjà vu → +1
+            else:
+                compteur[mot] = 1     # nouveau → initialiser
 
-    # ex: {'chat': 2, 'mange': 1, 'dort': 1}`},
-  {t:'Calculer et afficher la richesse lexicale',
-   txt:'len(mots) = total des mots, len(compteur) = mots différents (nombre de clés). On divise, et on affiche avec :.2f pour avoir exactement 2 décimales comme dans l\'exemple du sujet.',
-   code:`    # Étape E : calculer et afficher
-    total      = len(mots)          # nb total de mots
-    differents = len(compteur)      # nb de mots différents (clés du dict)
-    rilex      = differents / total
+        # ex: {'chat': 2, 'mange': 1, 'dort': 1}`},
+  {t:'Calculer la richesse et renvoyer le résultat',
+   txt:'len(compteur) = mots différents, len(mots) = total. On divise et on formate avec :.2f pour avoir exactement 2 décimales. Comme dans count(), on attrape OSError pour les fichiers illisibles.',
+   code:`        # Étape 5 : calculer et renvoyer
+        r = len(compteur) / len(mots)   # différents / total
+        return f"{name} : rilex = {r:.2f}"
 
-    print(f"{nom} : rilex = {rilex:.2f}")
-    # → toto.txt : rilex = 0.67
+    except OSError:
+        return f"{name} : cannot read file"
 
 
-# main() et point d'entrée — identiques à COUNT
-def main():
-    print(ACCUEIL)
-    while True:
-        saisie = input("<> <filename> [filename ...]: ").strip()
-        if saisie == "" or saisie == "exit":
-            break
-        elif saisie in ("help", "?"): print(AIDE)
-        elif saisie in ("about", "!"): print(A_PROPOS)
-        else:
-            for nom in saisie.split():
-                traiter_fichier(nom)
+# parser() identique à COUNT :
+def parser(command: str) -> str:
+    tab_name = parse(command)
+    if type(tab_name) is str:
+        return rilex(tab_name)          # ← rilex() au lieu de count()
+    else:
+        res = ""
+        for name in tab_name:
+            res = res + rilex(name) + "\\n"
+        return res.strip()
 
-if __name__ == "__main__":
-    main()`}
+if __name__ == '__main__':
+    userloop(parser, "Enter <filename> [filename ...]")`}
 ]};
 
+// ══════════════════════════════════════════════════════
+// QUIZ — tous basés sur le corrigé officiel
+// ══════════════════════════════════════════════════════
 const QUIZ = [
-// COUNT
-{tag:'count', tagLabel:'COUNT — B1',
- q:'Dans COUNT, que fait contenu.splitlines() ?',
- opts:['Coupe le texte aux espaces → liste de mots','Coupe le texte aux \\n → liste de lignes','Compte le nombre de lignes directement','Supprime les lignes vides'],
- ans:1, exp:'splitlines() coupe aux sauts de ligne (\\n) et renvoie une liste. len(splitlines()) = nombre de lignes. Dans COUNT : nb_lignes = len(contenu.splitlines()).'},
-{tag:'count', tagLabel:'COUNT — B1',
- q:'Dans COUNT, pour compter les mots on utilise :',
- opts:['len(contenu.splitlines())','len(contenu)','len(contenu.split())','re.findall(r\'[a-zA-Z]+\', contenu)'],
- ans:2, exp:'split() sans argument coupe aux espaces et retours à la ligne → liste de mots. len() dessus donne le nombre de mots. C\'est différent de RILEX où on utilise re.findall().'},
-{tag:'count', tagLabel:'COUNT — B1',
- q:'Dans COUNT, que renvoie len(contenu) ?',
- opts:['Le nombre de mots','Le nombre de lignes','Le nombre de caractères (espaces et \\n inclus)','Le nombre de phrases'],
- ans:2, exp:'len() sur une chaîne donne sa longueur totale — tous les caractères comptent : lettres, espaces, \\n. Dans COUNT : nb_chars = len(contenu).'},
-{tag:'both', tagLabel:'COUNT et RILEX',
- q:'Pourquoi met-on return après print("file not found") ?',
- opts:['Pour afficher un message supplémentaire','Pour éviter que open() soit appelé sur un fichier inexistant','Pour quitter le programme entier','C\'est obligatoire après tout print()'],
- ans:1, exp:'Sans return, le code continuerait et essaierait d\'ouvrir un fichier qui n\'existe pas → erreur Python (FileNotFoundError). Le return arrête la fonction là.'},
-{tag:'both', tagLabel:'COUNT et RILEX',
- q:'os.access(nom, os.R_OK) renvoie True si...',
- opts:['Le fichier existe','Le fichier est vide','On a le droit de lire le fichier','Le fichier est un fichier texte'],
- ans:2, exp:'os.R_OK est la constante "droit de lecture". os.access() vérifie les permissions. C\'est la 2ème vérification dans les deux programmes, après os.path.isfile().'},
-{tag:'both', tagLabel:'COUNT et RILEX',
- q:'Quel est le rôle de .strip() dans input(...).strip() ?',
- opts:['Mettre la saisie en minuscules','Couper la chaîne en liste','Supprimer les espaces en début et fin de saisie','Vérifier que la saisie n\'est pas vide'],
- ans:2, exp:'.strip() enlève les espaces et les \\n en début et fin. Sans ça, "exit " (avec un espace) ne serait pas reconnu comme "exit". Utilisé dans les deux programmes.'},
-// RILEX
-{tag:'rilex', tagLabel:'RILEX — B2',
- q:'Dans RILEX, pourquoi ne peut-on pas utiliser split() pour trouver les mots ?',
- opts:['split() est trop lent','split() garde la ponctuation : "chat," ≠ "chat"','split() ne fonctionne pas avec les fichiers','split() met tout en majuscules'],
- ans:1, exp:'"chat," et "chat" seraient comptés comme 2 mots différents. re.findall(r\'[a-zA-Z]+\') ne ramasse que les lettres → ponctuation ignorée.'},
-{tag:'rilex', tagLabel:'RILEX — B2',
- q:'Dans RILEX, à quoi sert m.lower() dans la liste en compréhension ?',
- opts:['Filtrer les mots trop courts','Mettre le mot en minuscules pour que CHAT = chat = Chat','Supprimer la ponctuation','Compter les lettres du mot'],
- ans:1, exp:'Sans lower(), "Chat" et "chat" et "CHAT" seraient 3 clés différentes dans le dictionnaire → résultat faux. lower() normalise tout en minuscules.'},
-{tag:'rilex', tagLabel:'RILEX — B2',
- q:'Dans RILEX, len(compteur) donne :',
- opts:['Le nombre total de mots dans le texte','Le nombre de mots différents (clés du dictionnaire)','La longueur du fichier en caractères','Le nombre de lignes'],
- ans:1, exp:'len() sur un dictionnaire = nombre de clés. Chaque mot différent est une clé → len(compteur) = mots différents. C\'est le numérateur de la formule rilex.'},
-{tag:'rilex', tagLabel:'RILEX — B2',
- q:'Qu\'affiche f"{rilex:.2f}" si rilex = 0.6666... ?',
- opts:['0.6666666666','0.67','0.666','0.7'],
- ans:1, exp:':.2f = format "nombre flottant avec 2 décimales". Python arrondit automatiquement. C\'est pour reproduire l\'exemple du sujet : "toto.txt : rilex = 0.67".'},
-{tag:'rilex', tagLabel:'RILEX — B2',
- q:'Pourquoi vérifie-t-on len(mots) == 0 avant de calculer rilex ?',
- opts:['Pour afficher un message plus joli','Pour éviter une division par zéro si aucun mot valide','Pour vérifier que le fichier est en UTF-8','C\'est obligatoire avec les dictionnaires'],
- ans:1, exp:'Si le fichier est vide ou ne contient que des chiffres/ponctuation, mots = []. len(mots) = 0. rilex = len(compteur)/0 → ZeroDivisionError → le programme plante.'}
+{tag:'ezcli',tagLabel:'ezCLI',
+ q:'Que fait from ezCLI import * dans le corrigé ?',
+ opts:['Importe uniquement la fonction read_txt','Importe toutes les fonctions de ezCLI (read_txt, parse, userloop...)','Crée la boucle while True automatiquement','Importe le module os'],
+ ans:1, exp:'import * importe TOUT ce qu\'ezCLI contient. Dans le corrigé : read_txt() pour lire, parse() pour découper la saisie, et userloop() pour gérer la boucle d\'interaction.'},
+{tag:'ezcli',tagLabel:'ezCLI',
+ q:'Que fait userloop(parser, "Enter <filename>...") ?',
+ opts:['Appelle parser() une seule fois','Lance la boucle d\'interaction complète (bandeau + while True + help/exit...)','Lit un fichier texte','Découpe la saisie utilisateur'],
+ ans:1, exp:'userloop() de ezCLI gère TOUT automatiquement : l\'affichage du bandeau, la boucle while True, les commandes help/about/exit, et l\'appel de parser() à chaque saisie.'},
+{tag:'ezcli',tagLabel:'ezCLI',
+ q:'Que renvoie read_txt("toto.txt") si le fichier est illisible ?',
+ opts:['None','Une chaîne vide ""','Elle lève une exception OSError','False'],
+ ans:2, exp:'read_txt() lève (raise) une OSError si le fichier n\'existe pas ou ne peut pas être lu. C\'est pourquoi on l\'appelle à l\'intérieur d\'un try/except OSError dans le corrigé.'},
+{tag:'both',tagLabel:'COUNT et RILEX',
+ q:'Dans le corrigé, que se passe-t-il dans le bloc except OSError ?',
+ opts:['On relance la boucle','On appelle os.path.isfile()','On renvoie f"{name} : cannot read file"','On affiche une erreur et on quitte'],
+ ans:2, exp:'Dans les deux programmes, le bloc except OSError renvoie la chaîne d\'erreur formatée. La fonction renvoie toujours une str, que ce soit un succès ou une erreur.'},
+{tag:'both',tagLabel:'COUNT et RILEX',
+ q:'Pourquoi utilise-t-on type(tab_name) is str dans parser() ?',
+ opts:['Pour vérifier que le fichier existe','parse() renvoie str (1 fichier) ou list (plusieurs) — il faut distinguer les 2 cas','Pour convertir la saisie en minuscules','Pour compter le nombre de fichiers'],
+ ans:1, exp:'parse() renvoie str pour 1 fichier, list pour plusieurs. type(tab_name) is str permet de détecter le cas "1 seul fichier" et d\'appeler count() directement sans boucle.'},
+{tag:'count',tagLabel:'COUNT — B1',
+ q:'Dans count(), que vaut txt.split("\\n") pour "ligne1\\nligne2\\nligne3" ?',
+ opts:['["ligne1 ligne2 ligne3"]','["ligne1","ligne2","ligne3"]','3','["ligne1\\n","ligne2\\n","ligne3"]'],
+ ans:1, exp:'split("\\n") coupe la chaîne à chaque \\n et renvoie une liste. len() dessus donne le nombre de lignes. C\'est ainsi que nb_line est calculé dans le corrigé.'},
+{tag:'count',tagLabel:'COUNT — B1',
+ q:'Dans count(), que renvoie len(txt) si txt = "Bonjour monde\\n" ?',
+ opts:['2 (nb de mots)','1 (nb de lignes)','14 (nb de caractères total)','13 (sans le \\n)'],
+ ans:2, exp:'len() sur une chaîne donne le nombre de caractères total — espaces et \\n inclus. "Bonjour monde\\n" a 14 caractères. C\'est nb_char dans le corrigé.'},
+{tag:'count',tagLabel:'COUNT — B1',
+ q:'Dans count(), txt.split() (sans argument) donne...',
+ opts:['La liste des lignes','La liste des mots (coupé aux espaces et \\n)','Un seul élément : le texte entier','La liste des caractères'],
+ ans:1, exp:'split() sans argument coupe aux espaces ET aux retours à la ligne. C\'est la façon standard de récupérer tous les mots d\'un texte. len() dessus = nb de mots.'},
+{tag:'rilex',tagLabel:'RILEX — B2',
+ q:'Dans rilex(), pourquoi ne pas utiliser txt.split() comme dans COUNT ?',
+ opts:['split() est trop lent','split() garderait la ponctuation : "chat," ≠ "chat" → mots incorrects','split() ne fonctionne pas avec re','C\'est obligatoire d\'utiliser re dans RILEX'],
+ ans:1, exp:'"chat," et "chat" seraient 2 mots différents. re.findall(r\'[a-zA-Z]+\') extrait uniquement les séquences de lettres, sans ponctuation.'},
+{tag:'rilex',tagLabel:'RILEX — B2',
+ q:'Que fait len(compteur) dans rilex() ?',
+ opts:['Nombre total de mots dans le texte','Nombre de mots différents (nb de clés dans le dictionnaire)','Taille du fichier en octets','Nombre de lettres au total'],
+ ans:1, exp:'len() sur un dictionnaire = nombre de clés. Chaque mot différent est une clé → len(compteur) = mots différents = numérateur de la formule rilex.'},
+{tag:'rilex',tagLabel:'RILEX — B2',
+ q:'Que signifie :.2f dans f"{r:.2f}" ?',
+ opts:['Limiter à 2 chiffres significatifs','Afficher r avec exactement 2 décimales','Arrondir à l\'entier le plus proche','Convertir en pourcentage'],
+ ans:1, exp:':.2f = format "float avec 2 décimales". 0.6666... → "0.67". C\'est pour respecter le format exact du sujet : "toto.txt : rilex = 0.67".'}
 ];
 
+// ══════════════════════════════════════════════════════
+// MEMO
+// ══════════════════════════════════════════════════════
 const MEMO = [
-{cat:'Imports',hcls:'gy',rows:[
-  ['import os','Obligatoire dans COUNT ET RILEX (vérifications fichier)','b'],
-  ['import re','Obligatoire dans RILEX uniquement (re.findall)','r'],
+{cat:'ezCLI — bibliothèque du prof',hcls:'am',rows:[
+  ['from ezCLI import *','importer toutes les fonctions ezCLI','b'],
+  ['read_txt(name)','lire un fichier → str (lève OSError si pb)','b'],
+  ['parse(command)','découper saisie → str (1 fichier) ou list','b'],
+  ['userloop(fn, msg)','gérer la boucle d\'interaction complète','b'],
 ]},
-{cat:'Boucle d\'interaction — COUNT et RILEX',hcls:'bl',rows:[
-  ['while True:','boucle infinie — tourne jusqu\'au break','b'],
-  ['saisie = input(...).strip()','lire la saisie + enlever espaces','b'],
-  ['if saisie == "" or saisie == "exit": break','condition de sortie','b'],
-  ['saisie in ("help", "?")','tester plusieurs valeurs à la fois','b'],
-  ['saisie.split()','découper "a.txt b.txt" → liste','b'],
+{cat:'Gestion d\'erreur — COUNT et RILEX',hcls:'rd',rows:[
+  ['try:','essayer d\'exécuter le code','b'],
+  ['txt = read_txt(name)','lire le fichier (peut lever OSError)','b'],
+  ['except OSError:','attraper l\'erreur si fichier illisible','b'],
+  ['return f"{name} : cannot read file"','renvoyer le message d\'erreur','b'],
 ]},
-{cat:'Vérification fichier — COUNT et RILEX',hcls:'rd',rows:[
-  ['os.path.isfile(nom)','True si le fichier existe','b'],
-  ['os.access(nom, os.R_OK)','True si on peut lire le fichier','b'],
-  ['print(f"{nom} : file not found")','message si fichier inexistant','b'],
-  ['print(f"{nom} : cannot read file")','message si pas le droit de lire','b'],
-  ['return','arrêter la fonction (avant open)','b'],
-]},
-{cat:'Lecture fichier — COUNT et RILEX',hcls:'gr',rows:[
-  ['with open(nom,\'r\',encoding=\'utf-8\') as f:','ouvrir en lecture','b'],
-  ['contenu = f.read()','tout le texte dans une variable','b'],
+{cat:'Découper la saisie — COUNT et RILEX',hcls:'gr',rows:[
+  ['tab_name = parse(command)','analyser la commande utilisateur','b'],
+  ['type(tab_name) is str','True si un seul fichier','b'],
+  ['for name in tab_name:','boucler si plusieurs fichiers','b'],
+  ['res.strip()','enlever le \\n final du résultat','b'],
 ]},
 {cat:'Compter — COUNT uniquement',hcls:'bl',rows:[
-  ['len(contenu.splitlines())','nombre de lignes','c'],
-  ['len(contenu.split())','nombre de mots','c'],
-  ['len(contenu)','nombre de caractères','c'],
-  ['f"{nom} : lines={l}, words={w}, chars={c}"','format exact à respecter','c'],
+  ['tab_line = txt.split(\'\\n\')','couper aux sauts de ligne','c'],
+  ['tab_word = txt.split()','couper aux espaces','c'],
+  ['nb_line = len(tab_line)','nombre de lignes','c'],
+  ['nb_word = len(tab_word)','nombre de mots','c'],
+  ['nb_char = len(txt)','nombre de caractères','c'],
+  ['f"{name} : lines={l}, words={w}, chars={c}"','format de sortie exact','c'],
 ]},
-{cat:'Extraire mots — RILEX uniquement',hcls:'pu',rows:[
-  ['re.findall(r\'[a-zA-Z]+\', contenu)','extraire les séquences de lettres','r'],
-  ['[m.lower() for m in bruts if len(m)>=4]','filtrer ≥4 lettres + minuscules','r'],
-  ['if len(mots) == 0: return','éviter la division par zéro','r'],
+{cat:'Mots valides — RILEX uniquement',hcls:'pu',rows:[
+  ['import re','obligatoire pour re.findall','r'],
+  ['re.findall(r\'[a-zA-Z]+\', txt)','extraire les séquences de lettres','r'],
+  ['[m.lower() for m in b if len(m)>=4]','filtrer ≥4 lettres + minuscules','r'],
+  ['if len(mots)==0: return ...','éviter la division par zéro','r'],
 ]},
 {cat:'Dictionnaire — RILEX uniquement',hcls:'pu',rows:[
   ['compteur = {}','créer un dictionnaire vide','r'],
   ['if mot in compteur: compteur[mot]+=1','incrémenter si déjà vu','r'],
-  ['else: compteur[mot] = 1','initialiser si nouveau mot','r'],
-  ['len(mots)','total de mots','r'],
-  ['len(compteur)','mots différents (nb de clés)','r'],
-  ['rilex = len(compteur)/len(mots)','formule de la richesse lexicale','r'],
-  ['f"{nom} : rilex = {rilex:.2f}"','format exact à respecter','r'],
+  ['else: compteur[mot]=1','initialiser si nouveau','r'],
+  ['len(compteur)/len(mots)','mots différents / total = rilex','r'],
+  ['f"{name} : rilex = {r:.2f}"','format de sortie exact','r'],
 ]}
 ];
 
-// ════════════════════════════════════════════════════════════════
-// STATE
-// ════════════════════════════════════════════════════════════════
-
-let openC = {}, openS = {}, activeExo = 'count';
-let QS = {idx:0, sel:null, confirmed:false, score:0, done:false};
-
-// ════════════════════════════════════════════════════════════════
-// NAVIGATION
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
+// STATE + NAV
+// ══════════════════════════════════════════════════════
+let openC={}, openS={}, activeExo='count';
+let QS={idx:0,sel:null,confirmed:false,score:0,done:false};
 
 function go(id){
   document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
   document.getElementById('pane-'+id).classList.add('on');
-  const ids=['cours','sujet','solution','quiz','memo'];
-  document.querySelectorAll('.tab')[ids.indexOf(id)].classList.add('on');
+  ['cours','sujet','corrige','quiz','memo'].forEach((x,i)=>{
+    if(x===id) document.querySelectorAll('.tab')[i].classList.add('on');
+  });
 }
 
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // COURS
-// ════════════════════════════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════
 const WCLS={both:'both',count:'count',rilex:'rilex'};
 const WLBL={both:'COUNT et RILEX',count:'COUNT uniquement',rilex:'RILEX uniquement'};
 
 function renderCours(){
-  document.getElementById('cours-body').innerHTML = CONCEPTS.map((c,i)=>`
-    <div class="card ${i<2?'bl':i<3?'gr':'pu'}">
+  document.getElementById('cours-body').innerHTML=CONCEPTS.map((c,i)=>`
+    <div class="card ${['am','bl','bl','gr','pu'][i]}">
       <button class="cbtn" onclick="toggleC(${i})">
         <div class="crow">
           <div class="cico ${c.icoCls}">${c.ico}</div>
@@ -742,184 +645,124 @@ function renderCours(){
 }
 function toggleC(i){openC[i]=!openC[i];renderCours();}
 
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // SUJET DS
-// ════════════════════════════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════
 function renderSujet(){
-  document.getElementById('sujet-body').innerHTML = `
-
-  <!-- B1 -->
+  document.getElementById('sujet-body').innerHTML=`
   <div style="background:linear-gradient(135deg,#1E3A8A,#2563EB);border-radius:18px;padding:18px 24px;margin-bottom:16px;color:white">
     <div style="font-size:10px;font-family:'Fira Code',monospace;opacity:.7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Devoir Surveillé — Exercice B1</div>
     <div style="font-size:21px;font-weight:700;margin-bottom:3px">Programme COUNT</div>
-    <div style="font-size:12.5px;opacity:.85">Lignes · Mots · Caractères · Vérification fichiers</div>
+    <div style="font-size:12.5px;opacity:.85">Lignes · Mots · Caractères · Gestion d'erreur</div>
   </div>
-
   <div class="card bl" style="margin-bottom:16px">
     <div style="display:inline-block;background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">ÉNONCÉ</div>
     <p style="font-size:14px;color:#374151;line-height:1.75;margin-bottom:14px">Écrire un programme <strong style="color:#1E3A8A;font-family:'Fira Code',monospace">count</strong> qui compte le nombre de <strong>lignes</strong>, de <strong>mots</strong> et de <strong>caractères</strong> d'une liste de fichiers texte, dont les noms sont entrés par l'utilisateur. L'existence et la protection en lecture de chaque fichier doit être vérifiée et un message d'erreur affiché le cas échéant.</p>
     <div style="background:#0F172A;border-radius:12px;padding:16px 18px;font-family:'Fira Code',monospace;font-size:12px;line-height:1.8;color:#E2E8F0;border:1.5px solid #1E3A8A">
       <div style="color:#475569;margin-bottom:6px;font-size:10px">── Exemple d'exécution ──────────────────────</div>
-      <div style="color:#94A3B8">COUNT : print the number of lines, words and chars of a list of text files</div>
-      <div style="color:#94A3B8;margin-bottom:8px">...</div>
-      <div><span style="color:#F59E0B">&lt;&gt; &lt;filename&gt; [filename ...]:</span> <span style="color:#86EFAC;font-weight:600">toto.txt titi.txt</span></div>
+      <div><span style="color:#F59E0B">&lt;&gt; Enter &lt;filename&gt; [filename ...]:</span> <span style="color:#86EFAC;font-weight:600">toto.txt titi.txt</span></div>
       <div>toto.txt : lines = 4, words = 23, chars = 112</div>
       <div style="color:#FCA5A5">titi.txt : cannot read file</div>
-      <div><span style="color:#F59E0B">&lt;&gt; &lt;filename&gt; [filename ...]:</span> <span style="color:#475569">← Entrée → on arrête</span></div>
     </div>
   </div>
-
   <div class="card am" style="margin-bottom:16px">
-    <div style="display:inline-block;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">DÉCRYPTER L'ÉNONCÉ → EN CODE</div>
+    <div style="display:inline-block;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">DÉCRYPTER → EN CODE</div>
     ${[
-      ['"noms sont entrés par l\'utilisateur"','while True + input() en boucle','💬'],
-      ['"liste de fichiers"','saisie.split() → for nom in fichiers','📋'],
-      ['"existence doit être vérifiée"','if not os.path.isfile(nom): return','🔎'],
-      ['"protection en lecture vérifiée"','if not os.access(nom, os.R_OK): return','🔒'],
-      ['"message d\'erreur le cas échéant"','print(f"{nom} : file not found/cannot read file")','⚠️'],
-      ['"nombre de lignes"','len(contenu.splitlines())','📏'],
-      ['"nombre de mots"','len(contenu.split())','📝'],
-      ['"nombre de caractères"','len(contenu)','🔢'],
-    ].map(([phrase,code,ico])=>`
-      <div style="display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px dashed #FDE68A">
-        <span style="font-size:16px;flex-shrink:0">${ico}</span>
-        <div style="flex:1">
-          <div style="font-size:12.5px;color:#374151;font-style:italic;margin-bottom:2px">"${phrase}"</div>
-          <div style="font-size:12px;font-family:'Fira Code',monospace;color:#1E3A8A;font-weight:500">→ ${code}</div>
-        </div>
-      </div>`).join('')}
+      ['"noms entrés par l\'utilisateur"','userloop() de ezCLI gère ça automatiquement','💬'],
+      ['"liste de fichiers"','parse(command) → str ou list → boucle if/else','📋'],
+      ['"existence et lecture vérifiées"','try: read_txt() / except OSError: message','🔒'],
+      ['"message d\'erreur le cas échéant"','return f"{name} : cannot read file"','⚠️'],
+      ['"nombre de lignes"','len(txt.split(\'\\\\n\'))','📏'],
+      ['"nombre de mots"','len(txt.split())','📝'],
+      ['"nombre de caractères"','len(txt)','🔢'],
+    ].map(([p,c,i])=>`<div style="display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px dashed #FDE68A">
+      <span style="font-size:16px;flex-shrink:0">${i}</span>
+      <div><div style="font-size:12.5px;color:#374151;font-style:italic;margin-bottom:2px">${p}</div>
+      <div style="font-size:12px;font-family:'Fira Code',monospace;color:#1E3A8A;font-weight:500">→ ${c}</div></div>
+    </div>`).join('')}
   </div>
 
-  <!-- SÉPARATEUR -->
   <div style="display:flex;align-items:center;gap:12px;margin:24px 0">
     <div style="flex:1;height:2px;background:linear-gradient(90deg,#F59E0B,transparent)"></div>
     <div style="background:linear-gradient(135deg,#7C3AED,#8B5CF6);color:white;padding:5px 18px;border-radius:50px;font-size:11px;font-weight:700">EXERCICE B2</div>
     <div style="flex:1;height:2px;background:linear-gradient(90deg,transparent,#F59E0B)"></div>
   </div>
 
-  <!-- B2 -->
   <div style="background:linear-gradient(135deg,#7C3AED,#8B5CF6);border-radius:18px;padding:18px 24px;margin-bottom:16px;color:white">
     <div style="font-size:10px;font-family:'Fira Code',monospace;opacity:.7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Devoir Surveillé — Exercice B2</div>
     <div style="font-size:21px;font-weight:700;margin-bottom:3px">Programme RILEX</div>
-    <div style="font-size:12.5px;opacity:.85">Richesse lexicale · Dictionnaire · re.findall() · Mots ≥4 lettres</div>
+    <div style="font-size:12.5px;opacity:.85">Richesse lexicale · re.findall() · Dictionnaire</div>
   </div>
-
   <div class="card pu" style="margin-bottom:16px">
     <div style="display:inline-block;background:linear-gradient(135deg,#7C3AED,#8B5CF6);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">ÉNONCÉ</div>
-    <p style="font-size:14px;color:#374151;line-height:1.75;margin-bottom:8px">Écrire un programme <strong style="color:#7C3AED;font-family:'Fira Code',monospace">rilex</strong> qui calcule la <strong>richesse lexicale</strong> d'un texte contenu dans un fichier.</p>
-    <p style="font-size:14px;color:#374151;line-height:1.75;margin-bottom:8px">La richesse lexicale = <strong>le quotient entre le nombre de mots différents et le nombre total de mots</strong>.</p>
-    <p style="font-size:14px;color:#374151;line-height:1.75;margin-bottom:14px">Un <strong>"mot"</strong> = séquence de <strong>taille ≥ 4</strong>, <strong>uniquement des lettres alphabétiques</strong>, sans distinction majuscules/minuscules. On utilisera un <strong>dictionnaire</strong>.</p>
-    <div style="background:#EDE9FE;border:1.5px solid #7C3AED;border-radius:10px;padding:12px 16px;margin-bottom:14px;text-align:center">
-      <div style="font-size:10px;color:#6B7280;margin-bottom:4px">Formule</div>
-      <div style="font-size:17px;font-weight:700;color:#4C1D95;font-family:'Fira Code',monospace">rilex = mots_différents / mots_total</div>
+    <p style="font-size:14px;color:#374151;line-height:1.75;margin-bottom:8px">Écrire un programme <strong style="color:#7C3AED;font-family:'Fira Code',monospace">rilex</strong> qui calcule la <strong>richesse lexicale</strong> d'un texte = <strong>mots différents / mots total</strong>. Un "mot" = séquence <strong>≥4 lettres alphabétiques</strong>, sans distinction majuscules/minuscules. Utiliser un <strong>dictionnaire</strong>.</p>
+    <div style="background:#EDE9FE;border:1.5px solid #7C3AED;border-radius:10px;padding:10px 16px;margin-bottom:14px;text-align:center">
+      <div style="font-size:17px;font-weight:700;color:#4C1D95;font-family:'Fira Code',monospace">rilex = len(compteur) / len(mots)</div>
     </div>
     <div style="background:#0F172A;border-radius:12px;padding:16px 18px;font-family:'Fira Code',monospace;font-size:12px;line-height:1.8;color:#E2E8F0;border:1.5px solid #7C3AED">
-      <div style="color:#475569;margin-bottom:6px;font-size:10px">── Exemple d'exécution ──────────────────────</div>
-      <div style="color:#94A3B8">RILEX : print the lexical richness of a list of text files</div>
-      <div style="color:#94A3B8;margin-bottom:8px">...</div>
-      <div><span style="color:#C4B5FD">&lt;&gt; &lt;filename&gt; [filename ...]:</span> <span style="color:#86EFAC;font-weight:600">toto.txt titi.txt</span></div>
+      <div><span style="color:#C4B5FD">&lt;&gt; Enter &lt;filename&gt; [filename ...]:</span> <span style="color:#86EFAC;font-weight:600">toto.txt titi.txt</span></div>
       <div>toto.txt : rilex = 0.67</div>
       <div style="color:#FCA5A5">titi.txt : cannot read file</div>
-      <div><span style="color:#C4B5FD">&lt;&gt; &lt;filename&gt; [filename ...]:</span> <span style="color:#475569">← Entrée → on arrête</span></div>
     </div>
   </div>
-
-  <div class="card pu" style="margin-bottom:16px">
-    <div style="display:inline-block;background:linear-gradient(135deg,#7C3AED,#8B5CF6);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">DÉCRYPTER L'ÉNONCÉ → EN CODE</div>
+  <div class="card pu">
+    <div style="display:inline-block;background:linear-gradient(135deg,#7C3AED,#8B5CF6);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">DÉCRYPTER → EN CODE</div>
     ${[
-      ['"séquence de taille supérieure ou égale à quatre"','if len(m) >= 4','📏'],
-      ['"formée exclusivement de caractères alphabétiques"','re.findall(r\'[a-zA-Z]+\', contenu)','🔡'],
-      ['"on ne distingue pas majuscules et minuscules"','m.lower() → CHAT et chat → même clé','🔤'],
-      ['"on utilisera la structure de dictionnaire"','compteur = {} puis compteur[mot] += 1','📚'],
-      ['"nombre de mots différents"','len(compteur) → nb de clés','🔢'],
-      ['"nombre total de mots du texte"','len(mots) → longueur de la liste','🔢'],
-      ['"quotient entre les deux"','rilex = len(compteur) / len(mots) → f"{rilex:.2f}"','➗'],
-    ].map(([phrase,code,ico])=>`
-      <div style="display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px dashed #EDE9FE">
-        <span style="font-size:16px;flex-shrink:0">${ico}</span>
-        <div style="flex:1">
-          <div style="font-size:12.5px;color:#374151;font-style:italic;margin-bottom:2px">"${phrase}"</div>
-          <div style="font-size:12px;font-family:'Fira Code',monospace;color:#7C3AED;font-weight:500">→ ${code}</div>
-        </div>
-      </div>`).join('')}
-  </div>
-
-  <!-- Comparatif B1/B2 -->
-  <div class="card am">
-    <div style="display:inline-block;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:14px">⚡ CE QUI CHANGE : COUNT → RILEX</div>
-    <div style="background:#FEF9C3;border:1.5px solid #F59E0B;border-radius:10px;padding:12px 16px;font-size:13px;color:#92400E;line-height:1.7;margin-bottom:14px">
-      <strong>La structure est identique</strong> — même boucle, même help/about/exit, mêmes vérifications os. Seule <code style="font-family:'Fira Code',monospace">traiter_fichier()</code> change après la lecture du fichier.
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:12px;padding:13px">
-        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:8px">B1 COUNT — après f.read()</div>
-        <div style="font-size:12px;color:#374151;padding:3px 0;border-bottom:1px dashed #FECACA">splitlines() → lignes</div>
-        <div style="font-size:12px;color:#374151;padding:3px 0;border-bottom:1px dashed #FECACA">split() → mots</div>
-        <div style="font-size:12px;color:#374151;padding:3px 0">len(contenu) → chars</div>
-      </div>
-      <div style="background:#F0FDF4;border:1.5px solid #6EE7B7;border-radius:12px;padding:13px">
-        <div style="font-size:11px;font-weight:700;color:#059669;margin-bottom:8px">B2 RILEX — après f.read()</div>
-        <div style="font-size:12px;color:#374151;padding:3px 0;border-bottom:1px dashed #D1FAE5">re.findall() → lettres</div>
-        <div style="font-size:12px;color:#374151;padding:3px 0;border-bottom:1px dashed #D1FAE5">filtre len≥4 + lower()</div>
-        <div style="font-size:12px;color:#374151;padding:3px 0">dict → compter → diviser</div>
-      </div>
-    </div>
+      ['"séquence de taille ≥ 4"','if len(m) >= 4','📏'],
+      ['"exclusivement des lettres alphabétiques"','re.findall(r\'[a-zA-Z]+\', txt)','🔡'],
+      ['"sans distinction majuscules/minuscules"','m.lower()','🔤'],
+      ['"structure native de dictionnaire"','compteur = {} puis compteur[mot]+=1','📚'],
+      ['"mots différents"','len(compteur)','🔢'],
+      ['"mots total"','len(mots)','🔢'],
+      ['"quotient"','r = len(compteur)/len(mots) → f"{r:.2f}"','➗'],
+    ].map(([p,c,i])=>`<div style="display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px dashed #EDE9FE">
+      <span style="font-size:16px;flex-shrink:0">${i}</span>
+      <div><div style="font-size:12.5px;color:#374151;font-style:italic;margin-bottom:2px">${p}</div>
+      <div style="font-size:12px;font-family:'Fira Code',monospace;color:#7C3AED;font-weight:500">→ ${c}</div></div>
+    </div>`).join('')}
   </div>`;
 }
 
-// ════════════════════════════════════════════════════════════════
-// SOLUTION
-// ════════════════════════════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════
+// CORRIGÉ
+// ══════════════════════════════════════════════════════
 function setExo(e){
   activeExo=e; openS={};
   document.getElementById('eb1').className='etab '+(e==='count'?'on':'off');
   document.getElementById('eb2').className='etab '+(e==='rilex'?'on':'off');
   renderSol();
 }
-
 function renderSol(){
   const steps=STEPS[activeExo];
   let h='';
   if(activeExo==='rilex'){
-    h+=`<div class="notebox">
-      <strong>Rappel :</strong> RILEX a la même structure que COUNT. La boucle, les commandes (help/about/exit) et les vérifications os sont identiques. Seule la partie traitement dans traiter_fichier() change — c'est ça qu'on détaille ici.
-    </div>`;
+    h+=`<div class="notebox"><strong>Rappel :</strong> RILEX a la même structure que COUNT. Métadonnées, import, parser() et userloop() sont identiques. Seule la fonction de traitement change — c'est ce qu'on détaille ici.</div>`;
+  }
+  if(activeExo==='count'){
+    h+=`<div class="warnbox">Ce corrigé utilise <strong>ezCLI</strong> (bibliothèque du prof). Les fonctions <code style="font-family:'Fira Code',monospace">read_txt()</code>, <code style="font-family:'Fira Code',monospace">parse()</code> et <code style="font-family:'Fira Code',monospace">userloop()</code> viennent de là. Sans cette biblio, le programme ne tourne pas.</div>`;
   }
   h+=steps.map((s,i)=>`
     <div class="scard">
       <button class="sbtn" onclick="toggleS(${i})">
-        <div class="srow">
-          <div class="snum">${i+1}</div>
-          <div class="stitle">${s.t}</div>
-          <div class="carr ${openS[i]?'open':''}">+</div>
-        </div>
+        <div class="srow"><div class="snum">${i+1}</div><div class="stitle">${s.t}</div><div class="carr ${openS[i]?'open':''}">+</div></div>
       </button>
-      ${openS[i]?`
-        <div class="sbody">
-          <p class="stxt">${s.txt}</p>
-          <pre class="code">${s.code}</pre>
-        </div>`:''}
+      ${openS[i]?`<div class="sbody"><p class="stxt">${s.txt}</p><pre class="code">${s.code}</pre></div>`:''}
     </div>`).join('');
   document.getElementById('sol-body').innerHTML=h;
 }
-
 function toggleS(i){openS[i]=!openS[i];renderSol();}
 
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // QUIZ
-// ════════════════════════════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════
 function renderQuiz(){
   const c=document.getElementById('quiz-body');
   if(QS.done){
     const pct=Math.round(QS.score/QUIZ.length*100);
-    const msg=pct>=80?'Excellent ! Tu maîtrises COUNT et RILEX — bonne chance pour le DS !':pct>=60?'Bien ! Quelques points à revoir — retourne dans Cours ou Sujet DS.':'Continue à réviser — relis les fiches et refais le quiz. Tu y es presque !';
+    const msg=pct>=80?'Excellent ! Tu maîtrises le corrigé — bonne chance pour le DS !':pct>=60?'Bien ! Relis les fiches Cours sur ce qui t\'a posé problème.':'Continue à réviser — le corrigé a ses particularités, relis bien ezCLI et try/except.';
     c.innerHTML=`<div class="card" style="text-align:center;padding:32px">
       <div class="scircle"><div class="snum2">${QS.score}</div><div class="stot">/ ${QUIZ.length}</div></div>
-      <div class="spct">${pct}%</div>
-      <div class="smsg">${msg}</div>
+      <div class="spct">${pct}%</div><div class="smsg">${msg}</div>
       <button class="qbtn rst" onclick="restartQ()">🔁 Recommencer</button>
     </div>`;
     return;
@@ -939,25 +782,22 @@ function renderQuiz(){
       let cl='def';
       if(QS.confirmed){cl=i===q.ans?'ok':i===QS.sel?'ko':'def';}
       else if(i===QS.sel) cl='sel';
-      return`<button class="opt ${cl}" onclick="${QS.confirmed?'':' selQ('+i+')'}">${o}</button>`;
+      return`<button class="opt ${cl}" onclick="${QS.confirmed?'':'selQ('+i+')'}">${o}</button>`;
     }).join('')}
     ${QS.confirmed?`<div class="expl ${QS.sel===q.ans?'ok':'ko'}"><strong>${QS.sel===q.ans?'✅ Correct !':'❌ Pas tout à fait.'}</strong> ${q.exp}</div>`:''}
-    <div>
-      ${!QS.confirmed
-        ?`<button class="qbtn val" ${QS.sel===null?'disabled':''} onclick="confirmQ()">Valider →</button>`
-        :`<button class="qbtn nxt" onclick="nextQ()">${QS.idx+1<QUIZ.length?'Question suivante →':'Voir les résultats →'}</button>`}
+    <div>${!QS.confirmed
+      ?`<button class="qbtn val" ${QS.sel===null?'disabled':''} onclick="confirmQ()">Valider →</button>`
+      :`<button class="qbtn nxt" onclick="nextQ()">${QS.idx+1<QUIZ.length?'Question suivante →':'Voir les résultats →'}</button>`}
     </div>`;
 }
-
 function selQ(i){QS.sel=i;renderQuiz();}
 function confirmQ(){if(QS.sel===null)return;QS.confirmed=true;if(QS.sel===QUIZ[QS.idx].ans)QS.score++;renderQuiz();}
-function nextQ(){if(QS.idx+1>=QUIZ.length){QS.done=true;}else{QS.idx++;QS.sel=null;QS.confirmed=false;}renderQuiz();}
+function nextQ(){QS.idx+1>=QUIZ.length?QS.done=true:(()=>{QS.idx++;QS.sel=null;QS.confirmed=false;})();renderQuiz();}
 function restartQ(){QS={idx:0,sel:null,confirmed:false,score:0,done:false};renderQuiz();}
 
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // MEMO
-// ════════════════════════════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════
 function renderMemo(){
   document.getElementById('memo-body').innerHTML=MEMO.map(m=>`
     <div class="msec">
@@ -966,20 +806,15 @@ function renderMemo(){
         <div class="mrow">
           <code class="mcode">${code}</code>
           <span class="mdesc">${desc}</span>
-          <span class="mexo ${exo}">${exo==='b'?'B1+B2':exo==='c'?'B1 COUNT':'B2 RILEX'}</span>
+          <span class="mexo ${exo}">${exo==='b'?'B1+B2':exo==='c'?'B1 COUNT':exo==='r'?'B2 RILEX':'ezCLI'}</span>
         </div>`).join('')}
     </div>`).join('');
 }
 
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // INIT
-// ════════════════════════════════════════════════════════════════
-
-renderCours();
-renderSujet();
-renderSol();
-renderQuiz();
-renderMemo();
+// ══════════════════════════════════════════════════════
+renderCours(); renderSujet(); renderSol(); renderQuiz(); renderMemo();
 </script>
 </body>
 </html>
