@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); background: transparent; }
+pre, code { font-family: var(--font-mono); }
+button { font-family: var(--font-sans); }
+
+.app { max-width: 700px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+
+.header { margin-bottom: 1.25rem; }
+.header-tag { font-size: 11px; font-family: var(--font-mono); color: var(--color-text-tertiary); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+.header-title { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.header-sub { font-size: 14px; color: var(--color-text-secondary); }
+
+.tabbar { display: flex; gap: 4px; background: var(--color-background-secondary); padding: 4px; border-radius: var(--border-radius-lg); margin-bottom: 1.25rem; }
+.tab-btn { flex: 1; padding: 8px 4px; border-radius: var(--border-radius-md); border: none; background: transparent; color: var(--color-text-secondary); font-size: 13px; font-weight: 400; cursor: pointer; transition: all 0.15s; }
+.tab-btn.active { background: var(--color-background-primary); color: var(--color-text-primary); font-weight: 500; box-shadow: 0 0 0 0.5px var(--color-border-tertiary); }
+
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 10px; }
+.card-slim { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; margin-bottom: 10px; }
+
+.code-block { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px 14px; font-size: 12.5px; line-height: 1.65; white-space: pre; overflow-x: auto; color: var(--color-text-primary); display: block; margin-top: 10px; }
+
+.expand-btn { width: 100%; background: none; border: none; cursor: pointer; padding: 0; text-align: left; }
+.concept-title { font-family: var(--font-mono); font-weight: 500; font-size: 13.5px; margin-bottom: 3px; color: var(--color-text-primary); }
+.concept-sub { font-size: 13px; color: var(--color-text-secondary); }
+.expand-icon { font-size: 18px; color: var(--color-text-tertiary); flex-shrink: 0; }
+.row-spread { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+.detail-body { margin-top: 14px; border-top: 0.5px solid var(--color-border-tertiary); padding-top: 14px; }
+.detail-text { font-size: 13.5px; color: var(--color-text-secondary); line-height: 1.65; }
+.tips-list { margin-top: 10px; padding-left: 16px; }
+.tips-list li { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 3px; }
+
+.badge { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--color-background-info); color: var(--color-text-info); font-size: 12px; font-weight: 500; flex-shrink: 0; }
+
+.step-body { padding-left: 38px; margin-top: 10px; }
+
+.exo-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+.exo-tab { padding: 7px 16px; border-radius: var(--border-radius-md); font-size: 13px; cursor: pointer; transition: all 0.15s; }
+.exo-tab.active { background: var(--color-background-info); border: 1.5px solid var(--color-border-info); color: var(--color-text-info); font-weight: 500; }
+.exo-tab.inactive { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+
+.note-success { background: var(--color-background-success); border: 0.5px solid var(--color-border-success); border-radius: var(--border-radius-md); padding: 10px 14px; margin-bottom: 14px; font-size: 13px; color: var(--color-text-success); line-height: 1.6; }
+
+.progress-bar-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.progress-bar-track { flex: 1; height: 4px; background: var(--color-background-secondary); border-radius: 2px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: var(--color-text-info); transition: width 0.3s; }
+.progress-label { font-size: 13px; color: var(--color-text-secondary); flex-shrink: 0; }
+
+.quiz-q { font-size: 15px; font-weight: 500; line-height: 1.55; color: var(--color-text-primary); }
+.opt-btn { display: block; width: 100%; text-align: left; padding: 11px 14px; border-radius: var(--border-radius-md); cursor: pointer; margin-bottom: 8px; font-size: 13.5px; font-family: var(--font-mono); line-height: 1.4; transition: all 0.15s; }
+.opt-default { border: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); color: var(--color-text-primary); }
+.opt-selected { border: 0.5px solid var(--color-border-info); background: var(--color-background-info); color: var(--color-text-info); }
+.opt-correct { border: 0.5px solid var(--color-border-success); background: var(--color-background-success); color: var(--color-text-success); }
+.opt-wrong { border: 0.5px solid var(--color-border-danger); background: var(--color-background-danger); color: var(--color-text-danger); }
+
+.expl-box-ok { background: var(--color-background-success); border: 0.5px solid var(--color-border-success); border-radius: var(--border-radius-md); padding: 12px 14px; margin: 12px 0; font-size: 13px; color: var(--color-text-success); line-height: 1.6; }
+.expl-box-ko { background: var(--color-background-warning); border: 0.5px solid var(--color-border-warning); border-radius: var(--border-radius-md); padding: 12px 14px; margin: 12px 0; font-size: 13px; color: var(--color-text-warning); line-height: 1.6; }
+
+.action-btn { flex: 1; padding: 10px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); cursor: pointer; font-size: 14px; transition: all 0.15s; }
+.action-btn:active { transform: scale(0.98); }
+.btn-validate { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); }
+.btn-validate:disabled { background: var(--color-background-secondary); color: var(--color-text-tertiary); border-color: var(--color-border-tertiary); cursor: not-allowed; }
+.btn-next { background: var(--color-background-primary); color: var(--color-text-primary); }
+.btn-restart { padding: 10px 24px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); cursor: pointer; font-size: 14px; }
+
+.score-big { font-size: 52px; font-weight: 500; color: var(--color-text-primary); line-height: 1; margin-bottom: 8px; }
+.score-pct { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 8px; }
+.score-msg { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 2rem; line-height: 1.6; max-width: 320px; }
+
+.memo-cat-header { padding: 8px 14px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.memo-cat-label { font-size: 12.5px; font-weight: 500; }
+.memo-row { display: flex; align-items: baseline; gap: 12px; padding: 7px 14px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.memo-row:last-child { border-bottom: none; }
+.memo-code { font-family: var(--font-mono); font-size: 12px; flex-shrink: 0; min-width: 195px; color: var(--color-text-primary); }
+.memo-desc { font-size: 12.5px; color: var(--color-text-secondary); }
+
+.cat-info { background: var(--color-background-info); color: var(--color-text-info); }
+.cat-success { background: var(--color-background-success); color: var(--color-text-success); }
+.cat-warning { background: var(--color-background-warning); color: var(--color-text-warning); }
+.cat-danger { background: var(--color-background-danger); color: var(--color-text-danger); }
+.cat-secondary { background: var(--color-background-secondary); color: var(--color-text-secondary); }
+</style>
+</head>
+<body>
+<div class="app" id="root"></div>
+
+<script>
+const CONCEPTS = [
+  {
+    label: "while True + break",
+    summary: "La boucle qui tourne jusqu'à ce que l'utilisateur arrête",
+    detail: "while True crée une boucle infinie. L'instruction break en sort immédiatement. C'est le schéma de base de COUNT et RILEX : on demande une saisie, on la traite, on recommence.",
+    code: `while True:\n    saisie = input("<> ").strip()\n    \n    if saisie == "" or saisie == "exit":\n        break   # on quitte la boucle\n    \n    # sinon, on traite la saisie...`,
+    tips: ["while True = boucle infinie", "break = sortir de la boucle immédiatement", "strip() = supprimer les espaces en début/fin", "continue = passer à l'itération suivante (sans quitter)"]
+  },
+  {
+    label: "split() — découper une chaîne",
+    summary: "Transformer 'toto.txt titi.txt' en ['toto.txt', 'titi.txt']",
+    detail: "split() sans argument découpe selon les espaces. splitlines() découpe selon les sauts de ligne. lower() met en minuscules. Ces méthodes renvoient une copie, elles ne modifient pas l'original.",
+    code: `s = "toto.txt titi.txt"\nfichiers = s.split()        # → ['toto.txt', 'titi.txt']\n\ntexte = "ligne1\\nligne2\\nligne3"\nlignes = texte.splitlines() # → ['ligne1', 'ligne2', 'ligne3']\n\n"CHAT".lower()              # → 'chat'`,
+    tips: ["split() = découper par espaces → liste de mots", "splitlines() = découper par lignes → liste de lignes", "lower() = tout en minuscules", "len(liste) = nombre d'éléments"]
+  },
+  {
+    label: "open() + with — lire un fichier",
+    summary: "Ouvrir un fichier et lire son contenu proprement",
+    detail: "Le mot-clé with garantit que le fichier sera fermé automatiquement après usage, même en cas d'erreur. read() lit tout le contenu d'un coup sous forme de chaîne.",
+    code: `with open("toto.txt", "r", encoding="utf-8") as f:\n    contenu = f.read()   # tout le texte en une chaîne\n\n# Le fichier est fermé automatiquement ici\nprint(len(contenu))  # nombre de caractères`,
+    tips: ["'r' = mode lecture (read)", "encoding='utf-8' = gère les accents correctement", "with = fermeture automatique du fichier", "f.read() renvoie tout le texte en une seule chaîne"]
+  },
+  {
+    label: "Module os — vérifier un fichier",
+    summary: "Vérifier qu'un fichier existe et peut être lu avant de l'ouvrir",
+    detail: "Avant d'ouvrir un fichier, on vérifie toujours : 1) qu'il existe, 2) qu'on a le droit de le lire. Si un test échoue, on affiche un message et on return pour arrêter la fonction.",
+    code: `import os\n\n# 1) Vérifier que le fichier existe\nif not os.path.isfile(nom):\n    print(f"{nom} : file not found")\n    return\n\n# 2) Vérifier les droits de lecture\nif not os.access(nom, os.R_OK):\n    print(f"{nom} : cannot read file")\n    return`,
+    tips: ["isfile() = True si le chemin est un fichier qui existe", "os.R_OK = constante 'droit de lecture'", "os.access(f, os.R_OK) = True si on peut lire f", "On vérifie toujours dans l'ordre : existence → lecture"]
+  },
+  {
+    label: "Dictionnaire {} — compter les mots",
+    summary: "Stocker des paires clé→valeur pour compter les occurrences",
+    detail: "Un dictionnaire Python associe des clés à des valeurs. Ici on s'en sert pour compter combien de fois chaque mot apparaît. len() sur le dictionnaire = nombre de mots différents.",
+    code: `compteur = {}  # dictionnaire vide\n\nfor mot in ["chat", "mange", "chat", "dort"]:\n    if mot in compteur:\n        compteur[mot] += 1  # déjà vu → on ajoute 1\n    else:\n        compteur[mot] = 1   # nouveau mot → on initialise\n\n# {'chat': 2, 'mange': 1, 'dort': 1}\nprint(len(compteur))  # → 3 mots différents`,
+    tips: ["mot in compteur = True si la clé existe", "compteur[clé] = accéder à la valeur", "len(compteur) = nombre de clés = mots différents", "len(liste_mots) = nombre total de mots"]
+  },
+  {
+    label: "re.findall() — extraire les mots",
+    summary: "Extraire uniquement les séquences de lettres, sans ponctuation",
+    detail: "split() garderait la ponctuation (chat, ≠ chat). re.findall() extrait exactement ce qu'on veut : les séquences de lettres. On filtre ensuite sur la taille et on met en minuscules.",
+    code: `import re\n\ntexte = "Le chat mange, le CHAT dort!"\n\nmots_bruts = re.findall(r'[a-zA-Z]+', texte)\n# → ['Le', 'chat', 'mange', 'le', 'CHAT', 'dort']\n\nmots = [m.lower() for m in mots_bruts if len(m) >= 4]\n# → ['chat', 'mange', 'chat', 'dort']`,
+    tips: ["[a-zA-Z]+ = une ou plusieurs lettres (pas de chiffres ni ponctuation)", "findall = 'trouve toutes les occurrences dans le texte'", "[m.lower() for m in ... if len(m)>=4] = liste en compréhension filtrée", "r'...' = raw string, les \\ ne sont pas interprétés"]
+  }
+];
+
+const STEPS_COUNT = [
+  { title: "Afficher le bandeau d'accueil", body: "Au lancement, on affiche un bandeau avec le nom du programme, la description et les commandes disponibles. C'est un simple print() d'une chaîne préparée à l'avance.", code: `SEPARATEUR = "─" * 80\n\nACCUEIL = f"""\n{SEPARATEUR}\nCOUNT : print the number of lines, words and chars of a list of text files\n...\n{SEPARATEUR}"""\n\nprint(ACCUEIL)` },
+  { title: "Lancer la boucle principale", body: "On entre dans une boucle while True. À chaque tour, on demande une saisie à l'utilisateur avec input().", code: `def main():\n    print(ACCUEIL)\n    \n    while True:\n        saisie = input("<> <filename> [filename ...]: ").strip()` },
+  { title: "Gérer exit, help, about", body: "Avant de traiter des fichiers, on vérifie si l'utilisateur a tapé une commande spéciale. Si oui, on y répond et on recommence la boucle (pas de break, sauf pour exit).", code: `if saisie == "" or saisie == "exit":\n    break\n\nelif saisie in ("help", "?"):\n    print(AIDE)\n\nelif saisie in ("about", "!"):\n    print(A_PROPOS)` },
+  { title: "Découper la saisie en liste de fichiers", body: "L'utilisateur peut taper plusieurs noms séparés par des espaces. split() les sépare automatiquement en une liste, qu'on parcourt avec une boucle for.", code: `else:\n    fichiers = saisie.split()\n    # "toto.txt titi.txt" → ["toto.txt", "titi.txt"]\n    \n    for nom in fichiers:\n        traiter_fichier(nom)` },
+  { title: "Vérifier le fichier", body: "Dans traiter_fichier(), on vérifie l'existence et les droits. Si un test échoue, on affiche un message d'erreur et on return — le reste de la fonction n'est pas exécuté.", code: `def traiter_fichier(nom):\n    if not os.path.isfile(nom):\n        print(f"{nom} : file not found")\n        return\n    \n    if not os.access(nom, os.R_OK):\n        print(f"{nom} : cannot read file")\n        return` },
+  { title: "Compter et afficher le résultat", body: "On lit le fichier, puis on utilise les méthodes de chaîne pour compter. len() fait tout le travail. On affiche avec un f-string formaté.", code: `    with open(nom, 'r', encoding='utf-8') as f:\n        contenu = f.read()\n    \n    nb_lignes = len(contenu.splitlines())\n    nb_mots   = len(contenu.split())\n    nb_chars  = len(contenu)\n    \n    print(f"{nom} : lines = {nb_lignes}, words = {nb_mots}, chars = {nb_chars}")` }
+];
+
+const STEPS_RILEX = [
+  { title: "Structure identique à COUNT", body: "Le bandeau, la boucle, les commandes spéciales (help/about/exit), et la vérification des fichiers sont exactement les mêmes que dans COUNT. Seule la fonction traiter_fichier() change de logique.", code: `# Identique à COUNT :\n# - Constantes ACCUEIL, AIDE, A_PROPOS\n# - while True avec break\n# - gestion help / about / exit\n# - os.path.isfile() + os.access()` },
+  { title: "Extraire les mots valides avec re", body: "On ne peut pas utiliser split() car il garderait la ponctuation. re.findall() extrait uniquement les séquences de lettres. On filtre ensuite sur la taille (≥4) et on met tout en minuscules.", code: `import re\n\nmots_bruts = re.findall(r'[a-zA-Z]+', contenu)\nmots = [m.lower() for m in mots_bruts if len(m) >= 4]\n\n# "Le chat mange, le CHAT dort!"\n# → ['chat', 'mange', 'chat', 'dort']` },
+  { title: "Gérer le cas fichier vide", body: "Si aucun mot valide n'est trouvé (fichier vide ou sans lettres), on ne peut pas calculer. On affiche un message et on return pour éviter une division par zéro.", code: `if len(mots) == 0:\n    print(f"{nom} : no valid words found")\n    return` },
+  { title: "Compter les occurrences avec un dictionnaire", body: "Pour chaque mot de la liste, si il est déjà dans le dictionnaire on incrémente, sinon on l'ajoute avec la valeur 1. À la fin, len(compteur) = mots différents.", code: `compteur = {}\nfor mot in mots:\n    if mot in compteur:\n        compteur[mot] += 1\n    else:\n        compteur[mot] = 1` },
+  { title: "Calculer et afficher la richesse lexicale", body: "La richesse = mots différents / total. On utilise :.2f pour afficher exactement 2 décimales (0.666... → 0.67).", code: `total      = len(mots)       # nombre total de mots\ndifferents = len(compteur)   # nombre de mots différents\nrilex      = differents / total\n\nprint(f"{nom} : rilex = {rilex:.2f}")` }
+];
+
+const QUIZ = [
+  { q: '"hello world python".split() renvoie ?', opts: ['["hello world python"]', '["hello","world","python"]', '["h","e","l","l","o"...]', 'Erreur'], ans: 1, exp: 'split() sans argument découpe selon les espaces → une liste de mots. La chaîne entière serait renvoyée seulement si on passait un séparateur absent.' },
+  { q: 'Pour sortir d\'une boucle while True, on utilise ?', opts: ['continue', 'return', 'stop', 'break'], ans: 3, exp: 'break interrompt immédiatement la boucle en cours. continue passe à l\'itération suivante sans quitter. return quitte la fonction mais pas la boucle seule.' },
+  { q: 'os.path.isfile("toto.txt") renvoie False si...', opts: ['le fichier est vide', 'le fichier n\'existe pas', 'le fichier est trop grand', 'le fichier est ouvert ailleurs'], ans: 1, exp: 'isfile() vérifie uniquement que le chemin existe et pointe vers un fichier (pas un dossier). Renvoie False s\'il n\'existe pas ou si c\'est un répertoire.' },
+  { q: 'Que vaut len({"chat": 2, "mange": 1, "dort": 3}) ?', opts: ['6', '3', '9', '2'], ans: 1, exp: 'len() sur un dictionnaire renvoie le nombre de clés — ici 3 (chat, mange, dort). La somme des valeurs serait 6, mais ce n\'est pas ce que len() renvoie.' },
+  { q: 'Comment mettre la chaîne "Bonjour" en minuscules ?', opts: ['"Bonjour".small()', 'lower("Bonjour")', '"Bonjour".lower()', '"Bonjour".min()'], ans: 2, exp: '.lower() est une méthode de l\'objet chaîne. Elle renvoie une nouvelle chaîne — l\'originale reste inchangée. small(), min() n\'existent pas pour les chaînes.' },
+  { q: 'Dans RILEX, un "mot valide" c\'est ?', opts: ['toute séquence de caractères', 'au moins 3 lettres uniquement', 'au moins 4 lettres uniquement', 'entre 4 et 10 lettres'], ans: 2, exp: 'Un mot valide = au moins 4 caractères + exclusivement des lettres alphabétiques. re.findall(r\'[a-zA-Z]+\') garantit "uniquement des lettres", et on filtre len(m) >= 4 ensuite.' },
+  { q: 're.findall(r\'[a-zA-Z]+\', "hello, world!") donne ?', opts: ['["hello, world!"]', '["hello,","world!"]', '["hello","world"]', 'Erreur'], ans: 2, exp: '[a-zA-Z]+ = une ou plusieurs lettres. La virgule et le ! ne sont pas des lettres → re.findall les ignore et extrait uniquement les séquences alphabétiques.' },
+  { q: 'Richesse lexicale de "le chat mange le chat" (mots ≥ 4 lettres) ?', opts: ['1.0', '0.50', '0.67', '0.75'], ans: 2, exp: 'Mots ≥ 4 lettres : "chat", "mange", "chat" → 3 au total. Différents : "chat" et "mange" → 2. Richesse = 2/3 ≈ 0.67. ("le" a 2 lettres, exclu)' },
+  { q: 'Quelle méthode découpe un texte en une liste de lignes ?', opts: ['split()', 'splitlines()', 'lines()', 'getlines()'], ans: 1, exp: 'splitlines() gère correctement tous les types de retour à la ligne (\\n, \\r\\n...). split() découpe par espaces, pas par lignes. lines() et getlines() n\'existent pas.' },
+  { q: 'os.access(f, os.R_OK) vérifie que...', opts: ['f est un fichier texte', 'f est non vide', 'on a le droit de lire f', 'f existe dans le dossier courant'], ans: 2, exp: 'os.R_OK est la constante qui signifie "droit de lecture". os.access(f, os.R_OK) renvoie True si le programme a la permission de lire ce fichier.' }
+];
+
+const MEMO = [
+  { cat: "Boucle d'interaction", cls: "cat-info", rows: [
+    ["while True:", "boucle infinie — tourne jusqu'au break"],
+    ["break", "quitter la boucle immédiatement"],
+    ["continue", "passer à l'itération suivante"],
+    [".strip()", "supprimer espaces/sauts en début/fin"]
+  ]},
+  { cat: "Méthodes de chaînes", cls: "cat-success", rows: [
+    [".split()", "découper par espaces → liste de mots"],
+    [".splitlines()", "découper par lignes → liste de lignes"],
+    [".lower()", "tout mettre en minuscules"],
+    ["len(s)", "longueur d'une chaîne ou liste"]
+  ]},
+  { cat: "Lecture de fichier", cls: "cat-warning", rows: [
+    ["with open(f,'r',encoding='utf-8') as h:", "ouvrir en lecture"],
+    ["h.read()", "lire tout le contenu (renvoie une chaîne)"],
+    ["return", "stopper la fonction en cas d'erreur"]
+  ]},
+  { cat: "Module os", cls: "cat-danger", rows: [
+    ["import os", "importer le module"],
+    ["os.path.isfile(f)", "True si f existe et est un fichier"],
+    ["os.access(f, os.R_OK)", "True si on a le droit de lire f"]
+  ]},
+  { cat: "Dictionnaire", cls: "cat-info", rows: [
+    ["d = {}", "créer un dictionnaire vide"],
+    ["clé in d", "True si la clé existe dans d"],
+    ["d[clé] = 1", "créer une entrée avec valeur 1"],
+    ["d[clé] += 1", "incrémenter la valeur de la clé"],
+    ["len(d)", "nombre de clés (= mots différents)"]
+  ]},
+  { cat: "Module re", cls: "cat-success", rows: [
+    ["import re", "importer le module"],
+    ["re.findall(r'[a-zA-Z]+', t)", "extraire toutes les séquences de lettres"],
+    ["[m.lower() for m in l if len(m)>=4]", "filtrer (≥4) + normaliser (minuscules)"]
+  ]},
+  { cat: "Affichage formaté", cls: "cat-secondary", rows: [
+    ['f"{nom} : lines = {n}"', "f-string — interpolation de variables"],
+    ['f"{val:.2f}"', "afficher val avec exactement 2 décimales"],
+    ['f"{nom} : rilex = {rilex:.2f}"', "exemple RILEX"]
+  ]}
+];
+
+// ───── State ─────────────────────────────────────────────────────────
+
+let state = {
+  tab: "cours",
+  openConcepts: {},
+  openSteps: {},
+  exoTab: "count",
+  quizIdx: 0,
+  quizSel: null,
+  quizConfirmed: false,
+  quizScore: 0,
+  quizDone: false,
+};
+
+function setState(patch) {
+  Object.assign(state, patch);
+  render();
+}
+
+// ───── Helpers ───────────────────────────────────────────────────────
+
+function toggleConcept(i) {
+  const o = {...state.openConcepts};
+  o[i] = !o[i];
+  setState({ openConcepts: o });
+}
+
+function toggleStep(key) {
+  const o = {...state.openSteps};
+  o[key] = !o[key];
+  setState({ openSteps: o });
+}
+
+function quizConfirm() {
+  if (state.quizSel === null) return;
+  const correct = state.quizSel === QUIZ[state.quizIdx].ans;
+  setState({ quizConfirmed: true, quizScore: state.quizScore + (correct ? 1 : 0) });
+}
+
+function quizNext() {
+  if (state.quizIdx + 1 >= QUIZ.length) {
+    setState({ quizDone: true });
+  } else {
+    setState({ quizIdx: state.quizIdx + 1, quizSel: null, quizConfirmed: false });
+  }
+}
+
+function quizRestart() {
+  setState({ quizIdx: 0, quizSel: null, quizConfirmed: false, quizScore: 0, quizDone: false });
+}
+
+// ───── Render sections ───────────────────────────────────────────────
+
+function renderCours() {
+  return `
+    <p class="detail-text" style="margin-bottom:16px">6 concepts fondamentaux utilisés dans COUNT et RILEX. Clique pour développer chacun.</p>
+    ${CONCEPTS.map((c, i) => `
+      <div class="card">
+        <button class="expand-btn" onclick="toggleConcept(${i})">
+          <div class="row-spread">
+            <div>
+              <p class="concept-title">${c.label}</p>
+              <p class="concept-sub">${c.summary}</p>
+            </div>
+            <span class="expand-icon">${state.openConcepts[i] ? '−' : '+'}</span>
+          </div>
+        </button>
+        ${state.openConcepts[i] ? `
+          <div class="detail-body">
+            <p class="detail-text">${c.detail}</p>
+            <pre class="code-block">${c.code}</pre>
+            <ul class="tips-list">
+              ${c.tips.map(t => `<li>${t}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+      </div>
+    `).join('')}
+  `;
+}
+
+function renderExercices() {
+  const steps = state.exoTab === 'count' ? STEPS_COUNT : STEPS_RILEX;
+  const prefix = state.exoTab;
+  return `
+    <div class="exo-tabs">
+      <button class="exo-tab ${state.exoTab === 'count' ? 'active' : 'inactive'}" onclick="setState({exoTab:'count',openSteps:{}})">Exo 1 — COUNT</button>
+      <button class="exo-tab ${state.exoTab === 'rilex' ? 'active' : 'inactive'}" onclick="setState({exoTab:'rilex',openSteps:{}})">Exo 2 — RILEX</button>
+    </div>
+    ${state.exoTab === 'rilex' ? `
+      <div class="note-success">
+        <strong>Bonne nouvelle :</strong> RILEX a la même structure que COUNT — même bandeau, même boucle, même gestion des erreurs. Seule traiter_fichier() change : au lieu de compter lignes/mots/chars, on calcule la richesse lexicale avec un dictionnaire et re.findall().
+      </div>
+    ` : ''}
+    ${steps.map((s, i) => `
+      <div class="card">
+        <button class="expand-btn" onclick="toggleStep('${prefix}_${i}')">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span class="badge">${i+1}</span>
+            <p style="font-size:14px;font-weight:500;color:var(--color-text-primary);flex:1">${s.title}</p>
+            <span class="expand-icon">${state.openSteps[prefix+'_'+i] ? '−' : '+'}</span>
+          </div>
+        </button>
+        ${state.openSteps[prefix+'_'+i] ? `
+          <div class="step-body">
+            <p class="detail-text">${s.body}</p>
+            <pre class="code-block">${s.code}</pre>
+          </div>
+        ` : ''}
+      </div>
+    `).join('')}
+  `;
+}
+
+function renderQuiz() {
+  if (state.quizDone) {
+    const pct = Math.round((state.quizScore / QUIZ.length) * 100);
+    const msg = pct >= 80 ? "Excellent travail ! Tu maîtrises bien les bases — bonne chance pour le DS." : pct >= 60 ? "Bien ! Quelques points à revoir. Retourne dans Cours sur ce qui t'a posé problème." : "Continue à réviser — relis les concepts et refais le quiz. Tu y es presque !";
+    return `
+      <div style="text-align:center;padding:2rem 1rem">
+        <p class="score-big">${state.quizScore}/${QUIZ.length}</p>
+        <p class="score-pct">${pct}% de bonnes réponses</p>
+        <p class="score-msg">${msg}</p>
+        <button class="btn-restart" onclick="quizRestart()">Recommencer le quiz</button>
+      </div>
+    `;
+  }
+
+  const q = QUIZ[state.quizIdx];
+  const pct = (state.quizIdx / QUIZ.length) * 100;
+  const isCorrect = state.quizSel === q.ans;
+
+  return `
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <span class="progress-label">${state.quizIdx + 1}/${QUIZ.length}</span>
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <p class="quiz-q">${q.q}</p>
+    </div>
+    ${q.opts.map((opt, i) => {
+      let cls = 'opt-default';
+      if (state.quizConfirmed) {
+        if (i === q.ans) cls = 'opt-correct';
+        else if (i === state.quizSel) cls = 'opt-wrong';
+      } else if (i === state.quizSel) {
+        cls = 'opt-selected';
+      }
+      const disabled = state.quizConfirmed ? 'style="cursor:default"' : '';
+      return `<button class="opt-btn ${cls}" ${disabled} onclick="${state.quizConfirmed ? '' : `setState({quizSel:${i}})`}">${opt}</button>`;
+    }).join('')}
+    ${state.quizConfirmed ? `
+      <div class="${isCorrect ? 'expl-box-ok' : 'expl-box-ko'}">
+        <strong>${isCorrect ? 'Correct !' : 'Pas tout à fait.'}</strong> ${q.exp}
+      </div>
+    ` : ''}
+    <div style="display:flex;gap:10px;margin-top:14px">
+      ${!state.quizConfirmed ? `
+        <button class="action-btn btn-validate" ${state.quizSel === null ? 'disabled' : ''} onclick="quizConfirm()">Valider</button>
+      ` : `
+        <button class="action-btn btn-next" onclick="quizNext()">${state.quizIdx + 1 < QUIZ.length ? 'Question suivante →' : 'Voir les résultats →'}</button>
+      `}
+    </div>
+  `;
+}
+
+function renderMemo() {
+  return `
+    <p class="detail-text" style="margin-bottom:16px">Tout ce qu'il faut retenir pour le DS, condensé en un seul endroit.</p>
+    ${MEMO.map(m => `
+      <div class="card-slim">
+        <div class="memo-cat-header ${m.cls}">
+          <p class="memo-cat-label">${m.cat}</p>
+        </div>
+        ${m.rows.map(([code, desc]) => `
+          <div class="memo-row">
+            <code class="memo-code">${code}</code>
+            <span class="memo-desc">${desc}</span>
+          </div>
+        `).join('')}
+      </div>
+    `).join('')}
+  `;
+}
+
+// ───── Main render ───────────────────────────────────────────────────
+
+function render() {
+  const tabs = [
+    { id: "cours", label: "Cours" },
+    { id: "exercices", label: "Exercices" },
+    { id: "quiz", label: "Quiz" },
+    { id: "memo", label: "Memo DS" }
+  ];
+
+  let content = '';
+  if (state.tab === 'cours') content = renderCours();
+  else if (state.tab === 'exercices') content = renderExercices();
+  else if (state.tab === 'quiz') content = renderQuiz();
+  else content = renderMemo();
+
+  document.getElementById('root').innerHTML = `
+    <div class="app">
+      <div class="header">
+        <p class="header-tag">L1 Python — Fichiers &amp; Dictionnaires</p>
+        <h1 class="header-title">Préparation DS</h1>
+        <p class="header-sub">COUNT et RILEX — comprendre, pratiquer, réviser</p>
+      </div>
+      <div class="tabbar">
+        ${tabs.map(t => `
+          <button class="tab-btn ${state.tab === t.id ? 'active' : ''}" onclick="setState({tab:'${t.id}'})">${t.label}</button>
+        `).join('')}
+      </div>
+      <div>${content}</div>
+    </div>
+  `;
+}
+
+render();
+</script>
+</body>
+</html>
